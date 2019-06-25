@@ -13,4 +13,5 @@
     <insert id="getaddUser">
             insert into user_t (username,password )values (#{username},#{password})
     </insert>
+
 </mapper>
