@@ -17,14 +17,14 @@
 <form class="form-horizontal" role="form" action="login">
     <div class="form-group">
         <label for="username" class="col-sm-2 control-label">账号</label>
-        <div class="col-sm-10">
+        <div class="col-sm-5">
             <input type="text" class="form-control" id="username"
                    placeholder="请输入账号">
         </div>
     </div>
     <div class="form-group">
         <label for="password" class="col-sm-2 control-label">密码</label>
-        <div class="col-sm-10">
+        <div class="col-sm-5">
             <input type="password" class="form-control" id="password"
                    placeholder="请输入密码">
         </div>
@@ -41,7 +41,7 @@
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default">登录</button>
-            <button type="button" class="btn btn-default">注册</button>
+            <button type="button" class="btn col-sm-offset-2 btn-default">注册</button>
         </div>
     </div>
 </form>
