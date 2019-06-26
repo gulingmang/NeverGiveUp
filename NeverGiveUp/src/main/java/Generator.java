@@ -12,7 +12,6 @@ public class Generator {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true; //指向逆向工程配置文件
         File configFile = new File("NeverGiveUp/generatorConfig.xml");
-        System.out.println(new File("").getAbsoluteFile());
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
