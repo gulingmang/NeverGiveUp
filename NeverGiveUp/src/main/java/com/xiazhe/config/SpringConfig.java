@@ -2,6 +2,7 @@ package com.xiazhe.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,6 @@ public class SpringConfig {
         druidDataSource.setConnectProperties(properties);
 
         return druidDataSource;
-
     }
 
     @Bean("sqlSessionFactoryBean")
