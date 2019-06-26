@@ -14,7 +14,7 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form class="form-horizontal" role="form" action="login">
+<form class="form-horizontal" role="form" action="login" method="post">
     <div class="form-group">
         <label for="username" class="col-sm-2 control-label">账号</label>
         <div class="col-sm-5">
