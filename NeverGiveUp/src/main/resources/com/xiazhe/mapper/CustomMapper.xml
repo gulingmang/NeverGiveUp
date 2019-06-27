@@ -150,4 +150,9 @@
       note = #{note,jdbcType=VARCHAR}
     where custom_id = #{customId,jdbcType=VARCHAR}
   </update>
+
+
+  <select id="queryCustoms" resultMap="BaseResultMap">
+    select custom_id, custom_name, full_name, address, fax, email, owner_name, owner_tel, status,note from custom where 1=1
+  </select>
 </mapper>

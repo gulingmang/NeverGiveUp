@@ -35,4 +35,16 @@ public class ManagerPlanController {
         queryJsonBean = orderServices.queryOrderPages(page,rows);
         return queryJsonBean;
     }
+
+
+    @RequestMapping("add_judge")
+    @ResponseBody
+    public String addBean(){
+        return null;
+    }
+
+    @RequestMapping("add")
+    public String add(){
+        return "/WEB-INF/jsp/order_add.jsp";
+    }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class DepartmentServiceImpl implements DepartMentService {
     @Autowired
-    DepartmentMapper mymapper1;
+    DepartmentMapper  mymapper1;
 
     @Override
     public List<Department> getList() {
