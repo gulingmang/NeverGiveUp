@@ -1,5 +1,6 @@
 package MyTest1;
 
+import com.github.pagehelper.PageHelper;
 import com.xiazhe.bean.UnQualifyApply;
 import com.xiazhe.config.ApplicationIniter;
 import com.xiazhe.config.SpringConfig;
@@ -22,8 +23,13 @@ public class ThisisMytt {
 
     @Test
     public void Tets(){
-
+        PageHelper pageHelper=new PageHelper();
+        pageHelper.offsetPage(0,2);
         List<UnQualifyApply> applyList = my.getApplyList();
+        for(UnQualifyApply c:applyList){
+            System.out.println(c);
+            System.out.println("------");
+        }
         System.out.println(applyList);
     }
 }
