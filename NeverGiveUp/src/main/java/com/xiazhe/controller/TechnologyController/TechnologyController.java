@@ -1,3 +1,4 @@
+/*
 package com.xiazhe.controller.TechnologyController;
 
 import com.xiazhe.bean.Result;
@@ -45,7 +46,9 @@ public class TechnologyController {
         return technologies;
     }
 
-    /*增加工艺*/
+    */
+/*增加工艺*//*
+
     //跳转至增加页面
     @RequestMapping("add_judge")
     public String toAddjudge(){
@@ -67,7 +70,9 @@ public class TechnologyController {
         return result;
     }
 
-    /*工艺修改*/
+    */
+/*工艺修改*//*
+
     //跳转至修改界面
     @RequestMapping("edit_judge")
     public String toEditjudge(){
@@ -90,7 +95,9 @@ public class TechnologyController {
         return result;
     }
 
-    /*工艺删除操作*/
+    */
+/*工艺删除操作*//*
+
     //跳转至删除页面
     @RequestMapping("delete_judge")
     public String todeletejudge(){
@@ -107,3 +114,4 @@ public class TechnologyController {
         return result;
     }
 }
+*/

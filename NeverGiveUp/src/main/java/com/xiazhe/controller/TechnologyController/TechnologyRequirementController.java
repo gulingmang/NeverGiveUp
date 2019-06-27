@@ -1,3 +1,4 @@
+/*
 package com.xiazhe.controller.TechnologyController;
 
 import com.xiazhe.bean.Technology;
@@ -46,3 +47,4 @@ public class TechnologyRequirementController {
         return technology;
     }
 }
+*/

@@ -1,7 +1,8 @@
+/*
 package com.xiazhe.controller.TechnologyController;
 
-import com.xiazhe.bean.Technology.Technology;
-import com.xiazhe.service.TechnologyService.TechonlogyServiceImpl;
+
+import com.xiazhe.bean.Technology;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,3 +35,4 @@ public class TechonlogyController {
     }
 
 }
+*/
