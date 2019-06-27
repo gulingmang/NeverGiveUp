@@ -16,6 +16,11 @@
     </foreach>
     </delete>
 
+    <!--修改部门-->
+    <update id="updateDepartment">
+        update department set department_name = #{depart.departmentName}, note = #{depart.note} where department_id = #{depart.departmentId}
+    </update>
+
     <!--根据id查找部门（精确）-->
     <select id="queryDepartmentById" resultType="com.xiazhe.bean.Department">
         select department_id as departmentId,department_name as departmentName,note from department where department_id = #{id}

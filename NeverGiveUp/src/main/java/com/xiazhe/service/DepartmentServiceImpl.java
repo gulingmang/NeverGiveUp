@@ -18,6 +18,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentMapper.deleteDepartments(ids);
     }
 
+    public int updateDepartment(Department department) {
+        return departmentMapper.updateDepartment(department);
+    }
+
     public Department queryDepartmentById(String id) {
         return departmentMapper.queryDepartmentById(id);
     }
