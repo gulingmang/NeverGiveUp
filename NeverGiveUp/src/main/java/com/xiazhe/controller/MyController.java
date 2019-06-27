@@ -136,4 +136,9 @@ public class MyController {
         return user.toString();
 
     }
+
+/*    @RequestMapping("home")
+    public String toHome(){
+        return "/WEB-INF/jsp/home.jsp";
+    }*/
 }
