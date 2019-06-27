@@ -1,8 +1,10 @@
 package com.xiazhe.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.pagehelper.PageHelper;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +43,23 @@ public class SpringConfig {
         return druidDataSource;
     }
 
+
+
+
+
     @Bean("sqlSessionFactoryBean")
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+        PageHelper helper=new PageHelper();
+        Properties props = new Properties();
+        props.setProperty("reasonable", "true");
+        props.setProperty("supportMethodsArguments", "true");
+        props.setProperty("returnPageInfo", "check");
+        props.setProperty("params", "count=countSql");
+        helper.setProperties(props);
+        //sqlSessionFactoryBean.setPlugins();
+        sqlSessionFactoryBean.setPlugins(new Interceptor[] { helper });
         return sqlSessionFactoryBean;
     }
 
