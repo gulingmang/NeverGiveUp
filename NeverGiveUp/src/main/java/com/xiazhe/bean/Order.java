@@ -31,7 +31,7 @@ public class Order {
 
     private Custom custom;
 
-    private Product product;
+
 
     public String getOrderId() {
         return orderId;
@@ -137,11 +137,4 @@ public class Order {
         this.custom = custom;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }

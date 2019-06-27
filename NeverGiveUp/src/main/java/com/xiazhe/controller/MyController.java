@@ -52,8 +52,5 @@ public class MyController {
 
     }
 
-    @RequestMapping("home")
-    public String home(){
-        return "/WEB-INF/jsp/home.jsp";
-    }
+
 }
