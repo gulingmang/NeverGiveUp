@@ -1,3 +1,4 @@
+/*
 package com.xiazhe.controller;
 
 import com.xiazhe.bean.Department;
@@ -14,28 +15,37 @@ public class DepartmentController {
     @Autowired
     DepartmentService departmentService;
 
-    /*跳转到jsp页面*/
+    */
+/*跳转到jsp页面*//*
+
     @RequestMapping("/find")
     public String showDepartmentPage(){
         return "/WEB-INF/jsp/department_list.jsp";
     }
 
-    /*显示所有的部门*/
+    */
+/*显示所有的部门*//*
+
     @RequestMapping("/list")
     @ResponseBody
     public Department[] listDepartment(){
         return departmentService.queryAllDepartments();
     }
 
-    /*新增部门*/
+    */
+/*新增部门*//*
+
     @RequestMapping("/insert")
     public void addDepartment(@RequestBody Department department){
         departmentService.addDepartment(department);
     }
 
-    /*修改部门*/
+    */
+/*修改部门*//*
+
     @RequestMapping("/update_all")
     public void editDepartment(String departmentId,String departmentName,String note){
         departmentService.addDepartment(new Department(departmentId,departmentName,note));
     }
 }
+*/

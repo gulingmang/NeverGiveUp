@@ -18,13 +18,14 @@ public class DeviceController {
     @Autowired
     DeviceService deviceService;
 
-    /*显示home主页*/
+
     @RequestMapping("/home")
     public String home(){
         return "/WEB-INF/jsp/home.jsp";
     }
 
-    /*显示设备管理的设备种类页面*/
+
+
     @RequestMapping("/device/deviceType")
     public String deviceType(HttpSession session){
         List sysPermissionList = new ArrayList<>();
@@ -35,7 +36,8 @@ public class DeviceController {
         return "/WEB-INF/jsp/deviceType.jsp";
     }
 
-    /*显示设备种类页面里的数据内容*/
+
+
     @RequestMapping("/deviceType/list")
     @ResponseBody
     public List dispalyDeviceTypeContent(){
