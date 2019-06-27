@@ -1,12 +1,10 @@
-package com.xiazhe.bean.plan;
-
-import com.xiazhe.bean.Order;
+package com.xiazhe.bean.json;
 
 import java.util.List;
 
-public class OrderJson {
+public class QueryJsonBean<T> {
     private int total;
-    private List<Order> rows;
+    private List<T> rows;
 
     public int getTotal() {
         return total;
@@ -16,11 +14,11 @@ public class OrderJson {
         this.total = total;
     }
 
-    public List<Order> getRows() {
+    public List<T> getRows() {
         return rows;
     }
 
-    public void setRows(List<Order> rows) {
+    public void setRows(List<T> rows) {
         this.rows = rows;
     }
 }
