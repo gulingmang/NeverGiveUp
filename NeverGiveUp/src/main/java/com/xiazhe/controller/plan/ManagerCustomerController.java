@@ -36,4 +36,10 @@ public class ManagerCustomerController {
     public QueryJsonBean<Custom> getCustomList(int page, int rows){
         return customServices.queryCustomPages(page,rows);
     }
+
+    @RequestMapping("get_data")
+    @ResponseBody
+    public QueryJsonBean<Custom> getCustomData(){
+        return customServices.getCustomData();
+    }
 }
