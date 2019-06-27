@@ -3,104 +3,104 @@ package com.xiazhe.bean;
 import java.util.Date;
 
 public class DeviceType {
-    String device_type_id;
-    String device_type_name;
-    String device_type_model;
-    String device_type_spec;
-    String device_type_supplier;
-    String device_type_producer;
-    int device_type_quantity;
-    Date device_type_warranty;
+    private String deviceTypeId;
+    private String deviceTypeName;
+    private String deviceTypeModel;
+    private String deviceTypeSpec;
+    private String deviceTypeSupplier;
+    private String deviceTypeProducer;
+    private int deviceTypeQuantity;
+    private Date deviceTypeWarranty;
 
     public DeviceType() {
     }
 
-    public DeviceType(String device_type_id, String device_type_name, String device_type_model, String device_type_spec, String device_type_supplier, String device_type_producer, int device_type_quantity, Date device_type_warranty) {
-        this.device_type_id = device_type_id;
-        this.device_type_name = device_type_name;
-        this.device_type_model = device_type_model;
-        this.device_type_spec = device_type_spec;
-        this.device_type_supplier = device_type_supplier;
-        this.device_type_producer = device_type_producer;
-        this.device_type_quantity = device_type_quantity;
-        this.device_type_warranty = device_type_warranty;
+    public DeviceType(String deviceTypeId, String deviceTypeName, String deviceTypeModel, String deviceTypeSpec, String deviceTypeSupplier, String deviceTypeProducer, int deviceTypeQuantity, Date deviceTypeWarranty) {
+        this.deviceTypeId = deviceTypeId;
+        this.deviceTypeName = deviceTypeName;
+        this.deviceTypeModel = deviceTypeModel;
+        this.deviceTypeSpec = deviceTypeSpec;
+        this.deviceTypeSupplier = deviceTypeSupplier;
+        this.deviceTypeProducer = deviceTypeProducer;
+        this.deviceTypeQuantity = deviceTypeQuantity;
+        this.deviceTypeWarranty = deviceTypeWarranty;
     }
 
-    public String getDevice_type_id() {
-        return device_type_id;
+    public String getDeviceTypeId() {
+        return deviceTypeId;
     }
 
-    public void setDevice_type_id(String device_type_id) {
-        this.device_type_id = device_type_id;
+    public void setDeviceTypeId(String deviceTypeId) {
+        this.deviceTypeId = deviceTypeId;
     }
 
-    public String getDevice_type_name() {
-        return device_type_name;
+    public String getDeviceTypeName() {
+        return deviceTypeName;
     }
 
-    public void setDevice_type_name(String device_type_name) {
-        this.device_type_name = device_type_name;
+    public void setDeviceTypeName(String deviceTypeName) {
+        this.deviceTypeName = deviceTypeName;
     }
 
-    public String getDevice_type_model() {
-        return device_type_model;
+    public String getDeviceTypeModel() {
+        return deviceTypeModel;
     }
 
-    public void setDevice_type_model(String device_type_model) {
-        this.device_type_model = device_type_model;
+    public void setDeviceTypeModel(String deviceTypeModel) {
+        this.deviceTypeModel = deviceTypeModel;
     }
 
-    public String getDevice_type_spec() {
-        return device_type_spec;
+    public String getDeviceTypeSpec() {
+        return deviceTypeSpec;
     }
 
-    public void setDevice_type_spec(String device_type_spec) {
-        this.device_type_spec = device_type_spec;
+    public void setDeviceTypeSpec(String deviceTypeSpec) {
+        this.deviceTypeSpec = deviceTypeSpec;
     }
 
-    public String getDevice_type_supplier() {
-        return device_type_supplier;
+    public String getDeviceTypeSupplier() {
+        return deviceTypeSupplier;
     }
 
-    public void setDevice_type_supplier(String device_type_supplier) {
-        this.device_type_supplier = device_type_supplier;
+    public void setDeviceTypeSupplier(String deviceTypeSupplier) {
+        this.deviceTypeSupplier = deviceTypeSupplier;
     }
 
-    public String getDevice_type_producer() {
-        return device_type_producer;
+    public String getDeviceTypeProducer() {
+        return deviceTypeProducer;
     }
 
-    public void setDevice_type_producer(String device_type_producer) {
-        this.device_type_producer = device_type_producer;
+    public void setDeviceTypeProducer(String deviceTypeProducer) {
+        this.deviceTypeProducer = deviceTypeProducer;
     }
 
-    public int getDevice_type_quantity() {
-        return device_type_quantity;
+    public int getDeviceTypeQuantity() {
+        return deviceTypeQuantity;
     }
 
-    public void setDevice_type_quantity(int device_type_quantity) {
-        this.device_type_quantity = device_type_quantity;
+    public void setDeviceTypeQuantity(int deviceTypeQuantity) {
+        this.deviceTypeQuantity = deviceTypeQuantity;
     }
 
-    public Date getDevice_type_warranty() {
-        return device_type_warranty;
+    public Date getDeviceTypeWarranty() {
+        return deviceTypeWarranty;
     }
 
-    public void setDevice_type_warranty(Date device_type_warranty) {
-        this.device_type_warranty = device_type_warranty;
+    public void setDeviceTypeWarranty(Date deviceTypeWarranty) {
+        this.deviceTypeWarranty = deviceTypeWarranty;
     }
 
     @Override
     public String toString() {
         return "DeviceType{" +
-                "device_type_id='" + device_type_id + '\'' +
-                ", device_type_name='" + device_type_name + '\'' +
-                ", device_type_model='" + device_type_model + '\'' +
-                ", device_type_spec='" + device_type_spec + '\'' +
-                ", device_type_supplier='" + device_type_supplier + '\'' +
-                ", device_type_producer='" + device_type_producer + '\'' +
-                ", device_type_quantity=" + device_type_quantity +
-                ", device_type_warranty=" + device_type_warranty +
+                "deviceTypeId='" + deviceTypeId + '\'' +
+                ", deviceTypeName='" + deviceTypeName + '\'' +
+                ", deviceTypeModel='" + deviceTypeModel + '\'' +
+                ", deviceTypeSpec='" + deviceTypeSpec + '\'' +
+                ", deviceTypeSupplier='" + deviceTypeSupplier + '\'' +
+                ", deviceTypeProducer='" + deviceTypeProducer + '\'' +
+                ", deviceTypeQuantity=" + deviceTypeQuantity +
+                ", deviceTypeWarranty=" + deviceTypeWarranty +
                 '}';
     }
 }

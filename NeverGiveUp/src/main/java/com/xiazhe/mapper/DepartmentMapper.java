@@ -1,9 +1,7 @@
 package com.xiazhe.mapper;
 
 import com.xiazhe.bean.Department;
-import com.xiazhe.bean.UnQualifyApply;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 public interface DepartmentMapper {

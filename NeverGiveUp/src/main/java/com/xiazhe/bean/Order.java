@@ -33,6 +33,14 @@ public class Order {
 
     private Product product;
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     public String getOrderId() {
         return orderId;
     }
@@ -137,11 +145,4 @@ public class Order {
         this.custom = custom;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }
