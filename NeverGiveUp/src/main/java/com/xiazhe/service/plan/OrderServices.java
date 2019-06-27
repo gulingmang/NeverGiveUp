@@ -1,7 +1,8 @@
 package com.xiazhe.service.plan;
 
-import com.xiazhe.bean.plan.OrderJson;
+import com.xiazhe.bean.Order;
+import com.xiazhe.bean.json.QueryJsonBean;
 
 public interface OrderServices {
-    OrderJson queryOrders();
+    QueryJsonBean<Order> queryOrderPages(int page, int rows);
 }

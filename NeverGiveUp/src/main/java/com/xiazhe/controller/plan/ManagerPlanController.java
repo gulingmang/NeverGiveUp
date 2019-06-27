@@ -1,6 +1,7 @@
 package com.xiazhe.controller.plan;
 
-import com.xiazhe.bean.plan.OrderJson;
+import com.xiazhe.bean.Order;
+import com.xiazhe.bean.json.QueryJsonBean;
 import com.xiazhe.service.plan.OrderServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,9 +30,9 @@ public class ManagerPlanController {
 
     @RequestMapping("list")
     @ResponseBody
-    public OrderJson getOrderList(int page,int rows){
-
-        OrderJson orderJson = orderServices.queryOrders();
-        return orderJson;
+    public QueryJsonBean<Order> getOrderList(int page, int rows){
+        QueryJsonBean<Order> queryJsonBean;
+        queryJsonBean = orderServices.queryOrderPages(page,rows);
+        return queryJsonBean;
     }
 }

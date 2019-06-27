@@ -1,7 +1,8 @@
 package com.xiazhe.service.plan;
 
+import com.github.pagehelper.PageHelper;
 import com.xiazhe.bean.Order;
-import com.xiazhe.bean.plan.OrderJson;
+import com.xiazhe.bean.json.QueryJsonBean;
 import com.xiazhe.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,11 +15,14 @@ public class OrderServicesImpl implements OrderServices {
     OrderMapper orderMapper;
 
     @Override
-    public OrderJson queryOrders() {
-        OrderJson orderJson = new OrderJson();
+    public QueryJsonBean<Order> queryOrderPages(int page, int rows) {
         List<Order> orders = orderMapper.queryOrders();
-        orderJson.setRows(orders);
-        orderJson.setTotal(orders.size());
-        return orderJson;
+        QueryJsonBean<Order> queryJsonBean = new QueryJsonBean<>();
+        queryJsonBean.setTotal(orders.size());
+        PageHelper pageHelper = new PageHelper();
+        pageHelper.offsetPage((page-1)*rows,rows);
+        orders = orderMapper.queryOrders();
+        queryJsonBean.setRows(orders);
+        return queryJsonBean;
     }
 }
