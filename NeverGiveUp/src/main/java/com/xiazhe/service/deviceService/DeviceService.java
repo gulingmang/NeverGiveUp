@@ -1,4 +1,4 @@
-package com.xiazhe.mapper;
+package com.xiazhe.service.deviceService;
 
 import com.xiazhe.bean.DeviceCheck;
 import com.xiazhe.bean.DeviceList;
@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface DeviceMapper {
+public interface DeviceService {
 
     /*显示所有设备台账*/
     List<DeviceList> queryAllDeviceList();
@@ -20,5 +20,4 @@ public interface DeviceMapper {
 
     /*显示所有设备例检*/
     List<DeviceCheck> queryAllDeviceCheck();
-
 }
