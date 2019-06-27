@@ -49,9 +49,12 @@ public class SpringMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //前面的是mapping 后面的是location
-        registry.addResourceHandler("/pic/**").addResourceLocations("/WEB-INF/jpg/");
-        registry.addResourceHandler("/pic2/**").addResourceLocations("classpath:/jpg/");
-        registry.addResourceHandler("/pic3/**").addResourceLocations("file:e://jpg/");
+        registry.addResourceHandler("/jsp/**").addResourceLocations("/WEB-INF/jsp/");
+        registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/js/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
+        registry.addResourceHandler("/image/**").addResourceLocations("/WEB-INF/image/");
+        registry.addResourceHandler("/jpg/**").addResourceLocations("classpath:/jpg/");
+        registry.addResourceHandler("/jsp/**").addResourceLocations("file:e://jpg/");
     }
 
 

@@ -47,4 +47,9 @@ public class MyController {
         return user.toString();
 
     }
+
+    @RequestMapping("home")
+    public String home(){
+        return "/WEB-INF/jsp/home.jsp";
+    }
 }

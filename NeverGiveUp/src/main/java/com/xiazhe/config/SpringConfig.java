@@ -38,7 +38,6 @@ public class SpringConfig {
             throw new RuntimeException();
         }
         druidDataSource.setConnectProperties(properties);
-
         return druidDataSource;
     }
 
