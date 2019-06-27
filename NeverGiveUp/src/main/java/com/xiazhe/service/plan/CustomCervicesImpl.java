@@ -30,11 +30,8 @@ public class CustomCervicesImpl implements CustomServices{
     }
 
     @Override
-    public QueryJsonBean<Custom> getCustomData() {
-        QueryJsonBean<Custom> queryJsonBean = new QueryJsonBean<>();
-        List<Custom> list = customMapper.queryCustoms();
-        queryJsonBean.setTotal(list.size());
-        queryJsonBean.setRows(list);
-        return queryJsonBean;
+    public List<Custom> getCustomData() {
+
+        return customMapper.queryCustoms();
     }
 }
