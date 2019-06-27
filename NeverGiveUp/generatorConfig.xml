@@ -11,9 +11,9 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/myspring?characterEncoding=UTF-8"
+                        connectionURL="jdbc:mysql://localhost:3306/mydb3?characterEncoding=UTF-8"
                         userId="root"
-                        password="123456">
+                        password="9527">
         </jdbcConnection>
         <!--&lt;!&ndash;
             for oracle
@@ -80,13 +80,9 @@
                selectByExampleQueryId="false" ></table>-->
 
         <!-- 指定数据库表，要生成哪些表，就写哪些表，要和数据库中对应，不能写错！ -->
-<!--
-        <table tableName="student_t"
 
 
-
-               domainObjectName="Student"/>-->
-        <table tableName="unqualify_apply"
+        <table tableName="material_receive"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
@@ -94,7 +90,9 @@
                selectByExampleQueryId="false"
 
 
-               domainObjectName="UnQualifyApply"/>
+               domainObjectName="MaterialReceive"/>
+
+
 
 
     </context>

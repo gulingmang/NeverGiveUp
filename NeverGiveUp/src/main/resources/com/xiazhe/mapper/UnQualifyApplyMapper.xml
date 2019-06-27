@@ -126,18 +126,25 @@
       note = #{note,jdbcType=VARCHAR}
     where unqualify_apply_id = #{unqualifyApplyId,jdbcType=VARCHAR}
   </update>
-    <resultMap id="getMap" type="com.xiazhe.bean.UnQualifyApply">
-<result column="unqualify_Apply_Id" property="unqualifyApplyId"/>
-<result column="" property=""/>
-<result column="" property=""/>
-<result column="" property=""/>
-<result column="" property=""/>
-<result column="" property=""/>
-<result column="" property=""/>
-<result column="" property=""/>
+    <resultMap id="MyresultMap" type="com.xiazhe.bean.UnQualifyApply">
+        <result column="unqualify_apply_id" property="unqualifyApplyId"/>
+        <result column="product_id" property="productId"/>
+        <result column="unqualify_item" property="unqualifyItem"/>
+        <result column="unqualify_count" property="unqualifyCount"/>
+        <result column="assembly_date" property="assemblyDate"/>
+        <result column="emp_id" property="empId"/>
+        <result column="apply_date" property="applyDate"/>
+        <result column="note" property="note"/>
+        <result column="product_name" property="productName"/>
+        <result column="emp_name" property="empName"/>
+
     </resultMap>
-    <select id="getApplyList" resultMap="getMap">
-    select * from unqualify_apply
+    <select id="getApplyList" resultMap="MyresultMap">
+   select a.*,b.product_name,c.emp_name from unqualify_apply a
+    left join  employee c
+    on a.emp_id=c.emp_id
+    left join product b
+   on a.product_id=b.product_id
   </select>
 
 </mapper>
