@@ -1,20 +1,16 @@
 package com.xiazhe.mapper;
 
 import com.xiazhe.bean.Department;
-
+import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DepartmentMapper {
-    int deleteByPrimaryKey(String departmentId);
-
-    int insert(Department record);
-
-    int insertSelective(Department record);
-
-    Department selectByPrimaryKey(String departmentId);
-
-    int updateByPrimaryKeySelective(Department record);
-
-    int updateByPrimaryKey(Department record);
-List<Department> getList();
+    public int addDepartment(@Param("depart")Department department);
+    public int deleteDepartments(@Param("ids")String[] ids);
+    public int updateDepartment(@Param("depart")Department department);
+    public int countAllDepartments();
+    public Department queryDepartmentById(@Param("id")String id);
+    public Department[] queryDepartmentsById(@Param("id")String id);
+    public Department[] queryDepartmentsByName(@Param("name")String name);
+    public Department[] queryAllDepartments();
 }

@@ -39,7 +39,7 @@ public class ManagerCustomerController {
 
     @RequestMapping("get_data")
     @ResponseBody
-    public QueryJsonBean<Custom> getCustomData(){
+    public List<Custom> getCustomData(){
         return customServices.getCustomData();
     }
 }
