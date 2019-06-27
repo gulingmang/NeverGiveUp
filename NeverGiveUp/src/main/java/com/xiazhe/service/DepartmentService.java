@@ -1,7 +1,10 @@
 package com.xiazhe.service;
 
 import com.xiazhe.bean.Department;
+import com.xiazhe.bean.UnQualifyApply;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface DepartmentService {
     public int addDepartment(@Param("depart") Department department);
@@ -10,5 +13,5 @@ public interface DepartmentService {
     public Department queryDepartmentById(@Param("id")String id);
     public Department[] queryDepartmentsById(@Param("id")String id);
     public Department[] queryDepartmentsByName(@Param("name")String name);
-    public Department[] queryAllDepartments();
+    public List<UnQualifyApply> queryPageDepartments(int offset, int limit);
 }

@@ -1,14 +1,18 @@
 
 package com.xiazhe.controller;
 
+import com.github.pagehelper.PageHelper;
 import com.xiazhe.bean.Department;
 import com.xiazhe.bean.Result;
+import com.xiazhe.bean.UnQualifyApply;
 import com.xiazhe.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/department")
@@ -24,8 +28,10 @@ public class DepartmentController {
     /*显示所有的部门*/
     @RequestMapping("/list")
     @ResponseBody
-    public Department[] listDepartment(){
-        return departmentService.queryAllDepartments();
+    public List<UnQualifyApply> listDepartment(Integer page, Integer rows){
+        PageHelper pageHelper=new PageHelper();
+        List<UnQualifyApply> departmentList = departmentService.queryAllDepartments((page-1)*rows,rows);
+        return departmentList;
     }
 
     /*新增操作判断*/

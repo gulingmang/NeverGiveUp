@@ -38,7 +38,7 @@
 
     <!--查找所有部门-->
     <select id="queryAllDepartments" resultType="com.xiazhe.bean.Department">
-        select department_id as departmentId,department_name as departmentName,note from department
+        select department_id as departmentId,department_name as departmentName,note from department limit #{limit} offset #{offset}
     </select>
 
 </mapper>
