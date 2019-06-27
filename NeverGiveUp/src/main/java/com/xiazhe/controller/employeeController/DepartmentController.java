@@ -1,17 +1,19 @@
 
-package com.xiazhe.controller;
+package com.xiazhe.controller.employeeController;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.xiazhe.bean.Department;
 import com.xiazhe.bean.Result;
-import com.xiazhe.bean.UnQualifyApply;
-import com.xiazhe.service.DepartmentService;
+import com.xiazhe.bean.json.QueryJsonBean;
+import com.xiazhe.service.departmentService.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -28,10 +30,15 @@ public class DepartmentController {
     /*显示所有的部门*/
     @RequestMapping("/list")
     @ResponseBody
-    public List<UnQualifyApply> listDepartment(Integer page, Integer rows){
+    public QueryJsonBean listDepartment(Integer page, Integer rows){
         PageHelper pageHelper=new PageHelper();
-        List<UnQualifyApply> departmentList = departmentService.queryAllDepartments((page-1)*rows,rows);
-        return departmentList;
+        Page resultPage =PageHelper.startPage(page,rows);
+        List<Department> departments = Arrays.asList(departmentService.queryAllDepartments());
+        PageInfo info = new PageInfo<>(resultPage.getResult());
+        QueryJsonBean<Department> departmentQueryJsonBean = new QueryJsonBean<>();
+        departmentQueryJsonBean.setRows(departments);
+        departmentQueryJsonBean.setTotal((int)info.getTotal());
+        return departmentQueryJsonBean;
     }
 
     /*新增操作判断*/
@@ -94,8 +101,29 @@ public class DepartmentController {
     /*根据id查找部门*/
     @RequestMapping("/search_department_by_departmentId")
     @ResponseBody
-    public Department[] queryDepartmentsById(String searchValue,int page,int row){
-        return departmentService.queryDepartmentsById(searchValue);
+    public QueryJsonBean queryDepartmentsById(String searchValue,int page,int rows){
+        PageHelper pageHelper=new PageHelper();
+        Page resultPage =PageHelper.startPage(page,rows);
+        List<Department> departments = Arrays.asList(departmentService.queryDepartmentsById(searchValue));
+        PageInfo info = new PageInfo<>(resultPage.getResult());
+        QueryJsonBean<Department> departmentQueryJsonBean = new QueryJsonBean<>();
+        departmentQueryJsonBean.setRows(departments);
+        departmentQueryJsonBean.setTotal((int)info.getTotal());
+        return departmentQueryJsonBean;
+    }
+
+    /*根据名称查找部门*/
+    @RequestMapping("/search_department_by_departmentName")
+    @ResponseBody
+    public QueryJsonBean queryDepartmentsByName(String searchValue,int page,int rows){
+        PageHelper pageHelper=new PageHelper();
+        Page resultPage =PageHelper.startPage(page,rows);
+        List<Department> departments = Arrays.asList(departmentService.queryDepartmentsByName(searchValue));
+        PageInfo info = new PageInfo<>(resultPage.getResult());
+        QueryJsonBean<Department> departmentQueryJsonBean = new QueryJsonBean<>();
+        departmentQueryJsonBean.setRows(departments);
+        departmentQueryJsonBean.setTotal((int)info.getTotal());
+        return departmentQueryJsonBean;
     }
 
 }

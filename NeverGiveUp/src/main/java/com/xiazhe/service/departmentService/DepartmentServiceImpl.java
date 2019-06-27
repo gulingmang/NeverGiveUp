@@ -1,12 +1,9 @@
-package com.xiazhe.service;
+package com.xiazhe.service.departmentService;
 
 import com.xiazhe.bean.Department;
-import com.xiazhe.bean.UnQualifyApply;
 import com.xiazhe.mapper.DepartmentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -25,6 +22,11 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentMapper.updateDepartment(department);
     }
 
+    @Override
+    public int countAllDepartments() {
+        return departmentMapper.countAllDepartments();
+    }
+
     public Department queryDepartmentById(String id) {
         return departmentMapper.queryDepartmentById(id);
     }
@@ -37,7 +39,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentMapper.queryDepartmentsByName(name);
     }
 
-    public List<UnQualifyApply> queryAllDepartments(int offset, int limit) {
-        return departmentMapper.queryAllDepartments(offset,limit);
+    public Department[] queryAllDepartments() {
+        return departmentMapper.queryAllDepartments();
     }
 }
