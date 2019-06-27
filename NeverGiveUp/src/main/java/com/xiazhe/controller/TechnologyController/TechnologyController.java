@@ -96,6 +96,7 @@ public class TechnologyController {
     public String todeletejudge(){
         return "/WEB-INF/jsp/technology_list.jsp";
     }
+    //批量删除操作
     @RequestMapping("delete_batch")
     @ResponseBody
     public Result delete(String[] ids){//参数名称要与前端传来的一样，mapper层注解也是
