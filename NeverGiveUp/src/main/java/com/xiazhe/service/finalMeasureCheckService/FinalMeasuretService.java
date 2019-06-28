@@ -8,4 +8,8 @@ public interface FinalMeasuretService {
     List<FinalMeasuretCheck> getlist();
 
     int insertanew(FinalMeasuretCheck fmc);
+
+    int deletebyId(FinalMeasuretCheck fmc);
+
+    int deletebyIds(String[] ids);
 }

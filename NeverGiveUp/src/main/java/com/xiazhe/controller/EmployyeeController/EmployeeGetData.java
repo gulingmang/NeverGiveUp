@@ -1,6 +1,8 @@
 package com.xiazhe.controller.EmployyeeController;
 
+import com.xiazhe.bean.Department;
 import com.xiazhe.bean.Employee;
+import com.xiazhe.service.DepartmentService.DepartmentService;
 import com.xiazhe.service.EmployeeService.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +15,18 @@ import java.util.List;
 public class EmployeeGetData {
     @Autowired
     EmployeeService service;
-
+    @Autowired
+    DepartmentService myservice;
     @RequestMapping("employee/get_data")
     @ResponseBody
     public List<Employee> getdata() {
         List<Employee> list = service.getList();
+        return list;
+    }
+    @RequestMapping("department/get_data")
+    @ResponseBody
+    public List<Department> getdata1111() {
+        List<Department> list = myservice.getList();
         return list;
     }
 }
