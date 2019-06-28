@@ -22,13 +22,16 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * deviceType设备种类
+ * 包括显示页面及页面数据内容、新增、编辑、删除、查询、分页操作
+ */
 @Controller
-public class DeviceController {
+public class DeviceTypeController {
 
     @Autowired
     DeviceService deviceService;
     DeviceDataPackge deviceDataPackge = new DeviceDataPackge();
-
 
     /*显示home主页*/
     @RequestMapping("/home")
@@ -36,27 +39,6 @@ public class DeviceController {
         return "/WEB-INF/jsp/home.jsp";
     }
 
-    /**
-     *(一)设备台账
-     */
-    /*1.显示deviceList设备台账页面*/
-    @RequestMapping("/device/deviceList")
-    public String deviceList(HttpSession session){
-        deviceDataPackge.ableSysPermissionList(session,"Controller");
-        return "/WEB-INF/jsp/deviceList.jsp";
-    }
-
-    /*2.显示deviceList设备台账里的数据内容*/
-    @RequestMapping("/deviceList/list")
-    @ResponseBody
-    public List<DeviceList> displayDeviceListContent(){
-        List<DeviceList> deviceLists = deviceService.queryAllDeviceList();
-        return deviceLists;
-    }
-
-    /**
-     * (二)设备种类
-     */
     /*1.显示deviceType设备种类页面*/
     @RequestMapping("/device/deviceType")
     public String deviceType(HttpSession session){
@@ -103,7 +85,6 @@ public class DeviceController {
             e.printStackTrace();
         }
         return "{\"status\":200,\"msg\":\"OK\",\"data\":null}";
-
     }
 
     /*4.deviceType设备种类编辑*/
@@ -121,7 +102,7 @@ public class DeviceController {
     @RequestMapping("/deviceType/update")
     @ResponseBody
     public String editDeviceType(String deviceTypeId,String deviceTypeName,String deviceTypeModel,String deviceTypeSpec,String deviceTypeSupplier,String deviceTypeProducer,Integer deviceTypeQuantity,String deviceTypeWarranty){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date parse = simpleDateFormat.parse(deviceTypeWarranty);
             if (deviceTypeQuantity==null){
@@ -169,18 +150,4 @@ public class DeviceController {
     }
 
 
-
-    /*显示deviceCheck设备例检页面*/
-    @RequestMapping("/device/deviceCheck")
-    public String deviceCheck(HttpSession session){
-        deviceDataPackge.ableSysPermissionList(session,"Check");
-        return "/WEB-INF/jsp/deviceCheck.jsp";
-    }
-
-    /*显示deviceCheck设备例检里的数据内容*/
-    @RequestMapping("/deviceCheck/list")
-    @ResponseBody
-    public void displayDeviceCheckContent(){
-        deviceService.queryAllDeviceCheck();
-    }
 }
