@@ -88,7 +88,7 @@ public class unqualifyController {
     }
 
     @RequestMapping("unqualify/update_all")
-
+          @ResponseBody
     public Result edit222(UnQualifyApply my) {
         int x = myapplyservice.deleteById(my.getUnqualifyApplyId());
         int insert = myapplyservice.insert(my);
