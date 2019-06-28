@@ -15,4 +15,9 @@ public class UnqualifyServiceImpl implements  UnqualifyService{
         List<UnQualifyApply> applyList = mymapper.getApplyList();
         return applyList;
     }
+    @Override
+    public  int insert(UnQualifyApply record){
+        int insert = mymapper.insert(record);
+        return  insert;
+    }
 }

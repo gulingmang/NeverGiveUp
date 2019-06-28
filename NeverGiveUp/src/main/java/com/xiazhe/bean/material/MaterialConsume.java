@@ -1,13 +1,16 @@
-package com.xiazhe.bean;
+package com.xiazhe.bean.material;
+
+import com.xiazhe.bean.Work;
+
 
 import java.util.Date;
 
 public class MaterialConsume {
     private String consumeId;
 
-    private String workId;
+    private Work work;
 
-    private String materialId;
+    private Material material;
 
     private Integer consumeAmount;
 
@@ -27,20 +30,20 @@ public class MaterialConsume {
         this.consumeId = consumeId == null ? null : consumeId.trim();
     }
 
-    public String getWorkId() {
-        return workId;
+    public Work getWork() {
+        return work;
     }
 
-    public void setWorkId(String workId) {
-        this.workId = workId == null ? null : workId.trim();
+    public void setWork(Work work) {
+        this.work = work;
     }
 
-    public String getMaterialId() {
-        return materialId;
+    public Material getMaterial() {
+        return material;
     }
 
-    public void setMaterialId(String materialId) {
-        this.materialId = materialId == null ? null : materialId.trim();
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 
     public Integer getConsumeAmount() {
