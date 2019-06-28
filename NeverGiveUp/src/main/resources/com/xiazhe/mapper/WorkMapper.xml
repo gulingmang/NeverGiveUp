@@ -103,4 +103,17 @@
       rating = #{rating,jdbcType=INTEGER}
     where work_id = #{workId,jdbcType=VARCHAR}
   </update>
+
+  <resultMap id="planWorkBeanMap" type="com.xiazhe.bean.plan.PlanWorkBean">
+    <result property="workId" column="work_id"/>
+    <result property="processId" column="process_id"/>
+    <result property="rating" column="rating"/>
+    <association property="product" column="product_id" select="com.xiazhe.mapper.ProductMapper.selectByPrimaryKey"/>
+    <association property="process" column="process_id" select="com.xiazhe.mapper.ProcessMapper.selectByPrimaryKey"/>
+    <association property="device" column="device_id" select="com.xiazhe.mapper.DeviceMapper.selectByPrimaryKey"/>
+  </resultMap>
+
+  <select id="queryWorkList" resultMap="planWorkBeanMap">
+    select work_id ,process_number,rating,process_id,product_id,device_id from work
+  </select>
 </mapper>

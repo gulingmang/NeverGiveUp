@@ -1,6 +1,10 @@
 package com.xiazhe.mapper;
 
 import com.xiazhe.bean.Work;
+import com.xiazhe.bean.json.QueryJsonBean;
+import com.xiazhe.bean.plan.PlanWorkBean;
+
+import java.util.List;
 
 public interface WorkMapper {
     int deleteByPrimaryKey(String workId);
@@ -14,4 +18,6 @@ public interface WorkMapper {
     int updateByPrimaryKeySelective(Work record);
 
     int updateByPrimaryKey(Work record);
+
+    List<PlanWorkBean> queryWorkList();
 }
