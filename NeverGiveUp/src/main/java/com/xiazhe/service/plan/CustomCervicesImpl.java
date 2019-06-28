@@ -34,4 +34,10 @@ public class CustomCervicesImpl implements CustomServices{
 
         return customMapper.queryCustoms();
     }
+
+    @Override
+    public Custom queryCustomById(String id) {
+        Custom custom = customMapper.selectByPrimaryKey(id);
+        return custom;
+    }
 }
