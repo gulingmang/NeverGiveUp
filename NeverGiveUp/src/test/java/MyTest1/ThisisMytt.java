@@ -55,4 +55,10 @@ public class ThisisMytt {
         System.out.println(list);
 
     }
+    @Test
+    public  void yyyy(){
+        String[] s={"5"};
+        List<UnQualifyApply> unQualifyApplies = my.serachLikeByName("椅");
+        System.out.println(unQualifyApplies);
+    }
 }
