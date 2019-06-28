@@ -155,4 +155,18 @@
   <select id="queryCustoms" resultMap="BaseResultMap">
     select custom_id, custom_name, full_name, address, fax, email, owner_name, owner_tel, status,note from custom where 1=1
   </select>
+
+  <select id="searchCustoms" resultMap="BaseResultMap">
+    select custom_id, custom_name, full_name, address, fax, email, owner_name, owner_tel, status,note from custom
+    where
+    <choose>
+    <when test="op=='customId'">
+      custom_id like #{value}
+    </when>
+
+    <when test="op=='customName'">
+      custom_name like #{value}
+    </when>
+    </choose>
+  </select>
 </mapper>

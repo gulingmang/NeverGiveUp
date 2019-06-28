@@ -21,12 +21,7 @@ public class ManagerPlanController {
     OrderServices orderServices;
 
     @RequestMapping("find")
-    public String order(HttpServletRequest request){
-        List<String> list =  new LinkedList<>();
-        list.add("order:add");
-        list.add("order:delete");
-        list.add("order:edit");
-        request.getSession().setAttribute("sysPermissionList",list);
+    public String order(){
         return "/WEB-INF/jsp/order_list.jsp";
     }
 

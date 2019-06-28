@@ -108,4 +108,22 @@
   <select id="queryProducts" resultMap="BaseResultMap">
     select product_id, product_name, product_type, image, note, status from product
   </select>
+
+  <select id="searchProducts" resultMap="BaseResultMap">
+    select product_id, product_name, product_type, image, note, status from product
+    where
+    <choose>
+      <when test="op=='productId'">
+        product_id like #{value}
+      </when>
+
+      <when test="op=='productName'">
+        product_name like #{value}
+      </when>
+
+      <when test="op=='productType'">
+        product_Type like #{value}
+      </when>
+    </choose>
+  </select>
 </mapper>
