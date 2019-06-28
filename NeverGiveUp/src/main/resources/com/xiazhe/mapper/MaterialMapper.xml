@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiazhe.mapper.MaterialMapper">
-  <resultMap id="BaseResultMap" type="com.xiazhe.bean.Material">
+  <resultMap id="BaseResultMap" type="com.xiazhe.bean.material.Material">
     <id column="material_id" jdbcType="VARCHAR" property="materialId" />
     <result column="material_type" jdbcType="VARCHAR" property="materialType" />
     <result column="status" jdbcType="VARCHAR" property="status" />
@@ -21,13 +21,13 @@
     delete from material
     where material_id = #{materialId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.xiazhe.bean.Material">
+  <insert id="insert" parameterType="com.xiazhe.bean.material.Material">
     insert into material (material_id, material_type, status, 
       remaining, note)
     values (#{materialId,jdbcType=VARCHAR}, #{materialType,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
       #{remaining,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.xiazhe.bean.Material">
+  <insert id="insertSelective" parameterType="com.xiazhe.bean.material.Material">
     insert into material
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="materialId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xiazhe.bean.Material">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiazhe.bean.material.Material">
     update material
     <set>
       <if test="materialType != null">
@@ -82,7 +82,7 @@
     </set>
     where material_id = #{materialId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.xiazhe.bean.Material">
+  <update id="updateByPrimaryKey" parameterType="com.xiazhe.bean.material.Material">
     update material
     set material_type = #{materialType,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
@@ -90,4 +90,16 @@
       note = #{note,jdbcType=VARCHAR}
     where material_id = #{materialId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from material
+  </select>
+  <select id="selectByType" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from material
+    where material_type = #{materialType,jdbcType=VARCHAR}
+  </select>
 </mapper>

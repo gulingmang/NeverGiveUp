@@ -1,10 +1,10 @@
-package com.xiazhe.mapper;
+package com.xiazhe.service.material;
 
 import com.xiazhe.bean.material.MaterialConsume;
 
 import java.util.List;
 
-public interface MaterialConsumeMapper {
+public interface MaterialConsumeService {
     int deleteByPrimaryKey(String consumeId);
 
     int insert(MaterialConsume record);

@@ -1,10 +1,10 @@
-package com.xiazhe.mapper;
+package com.xiazhe.service.material;
 
 import com.xiazhe.bean.material.Material;
 
 import java.util.List;
 
-public interface MaterialMapper {
+public interface MaterialService {
     int deleteByPrimaryKey(String materialId);
 
     int insert(Material record);
@@ -18,6 +18,5 @@ public interface MaterialMapper {
     int updateByPrimaryKey(Material record);
 
     List<Material> selectAll();
-
     Material selectByType(String materialType);
 }
