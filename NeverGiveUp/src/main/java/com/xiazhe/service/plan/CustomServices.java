@@ -10,4 +10,6 @@ public interface CustomServices {
     QueryJsonBean<Custom> queryCustomPages(int page, int rows);
 
     List<Custom> getCustomData();
+
+    Custom queryCustomById(String id);
 }

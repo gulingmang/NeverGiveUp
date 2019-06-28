@@ -60,4 +60,15 @@ public class ThisisMytt {
         System.out.println(technologyPlans);
 
     }
+    @Test
+    public  void yyyy(){
+        String[] s={"5"};
+        List<UnQualifyApply> unQualifyApplies = my.serachLikeByName("椅");
+        System.out.println(unQualifyApplies);
+    }
+    @Test
+    public  void yyyy1111(){
+        List<FinalMeasuretService> getlist = woui.getlist();
+        System.out.println(getlist);
+    }
 }
