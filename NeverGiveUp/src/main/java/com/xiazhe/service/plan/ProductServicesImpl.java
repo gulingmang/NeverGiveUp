@@ -29,11 +29,8 @@ public class ProductServicesImpl implements ProductServices {
     }
 
     @Override
-    public QueryJsonBean<Product> getProductData() {
-        QueryJsonBean<Product> queryJsonBean = new QueryJsonBean<>();
-        List<Product> list = productMapper.queryProducts();
-        queryJsonBean.setTotal(list.size());
-        queryJsonBean.setRows(list);
-        return queryJsonBean;
+    public List<Product> getProductData() {
+
+        return productMapper.queryProducts();
     }
 }

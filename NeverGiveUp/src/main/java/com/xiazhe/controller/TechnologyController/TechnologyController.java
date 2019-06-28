@@ -44,7 +44,7 @@ public class TechnologyController {
         Technology[] technologies = technologyService.selectByPrimaryKey(searchValue);
         return technologies;
     }
-
+    //
     /*增加工艺*/
     //跳转至增加页面
     @RequestMapping("add_judge")

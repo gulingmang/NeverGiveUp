@@ -39,7 +39,7 @@ public class ManagerProductController {
 
         @RequestMapping("get_data")
         @ResponseBody
-        public QueryJsonBean<Product> getProductData(){
+        public List<Product> getProductData(){
            return productServices.getProductData();
         }
 
