@@ -1,6 +1,6 @@
-/*
 package com.xiazhe.controller.TechnologyController;
 
+import com.xiazhe.bean.Result;
 import com.xiazhe.bean.Technology;
 import com.xiazhe.bean.TechnologyRequirement;
 import com.xiazhe.service.technologyService.TechnologyRequirementService;
@@ -46,5 +46,81 @@ public class TechnologyRequirementController {
         Technology technology = technologyService.queryTechnologyById(technologyId);
         return technology;
     }
+
+    //通过id进行模糊查询
+    @RequestMapping("/search_technologyRequirement_by_technologyRequirementId")
+    @ResponseBody
+    public TechnologyRequirement[] selectByIdAm(String searchValue){
+        TechnologyRequirement[] technologyRequirements = technologyRequirementService.selectByPrimaryKey(searchValue);
+        return technologyRequirements;
+    }
+
+    /*增加工艺*/
+    //跳转至增加页面
+    @RequestMapping("add_judge")
+    public String toAddjudge(){
+        return "/WEB-INF/jsp/technologyRequirement_add.jsp";
+    }
+    @RequestMapping("add")
+    public String toAdd(){
+        return "/WEB-INF/jsp/technologyRequirement_add.jsp";
+    }
+    //增加工艺要求操作
+    @RequestMapping("insert")
+    @ResponseBody
+    public Result insert(TechnologyRequirement technologyRequirement){
+        technologyRequirementService.insert(technologyRequirement);
+        Result result = new Result();
+        result.setData(null);
+        result.setMsg("Ok");
+        result.setStatus(200);
+        return result;
+    }
+    //获取工艺名称操作
+    @RequestMapping("get_data")
+    @ResponseBody
+    public List<Technology> queryAllTechnology(){
+        List<Technology> technologies = technologyService.queryAllTechnology();
+        return technologies;
+    }
+
+    //删除工艺要求操作
+    //跳转至删除页面
+    @RequestMapping("delete_judge")
+    public String toDeletejudge(){
+        return "/WEB-INF/jsp/technologyRequirement_list.jsp";
+    }
+    //批量删除操作
+    @RequestMapping("delete_batch")
+    @ResponseBody
+    public Result delete(String[] ids){
+        technologyRequirementService.deleteByPrimaryKey(ids);
+        Result result = new Result();
+        result.setData(null);
+        result.setMsg("Ok");
+        result.setStatus(200);
+        return result;
+    }
+
+    //修改工艺要求
+    @RequestMapping("edit_judge")
+    public String toEditjudge(){
+        return "/WEB-INF/jsp/technologyRequirement_edit.jsp";
+    }
+    @RequestMapping("edit")
+    public String toEdit(){
+        return "/WEB-INF/jsp/technologyRequirement_edit.jsp";
+    }
+
+    //修改工艺操作
+    @RequestMapping("update_all")
+    @ResponseBody
+    public Result edit(TechnologyRequirement technologyRequirement){
+        technologyRequirementService.updateByPrimaryKey(technologyRequirement);
+        Result result = new Result();
+        result.setData(null);
+        result.setMsg("Ok");
+        result.setStatus(200);
+        return result;
+    }
 }
-*/
