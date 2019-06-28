@@ -101,4 +101,26 @@ public class TechnologyRequirementController {
         result.setStatus(200);
         return result;
     }
+
+    //修改工艺要求
+    @RequestMapping("edit_judge")
+    public String toEditjudge(){
+        return "/WEB-INF/jsp/technologyRequirement_edit.jsp";
+    }
+    @RequestMapping("edit")
+    public String toEdit(){
+        return "/WEB-INF/jsp/technologyRequirement_edit.jsp";
+    }
+
+    //修改工艺操作
+    @RequestMapping("update_all")
+    @ResponseBody
+    public Result edit(TechnologyRequirement technologyRequirement){
+        technologyRequirementService.updateByPrimaryKey(technologyRequirement);
+        Result result = new Result();
+        result.setData(null);
+        result.setMsg("Ok");
+        result.setStatus(200);
+        return result;
+    }
 }
