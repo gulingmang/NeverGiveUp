@@ -37,6 +37,32 @@ public class DeviceServiceImpl implements DeviceService {
         return addDeviceType;
     }
 
+    /*编辑设备种类*/
+    @Override
+    public int updateDeviceType(DeviceType deviceType) {
+        int updateDeviceType = deviceMapper.updateDeviceType(deviceType);
+        return updateDeviceType;
+    }
+
+    @Override
+    public int deleteDeviceTypeByIds(String[] deviceTypeIds) {
+        int typeids= deviceMapper.deleteDeviceTypeByIds(deviceTypeIds);
+        return typeids;
+    }
+
+    @Override
+    public DeviceType[] selectByDeviceTypeId(String searchValue) {
+
+        DeviceType[] deviceTypes = deviceMapper.selectByDeviceTypeId(searchValue);
+        return deviceTypes;
+    }
+
+    @Override
+    public DeviceType[] selectByDeviceTypeName(String searchValue) {
+        DeviceType[] deviceTypes = deviceMapper.selectByDeviceTypeName(searchValue);
+        return deviceTypes;
+    }
+
     /*显示所有设备例检*/
     @Override
     public List<DeviceCheck> queryAllDeviceCheck() {

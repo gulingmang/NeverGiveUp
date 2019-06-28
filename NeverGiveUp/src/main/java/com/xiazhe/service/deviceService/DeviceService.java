@@ -18,6 +18,20 @@ public interface DeviceService {
     /*新增设备种类*/
     int addDeviceType(@Param("deviceType") DeviceType deviceType);
 
+    //编辑设备种类
+    int updateDeviceType(DeviceType deviceType);
+
+    /*删除设备种类*/
+    int deleteDeviceTypeByIds(@Param("id") String[] deviceTypeIds);
+
+    /*通过设备种类id模糊查询设备种类*/
+    DeviceType[] selectByDeviceTypeId(String searchValue);
+
+    /*通过设备种类name模糊查询设备种类*/
+    DeviceType[] selectByDeviceTypeName(String searchValue);
+
     /*显示所有设备例检*/
     List<DeviceCheck> queryAllDeviceCheck();
+
+
 }

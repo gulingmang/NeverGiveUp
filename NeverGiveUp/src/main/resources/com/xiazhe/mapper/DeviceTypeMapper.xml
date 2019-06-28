@@ -33,6 +33,45 @@
         (#{deviceType.deviceTypeId},#{deviceType.deviceTypeName},#{deviceType.deviceTypeModel},#{deviceType.deviceTypeSpec},#{deviceType.deviceTypeSupplier},#{deviceType.deviceTypeProducer},#{deviceType.deviceTypeQuantity},#{deviceType.deviceTypeWarranty})
     </insert>
 
+    <!--编辑设备种类-->
+    <update id="updateDeviceType">
+        UPDATE device_type
+          SET device_type_name = #{deviceType.deviceTypeName},
+          device_type_spec = #{deviceType.deviceTypeSpec},
+          device_type_model = #{deviceType.deviceTypeModel},
+          device_type_producer = #{deviceType.deviceTypeProducer},
+          device_type_supplier = #{deviceType.deviceTypeSupplier},
+          device_type_quantity = #{deviceType.deviceTypeQuantity},
+          device_type_warranty = #{deviceType.deviceTypeWarranty}
+          WHERE
+	        device_type_id = #{deviceType.deviceTypeId}
+    </update>
+
+    <!--删除设备种类-->
+    <delete id="deleteDeviceTypeByIds">
+        delete from device_type
+        where device_type_id in
+        <foreach collection="ids" item="deviceTypeId" separator="," open="(" close=")">
+            #{deviceTypeId}
+        </foreach>
+    </delete>
+
+    <!--通过id查询设备种类-->
+    <select id="selectByDeviceTypeId" resultMap="BaseDeviceType">
+        select
+        <include refid="Base_Column_Type"/>
+        from device_type
+        where device_type_id like '%${searchValue}%'
+    </select>
+
+    <!--通过name查询设备种类-->
+    <select id="selectByDeviceTypeName" resultMap="BaseDeviceType">
+        select
+        <include refid="Base_Column_Type"/>
+        from device_type
+        where device_type_name like '%${searchValue}%'
+    </select>
+
     <!--查询所有的设备台账-->
     <resultMap id="BaseDeviceList" type="com.xiazhe.bean.DeviceList">
         <result column="device_id" property="deviceId"/>
@@ -58,7 +97,7 @@
     </select>
 
     <!--查询所有的设备例检-->
-    <resultMap id="BaseDeviceCheck" type="com.xiazhe.bean.DeviceList">
+    <resultMap id="BaseDeviceCheck" type="com.xiazhe.bean.DeviceCheck">
         <result column="device_check_id" property="deviceCheckId"/>
         <result column="device_id" property="deviceId"/>
         <result column="device_check_emp_id" property="deviceCheckEmpId"/>

@@ -3,26 +3,33 @@
 <mapper namespace="com.xiazhe.mapper.TechnologyRequirementMapper">
   <resultMap id="BaseResultMap" type="com.xiazhe.bean.TechnologyRequirement">
     <id column="technology_requirement_id" jdbcType="VARCHAR" property="technologyRequirementId" />
-    <!--<result column="technology_id" jdbcType="VARCHAR" property="technologyId" />-->
+    <result column="technology_id" jdbcType="VARCHAR" property="technologyId" />
     <result column="requirement" jdbcType="VARCHAR" property="requirement" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="revise_time" jdbcType="TIMESTAMP" property="reviseTime" />
     <association property="technologyId" javaType="com.xiazhe.bean.Technology">
-      <result column="technology_name" jdbcType="VARCHAR" property="technologyName" />
+        <result column="technology_name" jdbcType="VARCHAR" property="technologyName" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="vital_process_period" jdbcType="VARCHAR" property="vitalProcessPeriod" />
+        <result column="standard_capacity" jdbcType="INTEGER" property="standardCapacity" />
+        <result column="overtime_standard_capacity" jdbcType="INTEGER" property="overtimeStandardCapacity" />
+        <result column="overtime_overfulfil_capacity" jdbcType="INTEGER" property="overtimeOverfulfilCapacity" />
+        <result column="double_capacity" jdbcType="INTEGER" property="doubleCapacity" />
+        <result column="overfulfil_capacity" jdbcType="INTEGER" property="overfulfilCapacity" />
     </association>
   </resultMap>
   <sql id="Base_Column_List">
     technology_requirement.technology_requirement_id,technology_requirement.requirement,technology_requirement.add_time,technology_requirement.revise_time,
-technology.technology_name
+technology_requirement.technology_id,technology.technology_name
   </sql>
 
 
-
+    <!--模糊查询-->
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from technology_requirement
-    where technology_requirement_id = #{technologyRequirementId,jdbcType=VARCHAR}
+    where technology_requirement_id like '%${searchValue}%'
   </select>
 
   <select id="queryAllTechnology" resultMap="BaseResultMap">
@@ -31,10 +38,18 @@ technology.technology_name
     from technology_requirement left join technology
     on technology_requirement.technology_requirement_id = technology.technology_id
   </select>
-
+  <select id="queryAllTechnologyResult" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from technology_requirement left join technology
+    on technology_requirement.technology_requirement_id = technology.technology_id
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from technology_requirement
-    where technology_requirement_id = #{technologyRequirementId,jdbcType=VARCHAR}
+      where technology_requirement_id in
+      <foreach collection="ids" item="technologyRequirementId" separator="," open="(" close=")">
+          #{technologyRequirementId}
+      </foreach>
   </delete>
 
   <insert id="insert" parameterType="com.xiazhe.bean.TechnologyRequirement">
@@ -53,6 +68,11 @@ technology.technology_name
       requirement = #{requirement,jdbcType=VARCHAR},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       revise_time = #{reviseTime,jdbcType=TIMESTAMP}
+    where technology_requirement_id = #{technologyRequirementId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateRequirementByPrimaryKey" >
+    update technology_requirement
+    set requirement = #{requirement,jdbcType=VARCHAR}
     where technology_requirement_id = #{technologyRequirementId,jdbcType=VARCHAR}
   </update>
 </mapper>
