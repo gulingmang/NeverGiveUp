@@ -36,6 +36,15 @@ public class Department {
                 '}';
     }
 
+    public Department() {
+    }
+
+    public Department(String departmentId, String departmentName, String note) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+        this.note = note;
+    }
+
     public void setNote(String note) {
         this.note = note == null ? null : note.trim();
     }
