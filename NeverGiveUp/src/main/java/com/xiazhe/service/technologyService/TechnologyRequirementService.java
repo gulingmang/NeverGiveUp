@@ -12,7 +12,7 @@ public interface TechnologyRequirementService {
 
 
 
-    TechnologyRequirement selectByPrimaryKey(@Param("") String technologyRequirementId);//模糊查询工艺要求
+    TechnologyRequirement[] selectByPrimaryKey(@Param("") String technologyRequirementId);//模糊查询工艺要求
 
     List<TechnologyRequirement> queryAllTechnology();//查询所有工艺要求(与工艺多表查询)
 

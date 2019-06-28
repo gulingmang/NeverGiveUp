@@ -1,0 +1,24 @@
+# 所用到的URL
+   - Department
+      - /department/find
+      - /department/list
+      - /department/add_judge
+      - /department/add
+      - /department/insert
+      - /department/edit_judge
+      - /department/edit
+      - /department/update_all
+      - /department/delete_judge
+      - /department/delete_batch
+      - /department/search_department_by_departmentId
+      - /department/search_department_by_departmentName
+
+# 工作日志
+## 190627
+   - Department
+      - 修改了列表显示；
+      - 增加了新增方法；
+      - 增加了修改方法；
+      - 增加了删除方法；
+      - 增加了两种查找方法；
+      - 使用结果分页；

@@ -3,6 +3,7 @@ package com.xiazhe.controller.unqualifyManger;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.xiazhe.bean.Result;
 import com.xiazhe.bean.UnQualifyApply;
 
 import com.xiazhe.service.unqulifyControllerService.UnqualifyService;
@@ -50,12 +51,25 @@ public class unqualifyController {
     @RequestMapping("unqualify/add_judge")
     @ResponseBody
     public String toadd() {
-       return "";
+        return "";
 
     }
+
     @RequestMapping("unqualify/add")
     public String addagain() {
         return "/WEB-INF/jsp/unqualify_add.jsp";
     }
-}
 
+
+    @RequestMapping("/unqualify/insert")
+    @ResponseBody
+    public Result insert(UnQualifyApply my) {
+
+        int insert = myapplyservice.insert(my);
+        Result result = new Result();
+        result.setData(null);
+        result.setMsg("Ok");
+        result.setStatus(200);
+        return result;
+    }
+}

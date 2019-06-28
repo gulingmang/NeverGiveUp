@@ -21,7 +21,7 @@ public class TechnologyRequirementServiceImpl implements TechnologyRequirementSe
     }
 
     @Override
-    public TechnologyRequirement selectByPrimaryKey(String technologyRequirementId) {
+    public TechnologyRequirement[] selectByPrimaryKey(String technologyRequirementId) {
         return technologyRequirementMapper.selectByPrimaryKey(technologyRequirementId);
     }
 

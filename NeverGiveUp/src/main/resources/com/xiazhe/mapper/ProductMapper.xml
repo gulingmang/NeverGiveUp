@@ -103,4 +103,9 @@
       status = #{status,jdbcType=INTEGER}
     where product_id = #{productId,jdbcType=VARCHAR}
   </update>
+
+
+  <select id="queryProducts" resultMap="BaseResultMap">
+    select product_id, product_name, product_type, image, note, status from product
+  </select>
 </mapper>

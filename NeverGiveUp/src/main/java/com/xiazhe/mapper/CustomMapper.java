@@ -1,6 +1,9 @@
 package com.xiazhe.mapper;
 
 import com.xiazhe.bean.Custom;
+import com.xiazhe.bean.Order;
+
+import java.util.List;
 
 public interface CustomMapper {
     int deleteByPrimaryKey(String customId);
@@ -14,4 +17,6 @@ public interface CustomMapper {
     int updateByPrimaryKeySelective(Custom record);
 
     int updateByPrimaryKey(Custom record);
+
+    List<Custom> queryCustoms();
 }
