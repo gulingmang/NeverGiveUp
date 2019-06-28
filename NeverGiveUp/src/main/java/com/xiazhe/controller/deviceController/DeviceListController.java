@@ -63,7 +63,12 @@ public class DeviceListController {
 
 
 
-
+    //get_data获取数据
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<DeviceList> deviceListGetDate(){
+        return deviceService.queryAllDeviceList();
+    }
 
 
 }
