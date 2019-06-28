@@ -9,14 +9,14 @@ public class Process {
 
     private Integer quota;
 
-    public Process() {
-    }
-
     public Process(String processId, String technologyPlanId, Integer sequence, Integer quota) {
         this.processId = processId;
         this.technologyPlanId = technologyPlanId;
         this.sequence = sequence;
         this.quota = quota;
+    }
+
+    public Process() {
     }
 
     @Override

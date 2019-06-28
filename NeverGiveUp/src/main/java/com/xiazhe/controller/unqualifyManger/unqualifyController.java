@@ -72,4 +72,62 @@ public class unqualifyController {
         result.setStatus(200);
         return result;
     }
+
+    @RequestMapping("/unqualify/edit_judge")
+    @ResponseBody
+    public String edit_judge() {
+
+        return "";
+    }
+
+    @RequestMapping("/unqualify/edit")
+
+    public String edit() {
+
+        return "/WEB-INF/jsp/unqualify_edit.jsp";
+    }
+
+    @RequestMapping("unqualify/update_all")
+
+    public Result edit222(UnQualifyApply my) {
+        int x = myapplyservice.deleteById(my.getUnqualifyApplyId());
+        int insert = myapplyservice.insert(my);
+        Result result = new Result();
+        result.setData(null);
+        result.setMsg("Ok");
+        result.setStatus(200);
+        return result;
+    }
+
+    @RequestMapping("/unqualify/delete_judge")
+    @ResponseBody
+    public String delete_judge() {
+
+        return "";
+    }
+
+    @RequestMapping("/unqualify/delete_batch")
+    @ResponseBody
+    public Result delete(String[] ids) {
+        int x = myapplyservice.deleteByIds(ids);
+        Result result = new Result();
+        result.setData(null);
+        result.setMsg("Ok");
+        result.setStatus(200);
+        return result;
+    }
+
+    @RequestMapping("unqualify/search_unqualify_by_productName")
+    @ResponseBody
+    public List<UnQualifyApply> by_productName(String searchValue) {
+        List<UnQualifyApply> list = myapplyservice.serachLikeByName(searchValue);
+        return list;
+    }
+
+    @RequestMapping("unqualify/search_unqualify_by_unqualifyId")
+    @ResponseBody
+    public List<UnQualifyApply> by_productId(String searchValue) {
+        List<UnQualifyApply> list = myapplyservice.serachIdLikeBySId(searchValue);
+        return list;
+    }
 }

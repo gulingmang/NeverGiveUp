@@ -1,6 +1,8 @@
 package com.xiazhe.mapper;
 
-import com.xiazhe.bean.Material;
+import com.xiazhe.bean.material.Material;
+
+import java.util.List;
 
 public interface MaterialMapper {
     int deleteByPrimaryKey(String materialId);
@@ -14,4 +16,8 @@ public interface MaterialMapper {
     int updateByPrimaryKeySelective(Material record);
 
     int updateByPrimaryKey(Material record);
+
+    List<Material> selectAll();
+
+    Material selectByType(String materialType);
 }

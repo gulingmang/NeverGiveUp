@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ProcessMapper {
-    int deleteByPrimaryKey(@Param("ids")String processId);//通过id批量删除工序管理
+    int deleteByPrimaryKey(@Param("ids")String[] processId);//通过id批量删除工序管理
 
     int insert(Process record);//插入工序
 
@@ -15,4 +15,6 @@ public interface ProcessMapper {
     List<Process> queryAllProcess();//查询所有工序
 
     int updateByPrimaryKey(Process record);////通过id修改工序
+
+    Process[] selectByName(String searchValue);//通过工艺计划id进行模糊查询
 }

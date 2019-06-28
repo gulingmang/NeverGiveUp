@@ -16,6 +16,8 @@ public interface TechnologyPlanMapper {
     TechnologyPlan[] selectByPrimaryKey(@Param("searchValue") String technologyPlanId);//通过一个id进行模糊查询
     ArrayList<TechnologyPlan> queryAllTechnology();//查询所有工艺计划
 
-
+    TechnologyPlan  queryPlanById(String technologyPlanId);//查询单个工艺计划
     int updateByPrimaryKey(TechnologyPlan record);//通过id进行计划修改
+
+    TechnologyPlan[] selectByName(String searchValue);//通过一个name进行模糊查询
 }

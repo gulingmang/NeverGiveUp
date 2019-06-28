@@ -146,5 +146,30 @@
     left join product b
    on a.product_id=b.product_id
   </select>
+    <delete id="deleteByIds">
+        delete from unqualify_apply
+        <where>
+            unqualify_apply_id in
+               <foreach collection="ids" item="id" separator="," open="(" close=")">
+               #{id}
+               </foreach>
+        </where>
+    </delete>
 
+    <select id="serachLikeByName" resultMap="MyresultMap" >
+   select a.*,b.product_name,c.emp_name from unqualify_apply a
+    left join  employee c
+    on a.emp_id=c.emp_id
+    left join product b
+   on a.product_id=b.product_id
+   where b.product_name like "%"#{searchValue}"%"
+    </select>
+    <select id="serachIdLikeBySId" resultMap="MyresultMap" >
+   select a.*,b.product_name,c.emp_name from unqualify_apply a
+    left join  employee c
+    on a.emp_id=c.emp_id
+    left join product b
+   on a.product_id=b.product_id
+   where a.unqualify_apply_id like "%"#{searchValue}"%"
+    </select>
 </mapper>

@@ -7,6 +7,8 @@ public class TechnologyRequirement {
 
     private String technologyId;
 
+    private String technologyName;
+
     private String requirement;
 
     private Date addTime;
@@ -16,20 +18,23 @@ public class TechnologyRequirement {
     public TechnologyRequirement() {
     }
 
-    public TechnologyRequirement(String technologyRequirementId, String technologyId, String requirement, Date addTime, Date reviseTime) {
+    public TechnologyRequirement(String technologyRequirementId, String technologyId, String technologyName, String requirement, Date addTime, Date reviseTime) {
 
         this.technologyRequirementId = technologyRequirementId;
         this.technologyId = technologyId;
+        this.technologyName = technologyName;
         this.requirement = requirement;
         this.addTime = addTime;
         this.reviseTime = reviseTime;
     }
+
 
     @Override
     public String toString() {
         return "TechnologyRequirement{" +
                 "technologyRequirementId='" + technologyRequirementId + '\'' +
                 ", technologyId='" + technologyId + '\'' +
+                ", technologyName='" + technologyName + '\'' +
                 ", requirement='" + requirement + '\'' +
                 ", addTime=" + addTime +
                 ", reviseTime=" + reviseTime +
@@ -58,6 +63,14 @@ public class TechnologyRequirement {
 
     public void setRequirement(String requirement) {
         this.requirement = requirement == null ? null : requirement.trim();
+    }
+
+    public String getTechnologyName() {
+        return technologyName;
+    }
+
+    public void setTechnologyName(String technologyName) {
+        this.technologyName = technologyName;
     }
 
     public Date getAddTime() {

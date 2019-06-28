@@ -3,34 +3,65 @@
 <mapper namespace="com.xiazhe.mapper.TechnologyPlanMapper">
   <resultMap id="BaseResultMap" type="com.xiazhe.bean.TechnologyPlan">
     <id column="technology_plan_id" jdbcType="VARCHAR" property="technologyPlanId" />
-    <result column="technology_id" jdbcType="VARCHAR" property="technologyId" />
+    <!--<result column="technology_id" jdbcType="VARCHAR" property="technologyId" />-->
     <result column="batch_amount" jdbcType="INTEGER" property="batchAmount" />
     <result column="start_plan" jdbcType="TIMESTAMP" property="startPlan" />
     <result column="end_plan" jdbcType="TIMESTAMP" property="endPlan" />
     <result column="commit_plan" jdbcType="TIMESTAMP" property="commitPlan" />
     <result column="technology_plan_start" jdbcType="TIMESTAMP" property="technologyPlanStart" />
     <result column="technology_plan_end" jdbcType="TIMESTAMP" property="technologyPlanEnd" />
+    <association property="technologyId" javaType="com.xiazhe.bean.Technology">
+      <result column="technology_name" jdbcType="VARCHAR" property="technologyName" />
+      <result column="price" jdbcType="DECIMAL" property="price" />
+      <result column="vital_process_period" jdbcType="VARCHAR" property="vitalProcessPeriod" />
+      <result column="standard_capacity" jdbcType="INTEGER" property="standardCapacity" />
+      <result column="overtime_standard_capacity" jdbcType="INTEGER" property="overtimeStandardCapacity" />
+      <result column="overtime_overfulfil_capacity" jdbcType="INTEGER" property="overtimeOverfulfilCapacity" />
+      <result column="double_capacity" jdbcType="INTEGER" property="doubleCapacity" />
+      <result column="overfulfil_capacity" jdbcType="INTEGER" property="overfulfilCapacity" />
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
-    technology_plan_id, technology_id, batch_amount, start_plan, end_plan, commit_plan, 
-    technology_plan_start, technology_plan_end
+    technology_plan.technology_plan_id as technologyPlanId,technology_plan.technology_id as technologyId,technology_plan.batch_amount as batchAmount,technology_plan.commit_plan as commitPlan,
+technology_plan.start_plan as startPlan,technology_plan.end_plan as endPlan,technology_plan.technology_plan_start as technologyPlanStart,technology_plan.technology_plan_end as technologyPlanEnd,
+technology.technology_name as technologyName
   </sql>
 
-
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <!--byid-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultType="com.xiazhe.bean.TechnologyPlan">
     select 
     <include refid="Base_Column_List" />
-    from technology_plan
-    where technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR}
+    from technology_plan LEFT JOIN technology
+    on technology_plan.technology_id = technology.technology_id
+    where technology_plan_id like '%${searchValue}%'
   </select>
-  <select id="queryAllTechnology" resultMap="BaseResultMap">
+  <!--byname-->
+  <select id="selectByName" parameterType="java.lang.String" resultType="com.xiazhe.bean.TechnologyPlan">
     select
     <include refid="Base_Column_List" />
-    from technology_plan
+    from technology_plan LEFT JOIN technology
+    on technology_plan.technology_id = technology.technology_id
+    where technology.technology_name like '%${_parameter}%'
+  </select>
+  <select id="queryPlanById" resultType="com.xiazhe.bean.TechnologyPlan">
+    select
+    <include refid="Base_Column_List" />
+    from technology_plan LEFT JOIN technology
+    on technology_plan.technology_id = technology.technology_id
+    where technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR}
+  </select>
+  <select id="queryAllTechnology" resultType="com.xiazhe.bean.TechnologyPlan">
+    select
+    <include refid="Base_Column_List" />
+    from technology_plan LEFT JOIN technology
+    on technology_plan.technology_id = technology.technology_id
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from technology_plan
-    where technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR}
+    where technology_plan_id in
+    <foreach collection="ids" item="technologyPlanId" separator="," open="(" close=")">
+      #{technologyPlanId}
+    </foreach>
   </delete>
   <insert id="insert" parameterType="com.xiazhe.bean.TechnologyPlan">
     insert into technology_plan (technology_plan_id, technology_id, batch_amount, 

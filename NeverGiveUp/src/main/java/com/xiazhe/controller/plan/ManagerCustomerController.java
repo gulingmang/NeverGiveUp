@@ -6,6 +6,7 @@ import com.xiazhe.bean.json.QueryJsonBean;
 import com.xiazhe.service.plan.CustomServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,5 +42,23 @@ public class ManagerCustomerController {
     @ResponseBody
     public List<Custom> getCustomData(){
         return customServices.getCustomData();
+    }
+
+    @RequestMapping("/*_judge")
+    @ResponseBody
+    public String customjudge(){
+        return null;
+    }
+
+    @RequestMapping("add")
+    public String addCustom(){
+        return "/WEB-INF/jsp/custom_add.jsp";
+    }
+
+    @RequestMapping(value="/get/{id}")
+    @ResponseBody
+    public Custom restGetCustom(@PathVariable(value = "id")String id){
+        Custom custom = customServices.queryCustomById(id);
+        return custom;
     }
 }

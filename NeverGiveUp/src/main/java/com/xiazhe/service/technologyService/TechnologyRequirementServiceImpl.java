@@ -1,6 +1,7 @@
 package com.xiazhe.service.technologyService;
 
 import com.xiazhe.bean.TechnologyRequirement;
+import com.xiazhe.bean.TechnologyResult;
 import com.xiazhe.mapper.TechnologyRequirementMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,22 @@ public class TechnologyRequirementServiceImpl implements TechnologyRequirementSe
     }
 
     @Override
+    public List<TechnologyResult> queryAllTechnologyResult() {
+        return technologyRequirementMapper.queryAllTechnologyResult();
+    }
+
+    @Override
     public int updateByPrimaryKey(TechnologyRequirement record) {
         return technologyRequirementMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public int updateRequirementByPrimaryKey(TechnologyRequirement record) {
+        return technologyRequirementMapper.updateRequirementByPrimaryKey(record);
+    }
+
+    @Override
+    public TechnologyRequirement[] selectByName(String searchValue) {
+        return technologyRequirementMapper.selectByName(searchValue);
     }
 }
