@@ -22,5 +22,7 @@ public interface TechnologyRequirementService {
     int updateByPrimaryKey(TechnologyRequirement record);//通过id修改工艺要求
 
 
-    int  updateRequirementByPrimaryKey();//通过id修改单个工艺要求
+    int  updateRequirementByPrimaryKey(TechnologyRequirement record);//通过id修改单个工艺要求
+
+    TechnologyRequirement[] selectByName(String searchValue);//通过名字查询
 }

@@ -42,7 +42,12 @@ public class TechnologyRequirementServiceImpl implements TechnologyRequirementSe
     }
 
     @Override
-    public int updateRequirementByPrimaryKey() {
-        return technologyRequirementMapper.updateRequirementByPrimaryKey();
+    public int updateRequirementByPrimaryKey(TechnologyRequirement record) {
+        return technologyRequirementMapper.updateRequirementByPrimaryKey(record);
+    }
+
+    @Override
+    public TechnologyRequirement[] selectByName(String searchValue) {
+        return technologyRequirementMapper.selectByName(searchValue);
     }
 }

@@ -26,12 +26,16 @@
   </select>
   <select id="queryTechnologyById" resultMap="BaseResultMap">
     select
-    technology_name , price, vital_process_period , standard_capacity , overtime_standard_capacity ,
-    overtime_overfulfil_capacity, double_capacity, overfulfil_capacity
+    <include refid="Base_Column_List" />
     from technology
     where technology_id = #{technologyId}
   </select>
-
+  <select id="selectByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from technology
+    where technology_name like '%${searchValue}%'
+  </select>
 
   <select id="queryAllTechnology" resultMap="BaseResultMap">
     select

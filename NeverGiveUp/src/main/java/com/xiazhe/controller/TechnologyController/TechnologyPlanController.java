@@ -11,6 +11,7 @@ import com.xiazhe.service.technologyService.TechnologyPlanService;
 import com.xiazhe.service.technologyService.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -47,12 +48,12 @@ public class TechnologyPlanController {
         processQueryJsonBean.setTotal((int) technologyPlanPage.getTotal());
         return processQueryJsonBean;
     }
-    //rest风格在工艺要求上显示工艺信息
+    //rest风格在工序管理上显示工艺计划
     @RequestMapping(value = "/get/{technologyId}",method = RequestMethod.GET)
     @ResponseBody
-    public Technology queryTechnologyById(String technologyId){
-        Technology technology = technologyService.queryTechnologyById(technologyId);
-        return technology;
+    public TechnologyPlan queryTechnologyById(@PathVariable String technologyId){
+        TechnologyPlan technologyPlan = technologyPlanService.queryPlanById(technologyId);
+        return technologyPlan;
     }
 
 
@@ -62,6 +63,13 @@ public class TechnologyPlanController {
     @ResponseBody
     public TechnologyPlan[] selectByIdAm(String searchValue){
         TechnologyPlan[] technologyPlans = technologyPlanService.selectByPrimaryKey(searchValue);
+        return technologyPlans;
+    }
+    //通过name进行工艺计划模糊查询
+    @RequestMapping("/search_technologyPlan_by_technologyName")
+    @ResponseBody
+    public TechnologyPlan[] selectByName(String searchValue){
+        TechnologyPlan[] technologyPlans = technologyPlanService.selectByName(searchValue);
         return technologyPlans;
     }
     //

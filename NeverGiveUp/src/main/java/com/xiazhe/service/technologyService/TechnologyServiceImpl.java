@@ -40,4 +40,9 @@ public class TechnologyServiceImpl implements TechnologyService {
     public int updateByPrimaryKey(Technology record) {
         return technologyMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public Technology[] selectByName(String technologyName) {
+        return technologyMapper.selectByName(technologyName);
+    }
 }

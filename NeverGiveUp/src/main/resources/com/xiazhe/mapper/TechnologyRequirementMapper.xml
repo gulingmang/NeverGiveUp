@@ -18,32 +18,43 @@
         <result column="overfulfil_capacity" jdbcType="INTEGER" property="overfulfilCapacity" />
     </association>
   </resultMap>
+
   <sql id="Base_Column_List">
     technology_requirement.technology_requirement_id,technology_requirement.requirement,technology_requirement.add_time,technology_requirement.revise_time,
-technology_requirement.technology_id,technology.technology_name
+technology_requirement.technology_id
   </sql>
 
 
     <!--模糊查询-->
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultType="com.xiazhe.bean.TechnologyRequirement">
     select 
-    <include refid="Base_Column_List" />
-    from technology_requirement
-    where technology_requirement_id like '%${searchValue}%'
+    technology_requirement.technology_requirement_id as technologyRequirementId,technology_requirement.requirement,
+     technology_requirement.add_time as addTime,technology_requirement.revise_time as reviseTime,
+     technology_requirement.technology_id as technologyId,technology.technology_name as technologyName
+    from technology_requirement left join technology
+    on technology.technology_id = technology_requirement.technology_id
+    where technology_requirement.technology_requirement_id like '%${searchValue}%'
+  </select>
+    <select id="selectByName" parameterType="java.lang.String" resultType="com.xiazhe.bean.TechnologyRequirement">
+    select
+    technology_requirement.technology_requirement_id as technologyRequirementId,technology_requirement.requirement,
+     technology_requirement.add_time as addTime,technology_requirement.revise_time as reviseTime,
+     technology_requirement.technology_id as technologyId,technology.technology_name as technologyName
+    from technology_requirement left join technology
+    on technology.technology_id = technology_requirement.technology_id
+    where technology.technology_name like '%${_parameter}%'
+  </select>
+  <select id="queryAllTechnology" resultType="com.xiazhe.bean.TechnologyRequirement">
+    select
+     technology_requirement.technology_requirement_id as technologyRequirementId,technology_requirement.requirement,
+     technology_requirement.add_time as addTime,technology_requirement.revise_time as reviseTime,
+     technology_requirement.technology_id as technologyId,technology.technology_name as technologyName
+    from technology_requirement left join technology
+    on technology_requirement.technology_id = technology.technology_id
   </select>
 
-  <select id="queryAllTechnology" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from technology_requirement left join technology
-    on technology_requirement.technology_requirement_id = technology.technology_id
-  </select>
-  <select id="queryAllTechnologyResult" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from technology_requirement left join technology
-    on technology_requirement.technology_requirement_id = technology.technology_id
-  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from technology_requirement
       where technology_requirement_id in
@@ -70,7 +81,7 @@ technology_requirement.technology_id,technology.technology_name
       revise_time = #{reviseTime,jdbcType=TIMESTAMP}
     where technology_requirement_id = #{technologyRequirementId,jdbcType=VARCHAR}
   </update>
-  <update id="updateRequirementByPrimaryKey" >
+  <update id="updateRequirementByPrimaryKey" parameterType="com.xiazhe.bean.TechnologyRequirement" >
     update technology_requirement
     set requirement = #{requirement,jdbcType=VARCHAR}
     where technology_requirement_id = #{technologyRequirementId,jdbcType=VARCHAR}

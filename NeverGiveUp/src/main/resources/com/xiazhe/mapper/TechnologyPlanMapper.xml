@@ -22,21 +22,39 @@
     </association>
   </resultMap>
   <sql id="Base_Column_List">
-    technology_plan_id, technology_id, batch_amount, start_plan, end_plan, commit_plan, 
-    technology_plan_start, technology_plan_end
+    technology_plan.technology_plan_id as technologyPlanId,technology_plan.technology_id as technologyId,technology_plan.batch_amount as batchAmount,technology_plan.commit_plan as commitPlan,
+technology_plan.start_plan as startPlan,technology_plan.end_plan as endPlan,technology_plan.technology_plan_start as technologyPlanStart,technology_plan.technology_plan_end as technologyPlanEnd,
+technology.technology_name as technologyName
   </sql>
 
-
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <!--byid-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultType="com.xiazhe.bean.TechnologyPlan">
     select 
     <include refid="Base_Column_List" />
-    from technology_plan
+    from technology_plan LEFT JOIN technology
+    on technology_plan.technology_id = technology.technology_id
     where technology_plan_id like '%${searchValue}%'
   </select>
-  <select id="queryAllTechnology" resultMap="BaseResultMap">
+  <!--byname-->
+  <select id="selectByName" parameterType="java.lang.String" resultType="com.xiazhe.bean.TechnologyPlan">
     select
     <include refid="Base_Column_List" />
-    from technology_plan
+    from technology_plan LEFT JOIN technology
+    on technology_plan.technology_id = technology.technology_id
+    where technology.technology_name like '%${_parameter}%'
+  </select>
+  <select id="queryPlanById" resultType="com.xiazhe.bean.TechnologyPlan">
+    select
+    <include refid="Base_Column_List" />
+    from technology_plan LEFT JOIN technology
+    on technology_plan.technology_id = technology.technology_id
+    where technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR}
+  </select>
+  <select id="queryAllTechnology" resultType="com.xiazhe.bean.TechnologyPlan">
+    select
+    <include refid="Base_Column_List" />
+    from technology_plan LEFT JOIN technology
+    on technology_plan.technology_id = technology.technology_id
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from technology_plan
