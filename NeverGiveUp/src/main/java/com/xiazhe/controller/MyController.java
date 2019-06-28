@@ -55,7 +55,7 @@ public class MyController {
         sysPermissionList.add("deviceMaintain:delete");
         sysPermissionList.add("deviceType:add");
         sysPermissionList.add("deviceType:edit");
-        sysPermissionList.add("deviceType:edit");
+        sysPermissionList.add("deviceType:delete");
         sysPermissionList.add("employee:add");
         sysPermissionList.add("employee:edit");
         sysPermissionList.add("employee:delete");

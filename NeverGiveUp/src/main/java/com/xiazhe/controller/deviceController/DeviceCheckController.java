@@ -17,14 +17,7 @@ public class DeviceCheckController {
 
     @Autowired
     DeviceService deviceService;
-    DeviceDataPackge deviceDataPackge = new DeviceDataPackge();
 
-    /*显示deviceCheck设备例检页面*/
-    @RequestMapping("/device/deviceCheck")
-    public String deviceCheck(HttpSession session){
-        deviceDataPackge.ableSysPermissionList(session,"Check");
-        return "/WEB-INF/jsp/deviceCheck.jsp";
-    }
 
     /*显示deviceCheck设备例检里的数据内容*/
     @RequestMapping("/deviceCheck/list")
