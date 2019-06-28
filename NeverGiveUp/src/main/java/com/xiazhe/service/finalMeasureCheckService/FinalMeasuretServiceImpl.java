@@ -22,4 +22,15 @@ public class FinalMeasuretServiceImpl implements FinalMeasuretService {
         int i = mymapper.insert(fmc);
         return  i;
     }
+
+    @Override
+    public int deletebyId(FinalMeasuretCheck fmc) {
+        int i = mymapper.deleteByPrimaryKey(fmc.getfMeasureCheckId());
+        return i;
+    }
+
+    @Override
+    public int deletebyIds(String[] ids) {
+        return mymapper.deletebyIds(ids);
+    }
 }

@@ -54,7 +54,8 @@
       </if>
       <if test="fax != null">
         fax,
-      </if>
+      </if>3
+      +
       <if test="email != null">
         email,
       </if>
