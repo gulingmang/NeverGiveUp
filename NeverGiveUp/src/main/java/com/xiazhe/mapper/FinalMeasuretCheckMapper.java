@@ -2,6 +2,7 @@ package com.xiazhe.mapper;
 
 import com.xiazhe.bean.FinalMeasuretCheck;
 import com.xiazhe.service.finalMeasureCheckService.FinalMeasuretService;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface FinalMeasuretCheckMapper {
 
     int updateByPrimaryKey(FinalMeasuretCheck record);
     public List<FinalMeasuretCheck> getlist() ;
+
+    int deletebyIds(@Param("ids") String[] ids);
 }
