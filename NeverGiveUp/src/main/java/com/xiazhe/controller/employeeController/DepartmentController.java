@@ -8,7 +8,7 @@ import com.xiazhe.bean.Department;
 import com.xiazhe.bean.Result;
 import com.xiazhe.bean.json.QueryJsonBean;
 
-import com.xiazhe.service.DepartmentService.DepartMentService;
+import com.xiazhe.service.DepartmentService.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping("/department")
 public class DepartmentController {
     @Autowired
-    DepartMentService departmentService;
+    DepartmentService departmentService;
     /*跳转到列表的jsp页面*/
     @RequestMapping("/find")
     public String showDepartmentPage(){

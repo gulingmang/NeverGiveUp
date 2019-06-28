@@ -9,6 +9,7 @@ import com.xiazhe.controller.unqualifyManger.unqualifyController;
 import com.xiazhe.mapper.EmployeeMapper;
 import com.xiazhe.service.DepartmentService.DepartmentServiceImpl;
 import com.xiazhe.service.EmployeeService.EmployeeService;
+import com.xiazhe.service.finalMeasureCheckService.FinalMeasuretService;
 import com.xiazhe.service.technologyService.TechnologyPlanService;
 import com.xiazhe.service.technologyService.TechnologyRequirementService;
 import com.xiazhe.service.unqulifyControllerService.UnqualifyServiceImpl;
@@ -66,9 +67,9 @@ public class ThisisMytt {
         List<UnQualifyApply> unQualifyApplies = my.serachLikeByName("椅");
         System.out.println(unQualifyApplies);
     }
-    @Test
+    /*@Test
     public  void yyyy1111(){
         List<FinalMeasuretService> getlist = woui.getlist();
         System.out.println(getlist);
-    }
+    }*/
 }

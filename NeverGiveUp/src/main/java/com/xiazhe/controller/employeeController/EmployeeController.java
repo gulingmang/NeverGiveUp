@@ -7,7 +7,7 @@ import com.xiazhe.bean.Employee;
 import com.xiazhe.bean.EmployeeDepartmentUnion;
 import com.xiazhe.bean.Result;
 import com.xiazhe.bean.json.QueryJsonBean;
-import com.xiazhe.service.DepartmentService.DepartMentService;
+import com.xiazhe.service.DepartmentService.DepartmentService;
 import com.xiazhe.service.EmployeeService.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
