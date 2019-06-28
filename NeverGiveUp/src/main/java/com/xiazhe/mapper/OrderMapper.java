@@ -24,4 +24,5 @@ public interface OrderMapper {
     List<Order> searchOrders(@Param("value") String value, @Param("op") String op);
 
 
+    List<Order> getlist();
 }

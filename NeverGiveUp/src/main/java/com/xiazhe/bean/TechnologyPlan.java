@@ -7,6 +7,9 @@ public class TechnologyPlan {
 
     private String technologyId;
 
+    private String technologyName;
+
+
     private Integer batchAmount;
 
     private Date startPlan;
@@ -19,13 +22,16 @@ public class TechnologyPlan {
 
     private Date technologyPlanEnd;
 
+
+
     public TechnologyPlan() {
     }
 
-    public TechnologyPlan(String technologyPlanId, String technologyId, Integer batchAmount, Date startPlan, Date endPlan, Date commitPlan, Date technologyPlanStart, Date technologyPlanEnd) {
+    public TechnologyPlan(String technologyPlanId, String technologyId, String technologyName, Integer batchAmount, Date startPlan, Date endPlan, Date commitPlan, Date technologyPlanStart, Date technologyPlanEnd) {
 
         this.technologyPlanId = technologyPlanId;
         this.technologyId = technologyId;
+        this.technologyName = technologyName;
         this.batchAmount = batchAmount;
         this.startPlan = startPlan;
         this.endPlan = endPlan;
@@ -39,6 +45,7 @@ public class TechnologyPlan {
         return "TechnologyPlan{" +
                 "technologyPlanId='" + technologyPlanId + '\'' +
                 ", technologyId='" + technologyId + '\'' +
+                ", technologyName='" + technologyName + '\'' +
                 ", batchAmount=" + batchAmount +
                 ", startPlan=" + startPlan +
                 ", endPlan=" + endPlan +
@@ -63,7 +70,13 @@ public class TechnologyPlan {
     public void setTechnologyId(String technologyId) {
         this.technologyId = technologyId == null ? null : technologyId.trim();
     }
+    public String getTechnologyName() {
+        return technologyName;
+    }
 
+    public void setTechnologyName(String technologyName) {
+        this.technologyName = technologyName;
+    }
     public Integer getBatchAmount() {
         return batchAmount;
     }

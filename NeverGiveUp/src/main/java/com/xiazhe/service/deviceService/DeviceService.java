@@ -34,4 +34,6 @@ public interface DeviceService {
     List<DeviceCheck> queryAllDeviceCheck();
 
 
+    /*deviceList新增*/
+    int addDeviceList(DeviceList deviceList);
 }

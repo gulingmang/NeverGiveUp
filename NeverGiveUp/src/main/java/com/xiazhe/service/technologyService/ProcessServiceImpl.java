@@ -34,4 +34,9 @@ public class ProcessServiceImpl implements ProcessService {
     public int updateByPrimaryKey(Process record) {
         return processMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public Process[] selectByName(String searchValue) {
+        return processMapper.selectByName(searchValue);
+    }
 }

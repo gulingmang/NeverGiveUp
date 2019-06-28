@@ -8,9 +8,7 @@ import com.xiazhe.bean.json.QueryJsonBean;
 import com.xiazhe.service.technologyService.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -50,6 +48,13 @@ public class TechnologyController {
     @ResponseBody
     public Technology[] selectByIdAm(String searchValue){
         Technology[] technologies = technologyService.selectByPrimaryKey(searchValue);
+        return technologies;
+    }
+    //通过name进行模糊查询
+    @RequestMapping("/search_technology_by_technologyName")
+    @ResponseBody
+    public Technology[] selectByIdName(String searchValue){
+        Technology[] technologies = technologyService.selectByName(searchValue);
         return technologies;
     }
     //
@@ -124,5 +129,12 @@ public class TechnologyController {
         return technologies;
     }
 
+    //rest风格在工艺要求上显示工艺信息
+    @RequestMapping(value = "/get/{technologyId}",method = RequestMethod.GET)
+    @ResponseBody
+    public Technology queryTechnologyById(@PathVariable String technologyId){
+        Technology technology = technologyService.queryTechnologyById(technologyId);
+        return technology;
+    }
 
 }

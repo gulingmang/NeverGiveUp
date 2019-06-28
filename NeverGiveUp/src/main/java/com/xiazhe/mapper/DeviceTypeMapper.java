@@ -7,10 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface DeviceMapper {
-
-    /*显示所有设备台账*/
-    List<DeviceList> queryAllDeviceList();
+public interface DeviceTypeMapper {
 
     /*显示所有设备种类*/
     DeviceType[] queryAllDeviceType();
@@ -29,9 +26,5 @@ public interface DeviceMapper {
 
     /*通过设备种类name模糊查询设备种类*/
     DeviceType[] selectByDeviceTypeName(@Param("searchValue") String searchValue);
-
-    /*显示所有设备例检*/
-    List<DeviceCheck> queryAllDeviceCheck();
-
 
 }

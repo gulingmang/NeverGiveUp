@@ -18,6 +18,15 @@
     where process_id like
     '%${searchValue}%'
   </select>
+  <!--模糊查询byname-->
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from process
+    where technology_plan_id like
+    '%${_parameter}%'
+  </select>
+
   <select id="queryAllProcess" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
