@@ -11,6 +11,7 @@ import com.xiazhe.controller.unqualifyManger.unqualifyController;
 import com.xiazhe.mapper.EmployeeMapper;
 import com.xiazhe.service.DepartmentService.DepartmentServiceImpl;
 import com.xiazhe.service.EmployeeService.EmployeeService;
+import com.xiazhe.service.finalMeasureCheckService.FinalMeasuretService;
 import com.xiazhe.service.unqulifyControllerService.UnqualifyServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +30,8 @@ public class ThisisMytt {
     DepartmentServiceImpl my1;
     @Autowired
     EmployeeService service;
-
+    @Autowired
+    FinalMeasuretService woui;
     @Test
     public void Tets() {
         PageHelper pageHelper = new PageHelper();
@@ -54,5 +56,16 @@ public class ThisisMytt {
         List<Employee> list = service.getList();
         System.out.println(list);
 
+    }
+    @Test
+    public  void yyyy(){
+        String[] s={"5"};
+        List<UnQualifyApply> unQualifyApplies = my.serachLikeByName("椅");
+        System.out.println(unQualifyApplies);
+    }
+    @Test
+    public  void yyyy1111(){
+        List<FinalMeasuretService> getlist = woui.getlist();
+        System.out.println(getlist);
     }
 }

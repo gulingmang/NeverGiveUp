@@ -43,4 +43,15 @@ public class ManagerProductController {
            return productServices.getProductData();
         }
 
+        @RequestMapping("add_judge")
+        @ResponseBody
+        public String addJudge(){
+            return null;
+        }
+
+        @RequestMapping("add")
+        public String addProduct(){
+            return "/WEB-INF/jsp/product_add.jsp";
+        }
+
 }

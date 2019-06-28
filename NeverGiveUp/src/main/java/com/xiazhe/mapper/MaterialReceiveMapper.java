@@ -1,6 +1,8 @@
 package com.xiazhe.mapper;
 
-import com.xiazhe.bean.MaterialReceive;
+import com.xiazhe.bean.material.MaterialReceive;
+
+import java.util.List;
 
 public interface MaterialReceiveMapper {
     int deleteByPrimaryKey(String receiveId);
@@ -14,4 +16,7 @@ public interface MaterialReceiveMapper {
     int updateByPrimaryKeySelective(MaterialReceive record);
 
     int updateByPrimaryKey(MaterialReceive record);
+
+    List<MaterialReceive> selectAll();
+    MaterialReceive selectByMaterialId(String receiveId);
 }

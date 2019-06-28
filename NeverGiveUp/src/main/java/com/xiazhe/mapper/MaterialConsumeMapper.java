@@ -1,6 +1,8 @@
 package com.xiazhe.mapper;
 
-import com.xiazhe.bean.MaterialConsume;
+import com.xiazhe.bean.material.MaterialConsume;
+
+import java.util.List;
 
 public interface MaterialConsumeMapper {
     int deleteByPrimaryKey(String consumeId);
@@ -14,4 +16,7 @@ public interface MaterialConsumeMapper {
     int updateByPrimaryKeySelective(MaterialConsume record);
 
     int updateByPrimaryKey(MaterialConsume record);
+    List<MaterialConsume> selectAll();
+    List<MaterialConsume> selectByMaterialId(String materialId);
+    List<MaterialConsume> selectByWorkId(String workId);
 }

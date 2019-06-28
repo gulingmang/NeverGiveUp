@@ -236,8 +236,56 @@
    product.note as pnote,
    product.status  as pstatus
     from c_order
-    left join custom on c_order.order_id = custom.custom_id
-    left join product on c_order.order_id = product.product_id
+    left join custom on c_order.custom_id = custom.custom_id
+    left join product on c_order.product_id = product.product_id
   </select>
+    
+  <select id="searchOrders" resultMap="queryOrdersMap">
+        select
+   c_order.order_id,
+   c_order.order_date,
+   c_order.request_date,
+   c_order.note  as onote,
+   c_order.quantity,
+   c_order.unit_price,
+   c_order.unit,
+   c_order.image as oimg,
+   c_order.file,
+   c_order.status as ostatus,
+   custom.custom_id,
+   custom.custom_name,
+   custom.full_name,
+   custom.address,
+   custom.fax,
+   custom.email,
+   custom.owner_name,
+   custom.owner_tel,
+   custom.status as cstatus,
+   custom.note as cnote,
+   product.product_id,
+   product.product_name,
+   product.product_type,
+   product.image as pimg,
+   product.note as pnote,
+   product.status  as pstatus
+    from c_order
+    left join custom on c_order.custom_id = custom.custom_id
+    left join product on c_order.product_id = product.product_id
+    where
+    <choose>
+      <when test="op=='orderId'">
+        c_order.order_id like #{value}
+      </when>
 
+      <when test="op=='customId'">
+          custom.custom_name like #{value}
+      </when>
+
+      <when test="op=='productId'">
+          product.product_name like #{value}
+      </when>
+    </choose>
+  </select>
+  
+  
 </mapper>
