@@ -1,11 +1,11 @@
-package com.xiazhe.bean;
+package com.xiazhe.bean.material;
 
 import java.util.Date;
 
 public class MaterialReceive {
     private String receiveId;
 
-    private String materialId;
+    private Material material;
 
     private Integer amount;
 
@@ -23,14 +23,6 @@ public class MaterialReceive {
 
     public void setReceiveId(String receiveId) {
         this.receiveId = receiveId == null ? null : receiveId.trim();
-    }
-
-    public String getMaterialId() {
-        return materialId;
-    }
-
-    public void setMaterialId(String materialId) {
-        this.materialId = materialId == null ? null : materialId.trim();
     }
 
     public Integer getAmount() {
@@ -71,5 +63,13 @@ public class MaterialReceive {
 
     public void setNote(String note) {
         this.note = note == null ? null : note.trim();
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 }

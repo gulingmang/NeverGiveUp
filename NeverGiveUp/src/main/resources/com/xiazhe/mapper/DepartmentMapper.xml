@@ -38,11 +38,6 @@
         select department_id as departmentId,department_name as departmentName,note from department
     </select>
 
-    <!--计算部门总数-->
-    <select id="countAllDepartments" resultType="_int">
-        select count(department_id) from department
-    </select>
-
 <resultMap id="DepartmentMap" type="com.xiazhe.bean.Department">
 <id column="department_id" jdbcType="VARCHAR" property="departmentId"/>
 <result column="department_name" jdbcType="VARCHAR" property="departmentName"/>

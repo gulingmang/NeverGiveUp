@@ -30,11 +30,6 @@ public class DepartmentServiceImpl implements DepartMentService {
         return departmentMapper.updateDepartment(department);
     }
 
-    @Override
-    public int countAllDepartments() {
-        return departmentMapper.countAllDepartments();
-    }
-
     public Department queryDepartmentById(String id) {
         return departmentMapper.queryDepartmentById(id);
     }

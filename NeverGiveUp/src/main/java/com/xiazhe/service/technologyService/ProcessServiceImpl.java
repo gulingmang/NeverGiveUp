@@ -11,7 +11,7 @@ public class ProcessServiceImpl implements ProcessService {
     @Autowired
     ProcessMapper processMapper;
     @Override
-    public int deleteByPrimaryKey(String processId) {
+    public int deleteByPrimaryKey(String[] processId) {
         return processMapper.deleteByPrimaryKey(processId);
     }
 

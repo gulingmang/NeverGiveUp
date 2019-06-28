@@ -1,4 +1,4 @@
-package com.xiazhe.bean;
+package com.xiazhe.bean.material;
 
 public class Material {
     private String materialId;
