@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ProcessService {
-    int deleteByPrimaryKey(@Param("ids")String processId);//通过id批量删除工序管理
+    int deleteByPrimaryKey(@Param("ids")String[] processId);//通过id批量删除工序管理
 
     int insert(Process record);//插入工序
 

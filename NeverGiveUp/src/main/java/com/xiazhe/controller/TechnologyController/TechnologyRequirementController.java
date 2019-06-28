@@ -1,8 +1,12 @@
 package com.xiazhe.controller.TechnologyController;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.xiazhe.bean.Result;
 import com.xiazhe.bean.Technology;
 import com.xiazhe.bean.TechnologyRequirement;
+import com.xiazhe.bean.TechnologyResult;
+import com.xiazhe.bean.json.QueryJsonBean;
 import com.xiazhe.service.technologyService.TechnologyRequirementService;
 import com.xiazhe.service.technologyService.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +38,14 @@ public class TechnologyRequirementController {
     }
     @RequestMapping("/list")
     @ResponseBody
-    public List<TechnologyRequirement> queryAllTechnologyR(){
-        List<TechnologyRequirement> technologyRequirements = technologyRequirementService.queryAllTechnology();
-        return technologyRequirements;
+    public QueryJsonBean<TechnologyResult> queryAllTechnology(int page, int rows){
+        PageHelper pageHelper = new PageHelper();
+        Page<TechnologyRequirement> technologyRequirementPage = pageHelper.startPage(page, rows);
+        List<TechnologyResult> technologyResults = technologyRequirementService.queryAllTechnologyResult();
+        QueryJsonBean<TechnologyResult> technologyQueryJsonBean = new QueryJsonBean<>();
+        technologyQueryJsonBean.setRows(technologyResults);
+        technologyQueryJsonBean.setTotal((int) technologyRequirementPage.getTotal());
+        return technologyQueryJsonBean;
     }
 
     //rest风格在工艺要求上显示工艺信息
@@ -123,4 +132,16 @@ public class TechnologyRequirementController {
         result.setStatus(200);
         return result;
     }
+    //仅修改工艺要求里的工艺要求
+    @RequestMapping("update_requirement")
+    @ResponseBody
+    public Result editRequirement(TechnologyRequirement technologyRequirement){
+        technologyRequirementService.updateRequirementByPrimaryKey();
+        Result result = new Result();
+        result.setData(null);
+        result.setMsg("Ok");
+        result.setStatus(200);
+        return result;
+    }
+
 }
