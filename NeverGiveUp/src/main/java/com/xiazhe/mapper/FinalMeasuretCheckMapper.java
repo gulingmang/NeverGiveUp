@@ -17,5 +17,5 @@ public interface FinalMeasuretCheckMapper {
     int updateByPrimaryKeySelective(FinalMeasuretCheck record);
 
     int updateByPrimaryKey(FinalMeasuretCheck record);
-    public List<FinalMeasuretService> getlist() ;
+    public List<FinalMeasuretCheck> getlist() ;
 }

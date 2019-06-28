@@ -1,5 +1,6 @@
 package com.xiazhe.service.finalMeasureCheckService;
 
+import com.xiazhe.bean.FinalMeasuretCheck;
 import com.xiazhe.mapper.FinalMeasuretCheckMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ public class FinalMeasuretServiceImpl implements FinalMeasuretService {
     FinalMeasuretCheckMapper mymapper;
 
     @Override
-    public List<FinalMeasuretService> getlist() {
+    public List<FinalMeasuretCheck> getlist() {
         return mymapper.getlist();
     }
 }
