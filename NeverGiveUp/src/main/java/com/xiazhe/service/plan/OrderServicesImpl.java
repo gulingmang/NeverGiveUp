@@ -20,7 +20,7 @@ public class OrderServicesImpl implements OrderServices {
         QueryJsonBean<Order> queryJsonBean = new QueryJsonBean<>();
         queryJsonBean.setTotal(orders.size());
         PageHelper pageHelper = new PageHelper();
-        pageHelper.offsetPage((page-1)*rows,rows);
+        pageHelper.offsetPage((page - 1) * rows, rows);
         orders = orderMapper.queryOrders();
         queryJsonBean.setRows(orders);
         return queryJsonBean;
@@ -36,12 +36,12 @@ public class OrderServicesImpl implements OrderServices {
     public int deleteOrders(String[] ids) {
         // 删除的时候记录删除的个数
         int count = 0;
-        for (int i = 0; i <ids.length ; i++) {
+        for (int i = 0; i < ids.length; i++) {
             count += orderMapper.deleteByPrimaryKey(ids[i]);
         }
-        if (count>0){
+        if (count > 0) {
             return count;
-        }else {
+        } else {
             return 0;
         }
     }
@@ -49,9 +49,9 @@ public class OrderServicesImpl implements OrderServices {
     @Override
     public int updateOrder(Order order) {
         int i = orderMapper.updateByPrimaryKey(order);
-        if (i>0){
+        if (i > 0) {
             return i;
-        }else {
+        } else {
             return 0;
         }
     }
@@ -62,9 +62,13 @@ public class OrderServicesImpl implements OrderServices {
         List<Order> orders = orderMapper.searchOrders(value, op);
         queryJsonBean.setTotal(orders.size());
         PageHelper pageHelper = new PageHelper();
-        pageHelper.offsetPage((page-1)*rows,rows);
-        orders = orderMapper.searchOrders(value,op);
+        pageHelper.offsetPage((page - 1) * rows, rows);
+        orders = orderMapper.searchOrders(value, op);
         queryJsonBean.setRows(orders);
         return queryJsonBean;
+    }
+
+    public List<Order> getlist() {
+        return orderMapper.queryOrders();
     }
 }

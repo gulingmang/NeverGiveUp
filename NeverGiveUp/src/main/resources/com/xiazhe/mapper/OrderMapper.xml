@@ -286,6 +286,8 @@
       </when>
     </choose>
   </select>
-  
+  <select id="getlist" resultType="com.xiazhe.bean.Order">
+      select  * from   c_order
+  </select>
   
 </mapper>

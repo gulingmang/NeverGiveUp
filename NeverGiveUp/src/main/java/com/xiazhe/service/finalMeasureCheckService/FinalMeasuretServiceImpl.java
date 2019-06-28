@@ -16,4 +16,10 @@ public class FinalMeasuretServiceImpl implements FinalMeasuretService {
     public List<FinalMeasuretCheck> getlist() {
         return mymapper.getlist();
     }
+
+    @Override
+    public int insertanew(FinalMeasuretCheck fmc) {
+        int i = mymapper.insert(fmc);
+        return  i;
+    }
 }

@@ -90,7 +90,7 @@ public class unqualifyController {
     @RequestMapping("unqualify/update_all")
 
     public Result edit222(UnQualifyApply my) {
-        int x=myapplyservice.deleteById(my.getUnqualifyApplyId());
+        int x = myapplyservice.deleteById(my.getUnqualifyApplyId());
         int insert = myapplyservice.insert(my);
         Result result = new Result();
         result.setData(null);
@@ -108,24 +108,26 @@ public class unqualifyController {
 
     @RequestMapping("/unqualify/delete_batch")
     @ResponseBody
-    public Result delete(String [] ids) {
-        int x=  myapplyservice.deleteByIds(ids);
+    public Result delete(String[] ids) {
+        int x = myapplyservice.deleteByIds(ids);
         Result result = new Result();
         result.setData(null);
         result.setMsg("Ok");
         result.setStatus(200);
         return result;
     }
+
     @RequestMapping("unqualify/search_unqualify_by_productName")
     @ResponseBody
-    public List<UnQualifyApply> by_productName(String searchValue ) {
-        List<UnQualifyApply> list=  myapplyservice.serachLikeByName(searchValue);
+    public List<UnQualifyApply> by_productName(String searchValue) {
+        List<UnQualifyApply> list = myapplyservice.serachLikeByName(searchValue);
         return list;
     }
+
     @RequestMapping("unqualify/search_unqualify_by_unqualifyId")
     @ResponseBody
-    public List<UnQualifyApply> by_productId(String searchValue ) {
-        List<UnQualifyApply> list=  myapplyservice.serachIdLikeBySId(searchValue);
+    public List<UnQualifyApply> by_productId(String searchValue) {
+        List<UnQualifyApply> list = myapplyservice.serachIdLikeBySId(searchValue);
         return list;
     }
 }

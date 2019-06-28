@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface FinalMeasuretService {
     List<FinalMeasuretCheck> getlist();
+
+    int insertanew(FinalMeasuretCheck fmc);
 }
