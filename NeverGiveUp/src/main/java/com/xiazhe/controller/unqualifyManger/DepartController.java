@@ -1,5 +1,5 @@
 package com.xiazhe.controller.unqualifyManger;
-
+/*
 import com.xiazhe.bean.Department;
 import com.xiazhe.service.DepartmentService.DepartmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +21,4 @@ public class DepartController {
         return list;
     }
 
-}
+}*/

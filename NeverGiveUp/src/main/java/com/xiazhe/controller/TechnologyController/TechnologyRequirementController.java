@@ -38,23 +38,17 @@ public class TechnologyRequirementController {
     }
     @RequestMapping("/list")
     @ResponseBody
-    public QueryJsonBean<TechnologyResult> queryAllTechnology(int page, int rows){
+    public QueryJsonBean<TechnologyRequirement> queryAllTechnology(int page, int rows){
         PageHelper pageHelper = new PageHelper();
-        Page<TechnologyRequirement> technologyRequirementPage = pageHelper.startPage(page, rows);
-        List<TechnologyResult> technologyResults = technologyRequirementService.queryAllTechnologyResult();
-        QueryJsonBean<TechnologyResult> technologyQueryJsonBean = new QueryJsonBean<>();
-        technologyQueryJsonBean.setRows(technologyResults);
-        technologyQueryJsonBean.setTotal((int) technologyRequirementPage.getTotal());
-        return technologyQueryJsonBean;
+        Page<TechnologyRequirement> technologyPlanPage = pageHelper.startPage(page, rows);
+        List<TechnologyRequirement> technologyRequirements = technologyRequirementService.queryAllTechnology();
+        QueryJsonBean<TechnologyRequirement> processQueryJsonBean = new QueryJsonBean<>();
+        processQueryJsonBean.setRows(technologyRequirements);
+        processQueryJsonBean.setTotal((int) technologyPlanPage.getTotal());
+        return processQueryJsonBean;
     }
 
-    //rest风格在工艺要求上显示工艺信息
-    @RequestMapping(value = "/get/{technologyId}",method = RequestMethod.GET)
-    @ResponseBody
-    public Technology queryTechnologyById(String technologyId){
-        Technology technology = technologyService.queryTechnologyById(technologyId);
-        return technology;
-    }
+
 
     //通过id进行模糊查询
     @RequestMapping("/search_technologyRequirement_by_technologyRequirementId")
@@ -63,7 +57,13 @@ public class TechnologyRequirementController {
         TechnologyRequirement[] technologyRequirements = technologyRequirementService.selectByPrimaryKey(searchValue);
         return technologyRequirements;
     }
-
+    //通过name进行模糊查询
+    @RequestMapping("/search_technologyRequirement_by_technologyName")
+    @ResponseBody
+    public TechnologyRequirement[] selectByName(String searchValue){
+        TechnologyRequirement[] technologyRequirements = technologyRequirementService.selectByName(searchValue);
+        return technologyRequirements;
+    }
     /*增加工艺*/
     //跳转至增加页面
     @RequestMapping("add_judge")
@@ -136,7 +136,7 @@ public class TechnologyRequirementController {
     @RequestMapping("update_requirement")
     @ResponseBody
     public Result editRequirement(TechnologyRequirement technologyRequirement){
-        technologyRequirementService.updateRequirementByPrimaryKey();
+        technologyRequirementService.updateRequirementByPrimaryKey(technologyRequirement);
         Result result = new Result();
         result.setData(null);
         result.setMsg("Ok");

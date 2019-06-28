@@ -12,6 +12,19 @@
       - /department/delete_batch
       - /department/search_department_by_departmentId
       - /department/search_department_by_departmentName
+  - Employee
+      - /*_judge
+      - /employee/find
+      - /employee/list
+      - /employee/add
+      - /employee/insert
+      - /employee/edit
+      - /employee/update_all
+      - /employee/get_data
+      - /employee/delete_batch
+      - /employee/search_employee_by_employeeId
+      - /employee/search_employee_by_employeeName
+      - /employee/search_employee_by_departmentName
 
 # 工作日志
 ## 190627
@@ -21,4 +34,12 @@
       - 增加了修改方法；
       - 增加了删除方法；
       - 增加了两种查找方法；
+      - 使用结果分页；
+## 190628
+   - Employee
+      - 完成列表显示；
+      - 增加了新增方法；
+      - 增加了修改方法；
+      - 增加了删除方法；
+      - 增加了三种查找方法；
       - 使用结果分页；

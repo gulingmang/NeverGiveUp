@@ -59,6 +59,13 @@ public class ProcessController {
         Process[] processes = processService.selectByPrimaryKey(searchValue);
         return processes;
     }
+    //通过工艺计划id模糊查询
+    @RequestMapping("/search_process_by_technologyPlanId")
+    @ResponseBody
+    public Process[] selectByName(String searchValue){
+        Process[] processes = processService.selectByName(searchValue);
+        return processes;
+    }
     //
     /*增加工序*/
     //跳转至增加页面

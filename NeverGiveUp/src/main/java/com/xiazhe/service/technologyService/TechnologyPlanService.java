@@ -18,4 +18,8 @@ public interface TechnologyPlanService {
 
 
     int updateByPrimaryKey(TechnologyPlan record);//通过id进行计划修改
+
+    TechnologyPlan  queryPlanById(String technologyPlanId);//查询单个工艺计划
+
+    TechnologyPlan[] selectByName(String searchValue);//通过一个name进行模糊查询
 }

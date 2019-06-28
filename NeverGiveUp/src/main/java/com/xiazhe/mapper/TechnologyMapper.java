@@ -15,4 +15,5 @@ public interface TechnologyMapper {
 
     Technology queryTechnologyById(String technologyId);//查询工艺信息除了id
     int updateByPrimaryKey(Technology record);//通过id修改工艺
+    Technology[] selectByName(@Param("searchValue") String technologyName);//通过一个Name进行模糊查询
 }

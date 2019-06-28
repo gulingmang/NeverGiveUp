@@ -65,6 +65,14 @@ public class TechnologyRequirement {
         this.requirement = requirement == null ? null : requirement.trim();
     }
 
+    public String getTechnologyName() {
+        return technologyName;
+    }
+
+    public void setTechnologyName(String technologyName) {
+        this.technologyName = technologyName;
+    }
+
     public Date getAddTime() {
         return addTime;
     }

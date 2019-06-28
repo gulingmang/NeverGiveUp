@@ -35,4 +35,14 @@ public class TechnologyPlanServiceImpl implements TechnologyPlanService {
     public int updateByPrimaryKey(TechnologyPlan record) {
         return technologyPlanMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public TechnologyPlan queryPlanById(String technologyPlanId) {
+        return technologyPlanMapper.queryPlanById(technologyPlanId);
+    }
+
+    @Override
+    public TechnologyPlan[] selectByName(String searchValue) {
+        return technologyPlanMapper.selectByName(searchValue);
+    }
 }

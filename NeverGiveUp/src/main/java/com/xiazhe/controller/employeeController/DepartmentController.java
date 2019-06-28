@@ -8,13 +8,12 @@ import com.xiazhe.bean.Department;
 import com.xiazhe.bean.Result;
 import com.xiazhe.bean.json.QueryJsonBean;
 
-import com.xiazhe.service.DepartmentService.DepartMentService;
+import com.xiazhe.service.DepartmentService.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +21,7 @@ import java.util.List;
 @RequestMapping("/department")
 public class DepartmentController {
     @Autowired
-    DepartMentService departmentService;
+    DepartmentService departmentService;
     /*跳转到列表的jsp页面*/
     @RequestMapping("/find")
     public String showDepartmentPage(){
@@ -32,13 +31,14 @@ public class DepartmentController {
     /*显示所有的部门*/
     @RequestMapping("/list")
     @ResponseBody
-    public QueryJsonBean<Department> listDepartment(Integer page, Integer rows){
+    public QueryJsonBean listDepartment(Integer page, Integer rows){
         PageHelper pageHelper=new PageHelper();
-        Page<Department> resultPage = PageHelper.startPage(page, rows);
+        Page resultPage =PageHelper.startPage(page,rows);
         List<Department> departments = Arrays.asList(departmentService.queryAllDepartments());
+        PageInfo info = new PageInfo<>(resultPage.getResult());
         QueryJsonBean<Department> departmentQueryJsonBean = new QueryJsonBean<>();
-        departmentQueryJsonBean.setTotal((int)resultPage.getTotal());
         departmentQueryJsonBean.setRows(departments);
+        departmentQueryJsonBean.setTotal((int)info.getTotal());
         return departmentQueryJsonBean;
     }
 
@@ -99,19 +99,32 @@ public class DepartmentController {
         return new Result(200,"OK",null);
     }
 
-    /*根据不同条件查找部门*/
-    @RequestMapping({"/search_department_by_departmentId","/search_department_by_departmentName"})
+    /*根据id查找部门*/
+    @RequestMapping("/search_department_by_departmentId")
     @ResponseBody
-    public QueryJsonBean<Department> queryDepartmentsById(String searchValue, int page, int rows, HttpServletRequest request){
+    public QueryJsonBean queryDepartmentsById(String searchValue,int page,int rows){
         PageHelper pageHelper=new PageHelper();
-        List<Department> departments = null;
-        Page<Department> resultPage = PageHelper.startPage(page, rows);
-        //根据id或name进行相应的查找
-        if (request.getRequestURI().contains("departmentId")) departments=Arrays.asList(departmentService.queryDepartmentsById(searchValue));
-        if (request.getRequestURI().contains("departmentName")) departments=Arrays.asList(departmentService.queryDepartmentsByName(searchValue));
+        Page resultPage =PageHelper.startPage(page,rows);
+        List<Department> departments = Arrays.asList(departmentService.queryDepartmentsById(searchValue));
+        PageInfo info = new PageInfo<>(resultPage.getResult());
         QueryJsonBean<Department> departmentQueryJsonBean = new QueryJsonBean<>();
-        departmentQueryJsonBean.setTotal((int)resultPage.getTotal());
         departmentQueryJsonBean.setRows(departments);
+        departmentQueryJsonBean.setTotal((int)info.getTotal());
         return departmentQueryJsonBean;
     }
+
+    /*根据名称查找部门*/
+    @RequestMapping("/search_department_by_departmentName")
+    @ResponseBody
+    public QueryJsonBean queryDepartmentsByName(String searchValue,int page,int rows){
+        PageHelper pageHelper=new PageHelper();
+        Page resultPage =PageHelper.startPage(page,rows);
+        List<Department> departments = Arrays.asList(departmentService.queryDepartmentsByName(searchValue));
+        PageInfo info = new PageInfo<>(resultPage.getResult());
+        QueryJsonBean<Department> departmentQueryJsonBean = new QueryJsonBean<>();
+        departmentQueryJsonBean.setRows(departments);
+        departmentQueryJsonBean.setTotal((int)info.getTotal());
+        return departmentQueryJsonBean;
+    }
+
 }
