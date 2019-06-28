@@ -147,4 +147,11 @@ public class DeviceTypeController {
         deviceTypeQueryJsonBean.setTotal((int)resultPage.getTotal());
         return deviceTypeQueryJsonBean;
     }
+
+    //get_data获取数据
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<DeviceType> deviceTypeGetDate(){
+        return Arrays.asList(deviceService.queryAllDeviceType());
+    }
 }
