@@ -2,6 +2,7 @@ package com.xiazhe.controller.plan;
 
 
 import com.xiazhe.bean.Custom;
+import com.xiazhe.bean.Result;
 import com.xiazhe.bean.json.QueryJsonBean;
 import com.xiazhe.service.plan.CustomServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,7 @@ public class ManagerCustomerController {
     CustomServices customServices;
 
     @RequestMapping("find")
-    public String customFind(HttpServletRequest request){
-        List<String> list = new LinkedList<>();
-        list.add("custom:add");
-        list.add("custom:edit");
-        list.add("custom:delete");
-        request.getSession().setAttribute("sysPermissionList",list);
+    public String customFind(){
         return "/WEB-INF/jsp/custom_list.jsp";
     }
 
@@ -55,10 +51,74 @@ public class ManagerCustomerController {
         return "/WEB-INF/jsp/custom_add.jsp";
     }
 
+    @RequestMapping("insert")
+    @ResponseBody
+    public Result addNewCustom(Custom custom){
+        int i = customServices.insertNewCustom(custom);
+        Result result = new Result();
+        if(i>0){
+            result.setStatus(200);
+            result.setMsg("ok");
+        }else {
+            result.setStatus(500);
+            result.setMsg("error");
+        }
+        return result;
+    }
+
     @RequestMapping(value="/get/{id}")
     @ResponseBody
     public Custom restGetCustom(@PathVariable(value = "id")String id){
         Custom custom = customServices.queryCustomById(id);
         return custom;
+    }
+
+    @RequestMapping("edit")
+    public String editCustom(){
+        return "/WEB-INF/jsp/custom_edit.jsp";
+    }
+
+    @RequestMapping("update_all")
+    @ResponseBody
+    public Result updateOrder(Custom custom){
+        int i = customServices.updateCustom(custom);
+        Result result = new Result();
+        if(i>0){
+            result.setStatus(200);
+            result.setMsg("ok");
+        }else{
+            result.setStatus(500);
+            result.setMsg("error");
+        }
+        return result;
+    }
+
+    @RequestMapping("delete_batch")
+    @ResponseBody
+    public Result deleteCustoms(String[] ids){
+        int i = customServices.deleteCustoms(ids);
+        Result result = new Result();
+        if(i > 0){
+            result.setStatus(200);
+            result.setMsg("ok");
+        }else{
+            result.setStatus(500);
+            result.setMsg("error");
+        }
+        return result;
+    }
+
+    @RequestMapping("search_custom_by_customId")
+    @ResponseBody
+    public QueryJsonBean<Custom> searchCustomByCustomId(String searchValue, int page, int rows){
+        QueryJsonBean<Custom> queryJsonBean = customServices.searchCustoms(searchValue, "customId", page, rows);
+        return queryJsonBean;
+    }
+
+    @RequestMapping("search_custom_by_customName")
+    @ResponseBody
+    public QueryJsonBean<Custom> searchCustomByCustomName(String searchValue, int page, int rows){
+        QueryJsonBean<Custom> queryJsonBean = customServices.searchCustoms(searchValue, "customName", page, rows);
+        return queryJsonBean;
     }
 }

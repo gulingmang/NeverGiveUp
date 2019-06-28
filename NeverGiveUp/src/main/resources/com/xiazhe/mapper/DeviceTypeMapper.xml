@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xiazhe.mapper.DeviceMapper">
+<mapper namespace="com.xiazhe.mapper.DeviceTypeMapper">
 
     <!--查询所有的设备种类-->
     <resultMap id="BaseDeviceType" type="com.xiazhe.bean.DeviceType">
@@ -72,47 +72,6 @@
         where device_type_name like '%${searchValue}%'
     </select>
 
-    <!--查询所有的设备台账-->
-    <resultMap id="BaseDeviceList" type="com.xiazhe.bean.DeviceList">
-        <result column="device_id" property="deviceId"/>
-        <result column="device_name" property="deviceName"/>
-        <result column="device_type_id" property="deviceTypeId"/>
-        <result column="device_status_id" property="deviceStatusId"/>
-        <result column="device_purchase_date" property="devicePurchaseDate"/>
-        <result column="device_status" property="deviceStatus"/>
-        <result column="device_purchase_price" property="devicePurchasePrice"/>
-        <result column="device_manufacture_date" property="deviceManufactureDate"/>
-        <result column="device_service_life" property="deviceServiceLife"/>
-        <result column="device_keeper_id" property="deviceKeeperId"/>
-        <result column="note" property="note"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-        device_id,device_name,device_type_id,device_status_id,device_status,device_purchase_date,device_purchase_price,
-        device_manufacture_date,device_service_life,device_keeper_id,note
-    </sql>
-    <select id="queryAllDeviceList" resultMap="BaseDeviceList">
-        select
-        <include refid="Base_Column_List"/>
-        from device
-    </select>
 
-    <!--查询所有的设备例检-->
-    <resultMap id="BaseDeviceCheck" type="com.xiazhe.bean.DeviceCheck">
-        <result column="device_check_id" property="deviceCheckId"/>
-        <result column="device_id" property="deviceId"/>
-        <result column="device_check_emp_id" property="deviceCheckEmpId"/>
-        <result column="device_check_date" property="deviceCheckDate"/>
-        <result column="device_check_result" property="deviceCheckResult"/>
-        <result column="device_check_fault_id" property="deviceCheckFaultId"/>
-        <result column="note" property="note"/>
-    </resultMap>
-    <sql id="Base_Column_Check">
-        device_check_id,device_id,device_check_emp_id,device_check_date,device_check_result,device_check_fault_id
-    </sql>
-    <select id="queryAllDeviceCheck" resultMap="BaseDeviceCheck">
-        select
-        <include refid="Base_Column_Check"/>
-        from device_check
-    </select>
 
 </mapper>

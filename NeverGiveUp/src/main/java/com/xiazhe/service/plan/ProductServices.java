@@ -10,5 +10,16 @@ public interface ProductServices {
 
     List<Product> getProductData();
 
+    Product queryProductById(String id);
+
+    int insertNewProduct(Product product);
+
+    int updateProduct(Product product);
+
+    int deleteProdcuucts(String[] ids);
+
+    QueryJsonBean<Product> searchProducts(String value, String op, int page, int rows);
+
+
 
 }
