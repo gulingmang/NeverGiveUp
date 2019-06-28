@@ -2,22 +2,17 @@ package com.xiazhe.controller.deviceController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.xiazhe.bean.DeviceCheck;
-import com.xiazhe.bean.DeviceList;
 import com.xiazhe.bean.DeviceType;
 import com.xiazhe.bean.Result;
 import com.xiazhe.bean.json.QueryJsonBean;
-import com.xiazhe.service.deviceService.DeviceService;
+import com.xiazhe.service.deviceService.DeviceTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +26,7 @@ import java.util.List;
 public class DeviceTypeController {
 
     @Autowired
-    DeviceService deviceService;
+    DeviceTypeService deviceTypeService;
 
 
     /*2.显示deviceType设备种类里的数据内容*/
@@ -40,7 +35,7 @@ public class DeviceTypeController {
     public QueryJsonBean dispalyDeviceTypeContent(int page,int rows){
         PageHelper pageHelper = new PageHelper();
         Page<DeviceType> resultPage = pageHelper.startPage(page, rows);
-        List<DeviceType> deviceTypes = Arrays.asList(deviceService.queryAllDeviceType());
+        List<DeviceType> deviceTypes = Arrays.asList(deviceTypeService.queryAllDeviceType());
         QueryJsonBean<DeviceType> deviceTypeQueryJsonBean = new QueryJsonBean<>();
         deviceTypeQueryJsonBean.setRows(deviceTypes);
         deviceTypeQueryJsonBean.setTotal((int)resultPage.getTotal());
@@ -71,7 +66,7 @@ public class DeviceTypeController {
             if (deviceTypeQuantity==null){
                 deviceTypeQuantity=0;
             }
-            deviceService.addDeviceType(new DeviceType(deviceTypeId,deviceTypeName,deviceTypeModel,deviceTypeSpec,deviceTypeSupplier,deviceTypeProducer,deviceTypeQuantity,parse));
+            deviceTypeService.addDeviceType(new DeviceType(deviceTypeId,deviceTypeName,deviceTypeModel,deviceTypeSpec,deviceTypeSupplier,deviceTypeProducer,deviceTypeQuantity,parse));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -99,7 +94,7 @@ public class DeviceTypeController {
             if (deviceTypeQuantity==null){
                 deviceTypeQuantity=0;
             }
-            deviceService.updateDeviceType(new DeviceType(deviceTypeId,deviceTypeName,deviceTypeModel,deviceTypeSpec,deviceTypeSupplier,deviceTypeProducer,deviceTypeQuantity,parse));
+            deviceTypeService.updateDeviceType(new DeviceType(deviceTypeId,deviceTypeName,deviceTypeModel,deviceTypeSpec,deviceTypeSupplier,deviceTypeProducer,deviceTypeQuantity,parse));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -118,7 +113,7 @@ public class DeviceTypeController {
     @RequestMapping("/delete_batch")
     @ResponseBody
     public Result deleteDeviceTypeByIds(String[] ids){
-        deviceService.deleteDeviceTypeByIds(ids);
+        deviceTypeService.deleteDeviceTypeByIds(ids);
         return new Result(200,"OK",null);
     }
 
@@ -129,7 +124,7 @@ public class DeviceTypeController {
     public QueryJsonBean selectByDeviceTypeId(String searchValue,int page,int rows){
         PageHelper pageHelper = new PageHelper();
         Page<DeviceType> resultPage = pageHelper.startPage(page, rows);
-        List<DeviceType> deviceTypes = Arrays.asList(deviceService.selectByDeviceTypeId(searchValue));
+        List<DeviceType> deviceTypes = Arrays.asList(deviceTypeService.selectByDeviceTypeId(searchValue));
         QueryJsonBean<DeviceType> deviceTypeQueryJsonBean = new QueryJsonBean<>();
         deviceTypeQueryJsonBean.setRows(deviceTypes);
         deviceTypeQueryJsonBean.setTotal((int)resultPage.getTotal());
@@ -141,7 +136,7 @@ public class DeviceTypeController {
     public QueryJsonBean selectByDeviceTypeName(String searchValue,int page,int rows){
         PageHelper pageHelper = new PageHelper();
         Page<DeviceType> resultPage = pageHelper.startPage(page, rows);
-        List<DeviceType> deviceTypes = Arrays.asList(deviceService.selectByDeviceTypeName(searchValue));
+        List<DeviceType> deviceTypes = Arrays.asList(deviceTypeService.selectByDeviceTypeName(searchValue));
         QueryJsonBean<DeviceType> deviceTypeQueryJsonBean = new QueryJsonBean<>();
         deviceTypeQueryJsonBean.setRows(deviceTypes);
         deviceTypeQueryJsonBean.setTotal((int)resultPage.getTotal());
@@ -152,6 +147,6 @@ public class DeviceTypeController {
     @RequestMapping("/get_data")
     @ResponseBody
     public List<DeviceType> deviceTypeGetDate(){
-        return Arrays.asList(deviceService.queryAllDeviceType());
+        return Arrays.asList(deviceTypeService.queryAllDeviceType());
     }
 }

@@ -4,43 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiazhe.mapper.DeviceListMapper">
 
-    <!--查询所有的设备台账-->
-    <!--<resultMap id="BaseDeviceList" type="com.xiazhe.bean.DeviceList">
-        <result column="device_id" property="deviceId"/>
-        <result column="device_name" property="deviceName"/>
-        <result column="device_status_id" property="deviceStatusId"/>
-        <result column="device_purchase_date" property="devicePurchaseDate"/>
-        <result column="device_status" property="deviceStatus"/>
-        <result column="device_purchase_price" property="devicePurchasePrice"/>
-        <result column="device_manufacture_date" property="deviceManufactureDate"/>
-        <result column="device_service_life" property="deviceServiceLife"/>
-        <result column="device_keeper_id" property="deviceKeeperId"/>
-        <result column="note" property="note"/>
-        <association column="device_type_id" property="deviceTypeId">
-            <result property="deviceTypeId" column="device_type_id"/>
-            <result property="deviceTypeName" column="device_type_name"/>
-            <result property="deviceTypeModel" column="device_type_model"/>
-            <result property="deviceTypeSpec" column="device_type_spec"/>
-            <result property="deviceTypeSupplier" column="device_type_supplier"/>
-            <result property="deviceTypeProducer" column="device_type_producer"/>
-            <result property="deviceTypeQuantity" column="device_type_quantity"/>
-            <result property="deviceTypeWarranty" column="device_type_warranty"/>
-            <result column="device_type_name" property="deviceTypeName" />
-            <result column="deviceKeeper" property="deviceKeeper" />
-        </association>
-    </resultMap>
-    <sql id="Base_Column_List">
-        device_id,device_name,device.device_type_id,device_status_id,device_status,device_purchase_date,device_purchase_price,
-        device_manufacture_date,device_service_life,device_keeper_id,note
-    </sql>
-    <select id="queryAllDeviceList" resultMap="BaseDeviceList">
-        select
-        <include refid="Base_Column_List"/>
-        from device
-        left join device_type on device.device_type_id = device_type.device_type_id
-        left join employee on device.device_keeper_id = employee.emp_id
-    </select>-->
 
+    <!--查询所有的设备台账数据-->
     <resultMap id="BaseDeviceList" type="com.xiazhe.bean.DeviceList">
         <id column="device_id" jdbcType="VARCHAR" property="deviceId" />
         <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
@@ -77,6 +42,84 @@
       from device d1
       left JOIN device_type d2 on d1.device_type_id = d2.device_type_id
       left JOIN employee d3 on d1.device_keeper_id = d3.emp_id
+    </select>
+
+    <!--新增设备台账-->
+    <insert id="addDeviceList">
+        insert into device
+        (device_id,device_name,device_type_id,device_status_id,device_status,device_purchase_date,device_purchase_price,device_manufacture_date,device_service_life,device_keeper_id,note)
+        values
+        (#{device.deviceId},#{device.deviceName},#{device.deviceTypeId},#{device.deviceStatusId},#{device.deviceStatus},#{device.devicePurchaseDate},#{device.devicePurchasePrice},#{device.deviceManufactureDate},#{device.deviceServiceLife},#{device.deviceKeeperId},#{device.note})
+    </insert>
+
+
+    <!--编辑设备台账-->
+    <update id="editDeviceList">
+        UPDATE device
+          SET device_name = #{device.deviceName},
+          device_type_id = #{device.deviceTypeId},
+          device_status_id = #{device.deviceStatusId},
+          device_status = #{device.deviceStatus},
+          device_purchase_date = #{device.devicePurchaseDate},
+          device_purchase_price = #{device.devicePurchasePrice},
+          device_manufacture_date = #{device.deviceManufactureDate},
+          device_service_life = #{device.deviceServiceLife},
+          device_keeper_id = #{device.deviceKeeperId},
+          note = #{device.note}
+          WHERE
+	        device_id = #{device.deviceId}
+    </update>
+
+    <resultMap id="BaseMapDeviceList" type="com.xiazhe.bean.DeviceList">
+        <id column="device_id" jdbcType="VARCHAR" property="deviceId" />
+        <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+        <result column="device_type_id" jdbcType="VARCHAR" property="deviceTypeId" />
+        <result column="device_status_id" jdbcType="VARCHAR" property="deviceStatusId" />
+        <result column="device_status" jdbcType="VARCHAR" property="deviceStatus" />
+        <result column="device_purchase_date" jdbcType="TIMESTAMP" property="devicePurchaseDate" />
+        <result column="device_purchase_price" jdbcType="DECIMAL" property="devicePurchasePrice" />
+        <result column="device_manufacture_date" jdbcType="TIMESTAMP" property="deviceManufactureDate" />
+        <result column="device_service_life" jdbcType="TIMESTAMP" property="deviceServiceLife" />
+        <result column="device_keeper_id" jdbcType="VARCHAR" property="deviceKeeperId" />
+        <result column="note" jdbcType="VARCHAR" property="note" />
+    </resultMap>
+    <sql id="basesql_column_List">
+        device_id,device_name,device_type_id,
+        device_status_id,device_status,device_purchase_date,
+        device_purchase_price,device_manufacture_date,
+        device_service_life,device_keeper_id,note
+    </sql>
+    <!--删除设备台账-->
+    <delete id="deleteDeviceListByIds">
+        delete from device
+        where device_id in
+        <foreach collection="id" item="deviceId" separator="," open="(" close=")">
+            #{deviceId}
+        </foreach>
+    </delete>
+
+    <!--通过id查询设备台账-->
+    <select id="selectByDeviceListId" resultMap="BaseMapDeviceList">
+        select
+        <include refid="basesql_column_List"/>
+        from device
+        where device_id like '%${searchValue}%'
+    </select>
+
+    <!--通过name查询设备台账-->
+    <select id="selectByDeviceListName" resultMap="BaseMapDeviceList">
+        select
+        <include refid="basesql_column_List"/>
+        from device
+        where device_name like '%${searchValue}%'
+    </select>
+
+    <!--通过设备种类名称查询设备台账-->
+    <select id="selectByDeviceListSpecName" resultMap="BaseMapDeviceList">
+        select
+        <include refid="basesql_column_List"/>
+        from device
+        where device_name like '%${searchValue}%'
     </select>
 
 </mapper>

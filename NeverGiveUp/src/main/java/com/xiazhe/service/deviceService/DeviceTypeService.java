@@ -7,10 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface DeviceService {
-
-    /*显示所有设备台账*/
-    List<DeviceList> queryAllDeviceList();
+public interface DeviceTypeService {
 
     /*显示所有设备种类*/
     DeviceType[] queryAllDeviceType();
@@ -33,7 +30,4 @@ public interface DeviceService {
     /*显示所有设备例检*/
     List<DeviceCheck> queryAllDeviceCheck();
 
-
-    /*deviceList新增*/
-    int addDeviceList(DeviceList deviceList);
 }

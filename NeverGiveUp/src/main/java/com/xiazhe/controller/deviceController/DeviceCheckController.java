@@ -1,12 +1,10 @@
 package com.xiazhe.controller.deviceController;
 
-import com.xiazhe.service.deviceService.DeviceService;
+import com.xiazhe.service.deviceService.DeviceTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * deviceCheck设备例检
@@ -16,14 +14,14 @@ import javax.servlet.http.HttpSession;
 public class DeviceCheckController {
 
     @Autowired
-    DeviceService deviceService;
+    DeviceTypeService deviceTypeService;
 
 
     /*显示deviceCheck设备例检里的数据内容*/
     @RequestMapping("/deviceCheck/list")
     @ResponseBody
     public void displayDeviceCheckContent(){
-        deviceService.queryAllDeviceCheck();
+        deviceTypeService.queryAllDeviceCheck();
     }
 
 }
