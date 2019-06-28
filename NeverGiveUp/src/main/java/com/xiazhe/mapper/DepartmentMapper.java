@@ -13,4 +13,5 @@ public interface DepartmentMapper {
     public Department[] queryDepartmentsById(@Param("id")String id);
     public Department[] queryDepartmentsByName(@Param("name")String name);
     public Department[] queryAllDepartments();
+    public List<Department> getList();
 }
