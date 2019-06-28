@@ -23,7 +23,6 @@ public class SpringMvcConfig implements WebMvcConfigurer {
 
     @PostConstruct
     public void addConvert() {
-        System.out.println("111111");
         conversionService.addConverter(new MyConvert());
 
     }
@@ -31,7 +30,6 @@ public class SpringMvcConfig implements WebMvcConfigurer {
     @Bean
     @Primary
     public ConfigurableConversionService configurableConversionService() {
-        System.out.println("222222222");
         return conversionService;
     }
 
@@ -49,6 +47,7 @@ public class SpringMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //前面的是mapping 后面的是location
+
 
         registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
         registry.addResourceHandler("/image/**").addResourceLocations("/WEB-INF/image/");

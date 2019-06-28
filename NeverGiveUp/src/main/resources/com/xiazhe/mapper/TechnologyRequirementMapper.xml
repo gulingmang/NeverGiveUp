@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiazhe.mapper.TechnologyRequirementMapper">
+  <resultMap id="BaseResultMap" type="com.xiazhe.bean.TechnologyRequirement">
+    <id column="technology_requirement_id" jdbcType="VARCHAR" property="technologyRequirementId" />
+    <result column="technology_id" jdbcType="VARCHAR" property="technologyId" />
+    <result column="requirement" jdbcType="VARCHAR" property="requirement" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="revise_time" jdbcType="TIMESTAMP" property="reviseTime" />
+    <association property="technologyId" javaType="com.xiazhe.bean.Technology">
+        <result column="technology_name" jdbcType="VARCHAR" property="technologyName" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="vital_process_period" jdbcType="VARCHAR" property="vitalProcessPeriod" />
+        <result column="standard_capacity" jdbcType="INTEGER" property="standardCapacity" />
+        <result column="overtime_standard_capacity" jdbcType="INTEGER" property="overtimeStandardCapacity" />
+        <result column="overtime_overfulfil_capacity" jdbcType="INTEGER" property="overtimeOverfulfilCapacity" />
+        <result column="double_capacity" jdbcType="INTEGER" property="doubleCapacity" />
+        <result column="overfulfil_capacity" jdbcType="INTEGER" property="overfulfilCapacity" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List">
+    technology_requirement.technology_requirement_id,technology_requirement.requirement,technology_requirement.add_time,technology_requirement.revise_time,
+technology_requirement.technology_id
+  </sql>
+
+
+    <!--模糊查询-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from technology_requirement
+    where technology_requirement_id = '%{technologyRequirementId,jdbcType=VARCHAR}%'
+  </select>
+
+  <select id="queryAllTechnology" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from technology_requirement left join technology
+    on technology_requirement.technology_requirement_id = technology.technology_id
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from technology_requirement
+      where technology_requirement_id in
+      <foreach collection="ids" item="technologyRequirementId" separator="," open="(" close=")">
+          #{technologyRequirementId}
+      </foreach>
+  </delete>
+
+  <insert id="insert" parameterType="com.xiazhe.bean.TechnologyRequirement">
+    insert into technology_requirement (technology_requirement_id, technology_id, 
+      requirement, add_time, revise_time
+      )
+    values (#{technologyRequirementId,jdbcType=VARCHAR}, #{technologyId,jdbcType=VARCHAR}, 
+      #{requirement,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{reviseTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+
+
+  <update id="updateByPrimaryKey" parameterType="com.xiazhe.bean.TechnologyRequirement">
+    update technology_requirement
+    set technology_id = #{technologyId,jdbcType=VARCHAR},
+      requirement = #{requirement,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      revise_time = #{reviseTime,jdbcType=TIMESTAMP}
+    where technology_requirement_id = #{technologyRequirementId,jdbcType=VARCHAR}
+  </update>
+</mapper>

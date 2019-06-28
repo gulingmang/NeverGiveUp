@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiazhe.mapper.DepartmentMapper">
-
     <!--增加部门-->
     <insert id="addDepartment">
         insert into department (department_id,department_name,note) values (#{depart.departmentId},#{depart.departmentName},#{depart.note})
@@ -16,6 +13,11 @@
     </foreach>
     </delete>
 
+    <!--修改部门-->
+    <update id="updateDepartment">
+        update department set department_name = #{depart.departmentName}, note = #{depart.note} where department_id = #{depart.departmentId}
+    </update>
+
     <!--根据id查找部门（精确）-->
     <select id="queryDepartmentById" resultType="com.xiazhe.bean.Department">
         select department_id as departmentId,department_name as departmentName,note from department where department_id = #{id}
@@ -23,12 +25,12 @@
 
     <!--根据id查找部门（模糊）-->
     <select id="queryDepartmentsById" resultType="com.xiazhe.bean.Department">
-        select department_id as departmentId,department_name as departmentName,note from department where department_id like %#{id}%
+        select department_id as departmentId,department_name as departmentName,note from department where department_id like '%${id}%'
     </select>
 
     <!--根据名称查找部门（模糊）-->
     <select id="queryDepartmentsByName" resultType="com.xiazhe.bean.Department">
-        select department_id as departmentId,department_name as departmentName,note from department where department_name like %#{id}%
+        select department_id as departmentId,department_name as departmentName,note from department where department_name like '%${name}%'
     </select>
 
     <!--查找所有部门-->
@@ -36,4 +38,12 @@
         select department_id as departmentId,department_name as departmentName,note from department
     </select>
 
-</mapper>
+<resultMap id="DepartmentMap" type="com.xiazhe.bean.Department">
+<id column="department_id" jdbcType="VARCHAR" property="departmentId"/>
+<result column="department_name" jdbcType="VARCHAR" property="departmentName"/>
+<result column="note" jdbcType="VARCHAR" property="note"/>
+</resultMap>
+<select id="getList" resultMap="DepartmentMap">
+        select * from department
+    </select>
+ </mapper>

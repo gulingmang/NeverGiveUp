@@ -1,4 +1,4 @@
-package com.xiazhe.bean.Technology;
+package com.xiazhe.bean;
 
 import java.math.BigDecimal;
 
@@ -20,6 +20,37 @@ public class Technology {
     private Integer doubleCapacity;
 
     private Integer overfulfilCapacity;
+
+    public Technology() {
+    }
+
+    public Technology(String technologyId, String technologyName, BigDecimal price, String vitalProcessPeriod, Integer standardCapacity, Integer overtimeStandardCapacity, Integer overtimeOverfulfilCapacity, Integer doubleCapacity, Integer overfulfilCapacity) {
+
+        this.technologyId = technologyId;
+        this.technologyName = technologyName;
+        this.price = price;
+        this.vitalProcessPeriod = vitalProcessPeriod;
+        this.standardCapacity = standardCapacity;
+        this.overtimeStandardCapacity = overtimeStandardCapacity;
+        this.overtimeOverfulfilCapacity = overtimeOverfulfilCapacity;
+        this.doubleCapacity = doubleCapacity;
+        this.overfulfilCapacity = overfulfilCapacity;
+    }
+
+    @Override
+    public String toString() {
+        return "Technology{" +
+                "technologyId='" + technologyId + '\'' +
+                ", technologyName='" + technologyName + '\'' +
+                ", price=" + price +
+                ", vitalProcessPeriod='" + vitalProcessPeriod + '\'' +
+                ", standardCapacity=" + standardCapacity +
+                ", overtimeStandardCapacity=" + overtimeStandardCapacity +
+                ", overtimeOverfulfilCapacity=" + overtimeOverfulfilCapacity +
+                ", doubleCapacity=" + doubleCapacity +
+                ", overfulfilCapacity=" + overfulfilCapacity +
+                '}';
+    }
 
     public String getTechnologyId() {
         return technologyId;

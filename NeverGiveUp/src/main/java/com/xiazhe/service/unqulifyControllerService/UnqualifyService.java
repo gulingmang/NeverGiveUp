@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface UnqualifyService {
     public List<UnQualifyApply> getApplyList();
+    public  int insert(UnQualifyApply record);
 }

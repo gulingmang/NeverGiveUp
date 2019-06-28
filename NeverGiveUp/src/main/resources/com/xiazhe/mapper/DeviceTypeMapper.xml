@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiazhe.mapper.DeviceMapper">
+
+    <!--查询所有的设备种类-->
+    <resultMap id="BaseDeviceType" type="com.xiazhe.bean.DeviceType">
+        <result property="deviceTypeId" column="device_type_id"/>
+        <result property="deviceTypeName" column="device_type_name"/>
+        <result property="deviceTypeModel" column="device_type_model"/>
+        <result property="deviceTypeSpec" column="device_type_spec"/>
+        <result property="deviceTypeSupplier" column="device_type_supplier"/>
+        <result property="deviceTypeProducer" column="device_type_producer"/>
+        <result property="deviceTypeQuantity" column="device_type_quantity"/>
+        <result property="deviceTypeWarranty" column="device_type_warranty"/>
+    </resultMap>
+    <sql id="Base_Column_Type">
+        device_type_id,device_type_name,device_type_model,device_type_spec,device_type_supplier,
+        device_type_producer,device_type_quantity,device_type_warranty
+    </sql>
+    <select id="queryAllDeviceType" resultMap="BaseDeviceType">
+        select 
+        <include refid="Base_Column_Type"/>
+        from device_type
+    </select>
+
+    <!--新增设备种类-->
+    <insert id="addDeviceType">
+        insert into device_type
+        (device_type_id,device_type_name,device_type_model,device_type_spec,device_type_supplier,device_type_producer,device_type_quantity,device_type_warranty)
+        values
+        (#{deviceType.deviceTypeId},#{deviceType.deviceTypeName},#{deviceType.deviceTypeModel},#{deviceType.deviceTypeSpec},#{deviceType.deviceTypeSupplier},#{deviceType.deviceTypeProducer},#{deviceType.deviceTypeQuantity},#{deviceType.deviceTypeWarranty})
+    </insert>
+
+    <!--编辑设备种类-->
+    <update id="updateDeviceType">
+        UPDATE device_type
+          SET device_type_name = #{deviceType.deviceTypeName},
+          device_type_spec = #{deviceType.deviceTypeSpec},
+          device_type_model = #{deviceType.deviceTypeModel},
+          device_type_producer = #{deviceType.deviceTypeProducer},
+          device_type_supplier = #{deviceType.deviceTypeSupplier},
+          device_type_quantity = #{deviceType.deviceTypeQuantity},
+          device_type_warranty = #{deviceType.deviceTypeWarranty}
+          WHERE
+	        device_type_id = #{deviceType.deviceTypeId}
+    </update>
+
+    <!--删除设备种类-->
+    <delete id="deleteDeviceTypeByIds">
+        delete from device_type
+        where device_type_id in
+        <foreach collection="ids" item="deviceTypeId" separator="," open="(" close=")">
+            #{deviceTypeId}
+        </foreach>
+    </delete>
+
+    <!--通过id查询设备种类-->
+    <select id="selectByDeviceTypeId" resultMap="BaseDeviceType">
+        select
+        <include refid="Base_Column_Type"/>
+        from device_type
+        where device_type_id like '%${searchValue}%'
+    </select>
+
+    <!--通过name查询设备种类-->
+    <select id="selectByDeviceTypeName" resultMap="BaseDeviceType">
+        select
+        <include refid="Base_Column_Type"/>
+        from device_type
+        where device_type_name like '%${searchValue}%'
+    </select>
+
+    <!--查询所有的设备台账-->
+    <resultMap id="BaseDeviceList" type="com.xiazhe.bean.DeviceList">
+        <result column="device_id" property="deviceId"/>
+        <result column="device_name" property="deviceName"/>
+        <result column="device_type_id" property="deviceTypeId"/>
+        <result column="device_status_id" property="deviceStatusId"/>
+        <result column="device_purchase_date" property="devicePurchaseDate"/>
+        <result column="device_status" property="deviceStatus"/>
+        <result column="device_purchase_price" property="devicePurchasePrice"/>
+        <result column="device_manufacture_date" property="deviceManufactureDate"/>
+        <result column="device_service_life" property="deviceServiceLife"/>
+        <result column="device_keeper_id" property="deviceKeeperId"/>
+        <result column="note" property="note"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        device_id,device_name,device_type_id,device_status_id,device_status,device_purchase_date,device_purchase_price,
+        device_manufacture_date,device_service_life,device_keeper_id,note
+    </sql>
+    <select id="queryAllDeviceList" resultMap="BaseDeviceList">
+        select
+        <include refid="Base_Column_List"/>
+        from device
+    </select>
+
+    <!--查询所有的设备例检-->
+    <resultMap id="BaseDeviceCheck" type="com.xiazhe.bean.DeviceCheck">
+        <result column="device_check_id" property="deviceCheckId"/>
+        <result column="device_id" property="deviceId"/>
+        <result column="device_check_emp_id" property="deviceCheckEmpId"/>
+        <result column="device_check_date" property="deviceCheckDate"/>
+        <result column="device_check_result" property="deviceCheckResult"/>
+        <result column="device_check_fault_id" property="deviceCheckFaultId"/>
+        <result column="note" property="note"/>
+    </resultMap>
+    <sql id="Base_Column_Check">
+        device_check_id,device_id,device_check_emp_id,device_check_date,device_check_result,device_check_fault_id
+    </sql>
+    <select id="queryAllDeviceCheck" resultMap="BaseDeviceCheck">
+        select
+        <include refid="Base_Column_Check"/>
+        from device_check
+    </select>
+
+</mapper>

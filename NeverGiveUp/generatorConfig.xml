@@ -11,9 +11,9 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/mydb3?characterEncoding=UTF-8"
+                        connectionURL="jdbc:mysql://localhost:3306/production_ssm?characterEncoding=UTF-8"
                         userId="root"
-                        password="9527">
+                        password="123456">
         </jdbcConnection>
         <!--&lt;!&ndash;
             for oracle
@@ -80,18 +80,6 @@
                selectByExampleQueryId="false" ></table>-->
 
         <!-- 指定数据库表，要生成哪些表，就写哪些表，要和数据库中对应，不能写错！ -->
-
-
-        <table tableName="material_receive"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               selectByExampleQueryId="false"
-
-
-               domainObjectName="MaterialReceive"/>
-
 
 
 

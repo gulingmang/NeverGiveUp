@@ -1,14 +1,22 @@
-package com.xiazhe.service;
+package com.xiazhe.service.DepartmentService;
 
 import com.xiazhe.bean.Department;
 import com.xiazhe.mapper.DepartmentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class DepartmentServiceImpl implements DepartmentService {
+public class DepartmentServiceImpl implements DepartMentService {
     @Autowired
     DepartmentMapper departmentMapper;
+
+    @Override
+    public List<Department> getList() {
+        List<Department> list = departmentMapper.getList();
+        return list;
+    }
 
     public int addDepartment(Department department) {
         return departmentMapper.addDepartment(department);
@@ -16,6 +24,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     public int deleteDepartments(String[] ids) {
         return departmentMapper.deleteDepartments(ids);
+    }
+
+    public int updateDepartment(Department department) {
+        return departmentMapper.updateDepartment(department);
     }
 
     public Department queryDepartmentById(String id) {
@@ -33,4 +45,5 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department[] queryAllDepartments() {
         return departmentMapper.queryAllDepartments();
     }
+
 }

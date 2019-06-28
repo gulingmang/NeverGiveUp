@@ -1,20 +1,18 @@
 package com.xiazhe.mapper;
 
-import com.xiazhe.bean.Technology.Technology;
+import com.xiazhe.bean.Technology;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface TechnologyMapper {
-    int deleteByPrimaryKey(String technologyId);
 
-    int insert(Technology record);
+    Technology[] selectByPrimaryKey(@Param("searchValue") String technologyId);//通过一个id进行模糊查询
+    int deleteByPrimaryKey(@Param("ids") String[] technologyIds);//通过id批量删除工艺
 
-    int insertSelective(Technology record);
+    int insert(Technology record);//插入单个工艺
+    List<Technology> queryAllTechnology();//查询所有工艺
 
-    Technology selectByPrimaryKey(String technologyId);
-    List<Technology> queryTechnologyList();
-
-    int updateByPrimaryKeySelective(Technology record);
-
-    int updateByPrimaryKey(Technology record);
+    Technology queryTechnologyById(String technologyId);//查询工艺信息除了id
+    int updateByPrimaryKey(Technology record);//通过id修改工艺
 }

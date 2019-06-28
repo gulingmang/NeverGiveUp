@@ -17,4 +17,5 @@ public interface UnQualifyApplyMapper {
 
     int updateByPrimaryKey(UnQualifyApply record);
     public List<UnQualifyApply> getApplyList();
+
 }
