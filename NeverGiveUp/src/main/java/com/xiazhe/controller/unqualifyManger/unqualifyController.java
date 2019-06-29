@@ -130,4 +130,10 @@ public class unqualifyController {
         List<UnQualifyApply> list = myapplyservice.serachIdLikeBySId(searchValue);
         return list;
     }
+    @RequestMapping("/pMeasureCheck/*_judge")
+    @ResponseBody
+    public String myjudge() {
+        return "";
+    }
+
 }
