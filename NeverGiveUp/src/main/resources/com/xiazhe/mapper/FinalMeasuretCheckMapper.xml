@@ -151,4 +151,20 @@ on a.emp_id=b.emp_id
             </foreach>
         </where>
     </delete>
+    <update id="UpdateNote" >
+        update  final_measuret_check set note=#{note}
+        where f_measure_check_id=#{fMeasureCheckId}
+    </update>
+    <select id="getlistByFCid" resultMap="MyMap">
+        select  a.*,b.emp_name from final_measuret_check a
+left join employee b
+on a.emp_id=b.emp_id
+where a.f_measure_check_id like "%"#{abc}"%"
+    </select>
+    <select id="getlistByOid"  resultMap="MyMap">
+        select  a.*,b.emp_name from final_measuret_check a
+left join employee b
+on a.emp_id=b.emp_id
+where a.order_id like "%"#{abc}"%"
+    </select>
 </mapper>

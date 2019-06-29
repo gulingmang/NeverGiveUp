@@ -33,4 +33,19 @@ public class FinalMeasuretServiceImpl implements FinalMeasuretService {
     public int deletebyIds(String[] ids) {
         return mymapper.deletebyIds(ids);
     }
+
+    @Override
+    public int UpdateNote(String fMeasureCheckId, String note) {
+        return mymapper.UpdateNote(fMeasureCheckId,note);
+    }
+
+    @Override
+    public List<FinalMeasuretCheck> getlistByFCid(String searchValue) {
+        return mymapper.getlistByFCid(searchValue);
+    }
+
+    @Override
+    public List<FinalMeasuretCheck> getlistByOid(String searchValue) {
+        return mymapper.getlistByOid(searchValue);
+    }
 }

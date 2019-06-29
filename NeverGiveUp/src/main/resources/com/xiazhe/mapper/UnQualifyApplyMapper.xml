@@ -172,4 +172,8 @@
    on a.product_id=b.product_id
    where a.unqualify_apply_id like "%"#{searchValue}"%"
     </select>
+    <update id="updateNote" >
+        update unqualify_apply set note=#{note}
+        where unqualify_apply_id=#{unqualifyApplyId}
+    </update>
 </mapper>

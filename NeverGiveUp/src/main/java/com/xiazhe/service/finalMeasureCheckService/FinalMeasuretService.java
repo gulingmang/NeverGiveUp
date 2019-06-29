@@ -12,4 +12,10 @@ public interface FinalMeasuretService {
     int deletebyId(FinalMeasuretCheck fmc);
 
     int deletebyIds(String[] ids);
+
+    int UpdateNote(String fMeasureCheckId, String note);
+
+    List<FinalMeasuretCheck> getlistByFCid(String searchValue);
+
+    List<FinalMeasuretCheck> getlistByOid(String searchValue);
 }

@@ -21,4 +21,6 @@ public interface UnQualifyApplyMapper {
     int deleteByIds(@Param("ids") String[] ids);
     List<UnQualifyApply> serachLikeByName(@Param("searchValue") String searchValue);
     List<UnQualifyApply> serachIdLikeBySId(@Param("searchValue")String searchValue);
+
+    int updateNote(@Param("unqualifyApplyId")String unqualifyApplyId,@Param("note") String note);
 }
