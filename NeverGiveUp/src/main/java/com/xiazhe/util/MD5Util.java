@@ -26,10 +26,11 @@ public class MD5Util {
         return hexDigits[d1] + hexDigits[d2];
     }
 
-    public static String MD5Encode(String origin)  {
+    public static String MD5Encode(String origin) {
+      String  origin1 = origin+"nijiugaosuwoshuaibushuai";
         String resultString = null;
 
-        resultString = new String(origin);
+        resultString = new String(origin1);
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
