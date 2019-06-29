@@ -11,6 +11,7 @@ import com.xiazhe.bean.json.QueryJsonBean;
 import com.xiazhe.service.DepartmentService.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -127,10 +128,18 @@ public class DepartmentController {
         return departmentQueryJsonBean;
     }
 
+    /*获取部门数据列表*/
     @RequestMapping("/get_data")
     @ResponseBody
-    public List<Department> getdata1111() {
+    public List<Department> getData() {
         List<Department> list = departmentService.getList();
         return list;
+    }
+
+    /*REST风格回显部门数据*/
+    @RequestMapping("/get/{id}")
+    @ResponseBody
+    public Department getDepartment(@PathVariable String id){
+        return departmentService.queryDepartmentById(id);
     }
 }
