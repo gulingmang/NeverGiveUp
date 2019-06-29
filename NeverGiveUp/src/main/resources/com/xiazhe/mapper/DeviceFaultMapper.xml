@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiazhe.mapper.DeviceFaultMapper">
+    <!--新增故障-->
+    <insert id="addDeviceFault">
+        insert into device_fault
+        (device_fault_id,device_id,device_fault_cause,device_fault_detail,device_fault_date,device_fault_maintenance)
+        values (#{fault.deviceFaultId},#{fault.deviceId},#{fault.deviceFaultCause},#{fault.deviceFaultDetail},#{fault.deviceFaultDate},#{fault.deviceFaultMaintenance})
+    </insert>
+
+    <!--批量删除故障-->
+    <delete id="deleteDeviceFaults">
+        delete from device_fault where device_fault_id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--更新故障-->
+    <update id="updateDeviceFault">
+        update device_fault set
+        device_id=#{fault.deviceId},
+        device_fault_cause=#{fault.deviceFaultCause},
+        device_fault_cause=#{fault.deviceFaultDetail},
+        device_fault_date=#{fault.deviceFaultDate},
+        device_fault_maintenance=#{fault.deviceFaultMaintenance}
+        where device_fault_id=#{fault.deviceFaultId}
+    </update>
+
+    <!--查询结果-->
+    <sql id="queryFaultResult">
+        device_fault_id as deviceFaultId,
+        device_fault.device_id as deviceId,
+        device_name as deviceName,
+        device_fault_cause as deviceFaultCause,
+        device_fault_detail as deviceFaultDetail,
+        device_fault_date as deviceFaultDate,
+        device_fault_maintenance as deviceFaultMaintenance
+    </sql>
+    <!--根据id查询故障-->
+    <select id="queryDeviceFaultById" resultType="com.xiazhe.bean.DeviceFault">
+        select
+        <include refid="queryFaultResult"/>
+        from device_fault
+        left join device on device_fault.device_id=device.device_id
+        where device_fault_id = #{id}
+    </select>
+
+    <!--根据id模糊查询故障-->
+    <select id="queryDeviceFaultsByFaultId" resultType="com.xiazhe.bean.DeviceFault">
+        select
+        <include refid="queryFaultResult"/>
+        from device_fault
+        left join device on device_fault.device_id=device.device_id
+        where device_fault_id like '%${id}%'
+    </select>
+
+    <!--根据设备名称模糊查询故障-->
+    <select id="queryDeviceFaultsByDeviceName" resultType="com.xiazhe.bean.DeviceFault">
+        select
+        <include refid="queryFaultResult"/>
+        from device_fault
+        left join device on device_fault.device_id=device.device_id
+        where device_name like '%${name}%'
+    </select>
+
+    <!--查询所有故障-->
+    <select id="queryAllDeviceFaults" resultType="com.xiazhe.bean.DeviceFault">
+        select
+        <include refid="queryFaultResult"/>
+        from device_fault
+        left join device on device_fault.device_id=device.device_id
+    </select>
+
+ </mapper>

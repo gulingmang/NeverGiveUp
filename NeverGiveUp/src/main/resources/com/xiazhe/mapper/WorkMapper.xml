@@ -103,4 +103,40 @@
       rating = #{rating,jdbcType=INTEGER}
     where work_id = #{workId,jdbcType=VARCHAR}
   </update>
+
+  <resultMap id="planWorkBeanMap" type="com.xiazhe.bean.plan.PlanWorkBean">
+    <result property="workId" jdbcType="VARCHAR" column="work_id"/>
+    <result property="processNumber" jdbcType="VARCHAR" column="process_number"/>
+    <result property="rating" jdbcType="INTEGER" column="rating"/>
+    <association property="product" column="product_id" select="com.xiazhe.mapper.ProductMapper.selectByPrimaryKey"/>
+    <association property="process" column="process_id" select="com.xiazhe.mapper.ProcessMapper.queryPlanProcessById"/>
+    <association property="device" column="device_id" select="com.xiazhe.mapper.DeviceMapper.selectByPrimaryKey"/>
+  </resultMap>
+
+  <select id="queryWorkList" resultMap="planWorkBeanMap">
+    select work_id ,process_number,rating,process_id,product_id,device_id from work
+  </select>
+
+
+  <select id="serachWorks" resultMap="planWorkBeanMap">
+    select work_id ,process_number,rating,process_id,product_id,device_id from work
+    where
+    <choose>
+      <when test="op=='workId'">
+        work_id like #{value}
+      </when>
+
+      <when test="op=='productId'">
+        product_id like #{value}
+      </when>
+
+      <when test="op=='deviceId'">
+        device_id like #{value}
+      </when>
+
+      <when test="op=='processId'">
+        process_id like #{value}
+      </when>
+    </choose>
+  </select>
 </mapper>

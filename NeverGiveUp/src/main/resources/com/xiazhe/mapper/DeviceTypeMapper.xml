@@ -34,7 +34,7 @@
     </insert>
 
     <!--编辑设备种类-->
-    <update id="updateDeviceType">
+    <update id="editDeviceList">
         UPDATE device_type
           SET device_type_name = #{deviceType.deviceTypeName},
           device_type_spec = #{deviceType.deviceTypeSpec},

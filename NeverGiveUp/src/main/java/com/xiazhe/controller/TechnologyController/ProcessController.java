@@ -129,4 +129,17 @@ public class ProcessController {
         result.setStatus(200);
         return result;
     }
+
+    /**
+     *@author: Draven
+     *@date: 2019/6/28
+     *@description: 获取process的数据
+     *@param:
+     *@return: 返回processlist
+     */
+    @RequestMapping("get_data")
+    @ResponseBody
+    public List<Process> getProcessData(){
+       return processService.queryAllProcess();
+    }
 }
