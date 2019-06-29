@@ -45,4 +45,9 @@ public class UnqualifyServiceImpl implements UnqualifyService {
     public List<UnQualifyApply> serachIdLikeBySId(String searchValue) {
       return  mymapper.serachIdLikeBySId(searchValue);
     }
+
+    @Override
+    public int updateNote(String unqualifyApplyId, String note) {
+        return mymapper.updateNote(unqualifyApplyId,note);
+    }
 }

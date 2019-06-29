@@ -15,4 +15,6 @@ public interface UnqualifyService {
     List<UnQualifyApply> serachLikeByName(String searchValue);
 
     List<UnQualifyApply> serachIdLikeBySId(String searchValue);
+
+    int updateNote(String unqualifyApplyId, String note);
 }

@@ -15,4 +15,36 @@ public class FinalCountCheckServiceImpl implements  FinalCountCheckService{
 
         return   mymapper.getlist();
     }
+
+    @Override
+    public int insertANew(FinalCountCheck fcc) {
+        int insert = mymapper.insert(fcc);
+        return insert;
+    }
+
+    @Override
+    public int deleteById(FinalCountCheck fcc) {
+
+        return mymapper.deleteByPrimaryKey(fcc.getfCountCheckId());
+    }
+
+    @Override
+    public int deleteByIds(String[] ids) {
+   return mymapper.deleteByIds(ids);
+    }
+
+    @Override
+    public List<FinalCountCheck> getlistByOrderId(String searchValue) {
+        return mymapper.getlistByOrderId(searchValue);
+    }
+
+    @Override
+    public List<FinalCountCheck> getlistByFcountCkeckId(String searchValue) {
+        return mymapper.getlistByFcountCkeckId(searchValue);
+    }
+
+    @Override
+    public int updateNote(String fCountCheckId, String note) {
+        return mymapper.updateNote(fCountCheckId,note);
+    }
 }

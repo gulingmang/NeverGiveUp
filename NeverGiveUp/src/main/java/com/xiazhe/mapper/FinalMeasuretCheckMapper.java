@@ -21,4 +21,10 @@ public interface FinalMeasuretCheckMapper {
     public List<FinalMeasuretCheck> getlist() ;
 
     int deletebyIds(@Param("ids") String[] ids);
+
+    int UpdateNote(@Param("fMeasureCheckId")String fMeasureCheckId, @Param("note") String note);
+
+    List<FinalMeasuretCheck> getlistByFCid(String searchValue);
+
+    List<FinalMeasuretCheck> getlistByOid(String searchValue);
 }

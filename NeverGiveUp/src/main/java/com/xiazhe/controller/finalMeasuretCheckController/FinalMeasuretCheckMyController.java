@@ -91,12 +91,13 @@ public class FinalMeasuretCheckMyController {
         }
 
     }
+
     @RequestMapping("measure/delete_batch")
     @ResponseBody
     public Result measureupdelete_batch(String[] ids) {
         Result result = new Result();
-int ans=myservice.deletebyIds(ids);
-        if (ans!= 0) {
+        int ans = myservice.deletebyIds(ids);
+        if (ans != 0) {
             result.setData(null);
             result.setMsg("Ok");
             result.setStatus(200);
@@ -108,5 +109,35 @@ int ans=myservice.deletebyIds(ids);
             return result;
         }
 
+    }
+    @RequestMapping("measure/update_note")
+    @ResponseBody
+    public Result UpdateNote(String fMeasureCheckId,String note) {
+        Result result = new Result();
+        int ans = myservice.UpdateNote(fMeasureCheckId,note);
+        if (ans != 0) {
+            result.setData(null);
+            result.setMsg("Ok");
+            result.setStatus(200);
+            return result;
+        } else {
+            result.setData(null);
+            result.setMsg("用户编辑失败");
+            result.setStatus(400);
+            return result;
+        }
+
+    }
+    @RequestMapping("measure/search_fMeasureCheck_by_fMeasureCheckId")
+    @ResponseBody
+    public List<FinalMeasuretCheck> getlistByFCid(String  searchValue) {
+        List<FinalMeasuretCheck> getlist = myservice.getlistByFCid(searchValue);
+        return getlist;
+    }
+    @RequestMapping("measure/search_fMeasureCheck_by_orderId")
+    @ResponseBody
+    public List<FinalMeasuretCheck> getlistByOid(String  searchValue) {
+        List<FinalMeasuretCheck> getlist = myservice.getlistByOid(searchValue);
+        return getlist;
     }
 }

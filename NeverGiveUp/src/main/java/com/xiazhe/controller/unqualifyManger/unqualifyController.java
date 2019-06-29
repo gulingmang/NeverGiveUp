@@ -135,5 +135,21 @@ public class unqualifyController {
     public String myjudge() {
         return "";
     }
+    @RequestMapping("fCountCheck/*_judge")
+    @ResponseBody
+    public String myjudge2() {
+        return "";
+    }
 
+
+    @RequestMapping("unqualify/update_note")
+    @ResponseBody
+    public Result updateNote(String unqualifyApplyId,String note) {
+  int ans=myapplyservice.updateNote(unqualifyApplyId,note);
+        Result result = new Result();
+        result.setData(null);
+        result.setMsg("Ok111");
+        result.setStatus(200);
+        return result;
+    }
 }
