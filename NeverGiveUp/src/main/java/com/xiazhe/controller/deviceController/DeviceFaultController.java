@@ -120,4 +120,5 @@ public class DeviceFaultController {
         departmentQueryJsonBean.setRows(deviceFaultList);
         return departmentQueryJsonBean;
     }
+
 }

@@ -126,7 +126,7 @@ public class DepartmentController {
         departmentQueryJsonBean.setTotal((int)info.getTotal());
         return departmentQueryJsonBean;
     }
-    @RequestMapping("department/get_data")
+    @RequestMapping("/get_data")
     @ResponseBody
     public List<Department> getdata1111() {
         List<Department> list = departmentService.getList();

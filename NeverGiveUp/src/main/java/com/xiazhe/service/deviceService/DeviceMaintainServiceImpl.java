@@ -22,8 +22,9 @@ public class DeviceMaintainServiceImpl implements DeviceMaintainService {
     }
 
     @Override
-    public int insertSelective(DeviceMaintain record) {
-        return deviceMaintainMapper.insertSelective(record);
+    public int editDeviceMaintain(DeviceMaintain deviceMaintain) {
+
+        return deviceMaintainMapper.editDeviceMaintain(deviceMaintain);
     }
 
     @Override
@@ -34,16 +35,6 @@ public class DeviceMaintainServiceImpl implements DeviceMaintainService {
     @Override
     public List<DeviceMaintain> selectBydeviceFaultId(String deviceMaintainId) {
         return deviceMaintainMapper.selectBydeviceFaultId(deviceMaintainId);
-    }
-
-    @Override
-    public int updateByPrimaryKeySelective(DeviceMaintain record) {
-        return deviceMaintainMapper.updateByPrimaryKeySelective(record);
-    }
-
-    @Override
-    public int updateByPrimaryKey(DeviceMaintain record) {
-        return deviceMaintainMapper.updateByPrimaryKey(record);
     }
 
     @Override

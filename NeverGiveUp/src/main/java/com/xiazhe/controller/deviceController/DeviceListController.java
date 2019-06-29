@@ -54,14 +54,13 @@ public class DeviceListController {
     }
     @RequestMapping("/insert")
     @ResponseBody
-    public Result addDeviceList(String deviceId, String deviceName, String deviceListId, String deviceStatusId, Date devicePurchaseDate, BigDecimal devicePurchasePrice, Date deviceManufactureDate, Date deviceServiceLife, String deviceKeeperId, String note){
-        deviceListService.addDeviceList(new DeviceList(deviceId,deviceName,deviceListId,deviceStatusId,devicePurchaseDate,devicePurchasePrice,deviceManufactureDate,deviceServiceLife,deviceKeeperId,note));
+    public Result addDeviceList(String deviceId, String deviceName,String deviceTypeId, String deviceStatusId, String deviceStatus,Date devicePurchaseDate, BigDecimal devicePurchasePrice, Date deviceManufactureDate, Date deviceServiceLife, String deviceKeeperId, String note){
+        deviceListService.addDeviceList(new DeviceList(deviceId,deviceName,deviceTypeId,deviceStatusId,deviceStatus,devicePurchaseDate,devicePurchasePrice,deviceManufactureDate,deviceServiceLife,deviceKeeperId,note));
         return new Result(200,"OK",null);
     }
 
     /*编辑*/
-    /*4.deviceList设备种类编辑*/
-    //4.1跳转至编辑页面
+    //跳转至编辑页面
     @RequestMapping("/edit_judge")
     @ResponseBody
     public String editDeviceList1(){
@@ -71,16 +70,16 @@ public class DeviceListController {
     public String editDeviceList2(){
         return "/WEB-INF/jsp/deviceList_edit.jsp";
     }
-    //4.2编辑操作
+    //编辑操作
     @RequestMapping("/update")
     @ResponseBody
-    public Result editDeviceList(String deviceId, String deviceName, String deviceListId, String deviceStatusId, Date devicePurchaseDate, BigDecimal devicePurchasePrice, Date deviceManufactureDate, Date deviceServiceLife, String deviceKeeperId, String note){
-        deviceListService.editDeviceList(new DeviceList(deviceId,deviceName,deviceListId,deviceStatusId,devicePurchaseDate,devicePurchasePrice,deviceManufactureDate,deviceServiceLife,deviceKeeperId,note));
+    public Result editDeviceList(String deviceId, String deviceName, String deviceTypeId, String deviceStatusId, Date devicePurchaseDate, BigDecimal devicePurchasePrice, Date deviceManufactureDate, Date deviceServiceLife, String deviceKeeperId, String note){
+        deviceListService.editDeviceList(new DeviceList(deviceId,deviceName,deviceTypeId,deviceStatusId,devicePurchaseDate,devicePurchasePrice,deviceManufactureDate,deviceServiceLife,deviceKeeperId,note));
         return new Result(200,"OK",null);
     }
 
-    /*5.deviceList设备种类删除*/
-    //5.1跳转至删除页面
+    /*eviceList设备台账删除*/
+    //跳转至删除页面
     @RequestMapping("/delete_judge")
     @ResponseBody
     public String deleteDeviceList1(){
@@ -95,8 +94,8 @@ public class DeviceListController {
         return new Result(200,"OK",null);
     }
 
-    /*6.deviceList设备种类查询*/
-    //6.1通过设备种类编号deviceListId模糊查询
+    /*6.deviceList设备台账查询*/
+    //6.1通过设备台账编号deviceListId模糊查询
     @RequestMapping("/search_device_by_deviceId")
     @ResponseBody
     public QueryJsonBean selectByDeviceListId(String searchValue,int page,int rows){
@@ -108,7 +107,7 @@ public class DeviceListController {
         deviceListQueryJsonBean.setTotal((int)resultPage.getTotal());
         return deviceListQueryJsonBean;
     }
-    //6.2通过设备种类名称deviceListName模糊查询
+    //6.2通过设备台账名称deviceListName模糊查询
     @RequestMapping("/search_device_by_deviceName")
     @ResponseBody
     public QueryJsonBean selectByDeviceListName(String searchValue,int page,int rows){
@@ -120,18 +119,6 @@ public class DeviceListController {
         deviceListQueryJsonBean.setTotal((int)resultPage.getTotal());
         return deviceListQueryJsonBean;
     }
-
-   /* @RequestMapping("/search_device_by_deviceTypeName")
-    @ResponseBody
-    public QueryJsonBean selectByDeviceListSpecName(String searchValue,int page,int rows){
-        PageHelper pageHelper = new PageHelper();
-        Page<DeviceList> resultPage = pageHelper.startPage(page, rows);
-        List<DeviceList> deviceLists = deviceListService.selectByDeviceListSpecName(searchValue);
-        QueryJsonBean<DeviceList> deviceListQueryJsonBean = new QueryJsonBean<>();
-        deviceListQueryJsonBean.setRows(deviceLists);
-        deviceListQueryJsonBean.setTotal((int)resultPage.getTotal());
-        return deviceListQueryJsonBean;
-    }*/
     
     //get_data获取数据
     @RequestMapping("/get_data")
