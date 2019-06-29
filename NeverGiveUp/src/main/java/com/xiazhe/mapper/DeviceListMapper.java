@@ -27,4 +27,5 @@ public interface DeviceListMapper {
     /*通过设备种类名称查询设备台账*/
     List<DeviceList> selectByDeviceListSpecName(@Param("searchValue") String searchValue);
 
+    DeviceList selectOneDeviceListById(@Param("id") String id);
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class DeviceFaultServiceImpl implements DeviceFaultService {
 
@@ -46,5 +47,10 @@ public class DeviceFaultServiceImpl implements DeviceFaultService {
     @Override
     public List<DeviceFault> queryAllDeviceFaults() {
         return deviceFaultMapper.queryAllDeviceFaults();
+    }
+
+    @Override
+    public DeviceFault selectOneDeviceFaultById(String id) {
+        return deviceFaultMapper.selectOneDeviceFaultById(id);
     }
 }

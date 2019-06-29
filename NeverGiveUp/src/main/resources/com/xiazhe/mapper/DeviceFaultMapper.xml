@@ -72,4 +72,12 @@
         left join device on device_fault.device_id=device.device_id
     </select>
 
- </mapper>
+    <select id="selectOneDeviceFaultById" resultType="com.xiazhe.bean.DeviceFault">
+        select
+        <include refid="queryFaultResult"/>
+        from device_fault
+        left join device on device_fault.device_id=device.device_id
+        where device_fault_id = #{id}
+    </select>
+
+</mapper>

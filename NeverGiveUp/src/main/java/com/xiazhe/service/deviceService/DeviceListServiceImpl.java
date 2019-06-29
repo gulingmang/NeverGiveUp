@@ -46,4 +46,14 @@ public class DeviceListServiceImpl implements DeviceListService {
         return deviceListMapper.selectByDeviceListName(searchValue);
     }
 
+    @Override
+    public List<DeviceList> selectByDeviceListSpecName(String searchValue) {
+        return deviceListMapper.selectByDeviceListSpecName(searchValue);
+    }
+
+    @Override
+    public DeviceList selectOneDeviceListById(String id) {
+        return deviceListMapper.selectOneDeviceListById(id);
+    }
+
 }

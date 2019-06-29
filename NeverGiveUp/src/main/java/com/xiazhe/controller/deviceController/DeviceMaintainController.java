@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+/**
+ * deviceMaintain设备维修
+ * 包括显示页面及页面数据内容、新增、编辑、删除、查询、分页操作
+ */
 @Controller
 @RequestMapping("deviceMaintain")
 public class DeviceMaintainController {

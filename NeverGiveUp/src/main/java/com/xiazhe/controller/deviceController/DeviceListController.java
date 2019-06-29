@@ -10,6 +10,7 @@ import com.xiazhe.service.deviceService.DeviceListService;
 import com.xiazhe.service.deviceService.DeviceListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -71,7 +72,7 @@ public class DeviceListController {
         return "/WEB-INF/jsp/deviceList_edit.jsp";
     }
     //编辑操作
-    @RequestMapping("/update")
+    @RequestMapping({"/update","/update_all"})
     @ResponseBody
     public Result editDeviceList(String deviceId, String deviceName, String deviceTypeId, String deviceStatusId, Date devicePurchaseDate, BigDecimal devicePurchasePrice, Date deviceManufactureDate, Date deviceServiceLife, String deviceKeeperId, String note){
         deviceListService.editDeviceList(new DeviceList(deviceId,deviceName,deviceTypeId,deviceStatusId,devicePurchaseDate,devicePurchasePrice,deviceManufactureDate,deviceServiceLife,deviceKeeperId,note));
@@ -86,7 +87,7 @@ public class DeviceListController {
         return "{}";
     }
 
-    //5.2删除操作
+    //删除操作
     @RequestMapping("/delete_batch")
     @ResponseBody
     public Result deleteDeviceListByIds(String[] ids){
@@ -94,8 +95,8 @@ public class DeviceListController {
         return new Result(200,"OK",null);
     }
 
-    /*6.deviceList设备台账查询*/
-    //6.1通过设备台账编号deviceListId模糊查询
+    /*deviceList设备台账查询*/
+    //通过设备台账编号deviceListId模糊查询
     @RequestMapping("/search_device_by_deviceId")
     @ResponseBody
     public QueryJsonBean selectByDeviceListId(String searchValue,int page,int rows){
@@ -107,7 +108,7 @@ public class DeviceListController {
         deviceListQueryJsonBean.setTotal((int)resultPage.getTotal());
         return deviceListQueryJsonBean;
     }
-    //6.2通过设备台账名称deviceListName模糊查询
+    //通过设备台账名称deviceListName模糊查询
     @RequestMapping("/search_device_by_deviceName")
     @ResponseBody
     public QueryJsonBean selectByDeviceListName(String searchValue,int page,int rows){
@@ -119,7 +120,19 @@ public class DeviceListController {
         deviceListQueryJsonBean.setTotal((int)resultPage.getTotal());
         return deviceListQueryJsonBean;
     }
-    
+
+    /*通过设备种类模糊查询*/
+    @RequestMapping("/search_device_by_deviceTypeName")
+    @ResponseBody
+    public QueryJsonBean selectByDeviceListSpecName(String searchValue,int page,int rows){
+        PageHelper pageHelper = new PageHelper();
+        Page<DeviceList> resultPage = pageHelper.startPage(page, rows);
+        List<DeviceList> deviceLists = deviceListService.selectByDeviceListSpecName(searchValue);
+        QueryJsonBean<DeviceList> deviceListQueryJsonBean = new QueryJsonBean<>();
+        deviceListQueryJsonBean.setRows(deviceLists);
+        deviceListQueryJsonBean.setTotal((int)resultPage.getTotal());
+        return deviceListQueryJsonBean;
+    }
     //get_data获取数据
     @RequestMapping("/get_data")
     @ResponseBody
@@ -127,5 +140,11 @@ public class DeviceListController {
         return deviceListService.queryAllDeviceList();
     }
 
+    //rest风格
+    @RequestMapping("/get/{id}")
+    @ResponseBody
+    public DeviceList restType(@PathVariable String id){
+        return deviceListService.selectOneDeviceListById(id);
+    }
 
 }

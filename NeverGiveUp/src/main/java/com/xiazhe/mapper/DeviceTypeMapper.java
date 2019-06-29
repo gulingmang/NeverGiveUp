@@ -16,7 +16,7 @@ public interface DeviceTypeMapper {
     int addDeviceType(@Param("deviceType") DeviceType deviceType);
 
     /*编辑设备种类*/
-    int updateDeviceType(@Param("deviceType") DeviceType deviceType);
+    int editDeviceType(@Param("deviceType") DeviceType deviceType);
 
     /*删除设备种类*/
     int deleteDeviceTypeByIds(@Param("ids") String[] deviceTypeIds);
@@ -24,7 +24,8 @@ public interface DeviceTypeMapper {
     /*通过设备种类id模糊查询设备种类*/
     DeviceType[] selectByDeviceTypeId(@Param("searchValue") String searchValue);
 
-    /*通过设备种类name模糊查询设备种类*/
+    /*通过设备name模糊查询设备种类*/
     DeviceType[] selectByDeviceTypeName(@Param("searchValue") String searchValue);
 
+    DeviceType selectOneDeviceTypeById(@Param("id") String id);
 }

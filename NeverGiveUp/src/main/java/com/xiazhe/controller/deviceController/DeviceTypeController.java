@@ -8,6 +8,7 @@ import com.xiazhe.bean.json.QueryJsonBean;
 import com.xiazhe.service.deviceService.DeviceTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -85,7 +86,7 @@ public class DeviceTypeController {
         return "/WEB-INF/jsp/deviceType_edit.jsp";
     }
     //4.2编辑操作
-    @RequestMapping("/update")
+    @RequestMapping({"/update","/update_all"})
     @ResponseBody
     public Result editDeviceType(String deviceTypeId,String deviceTypeName,String deviceTypeModel,String deviceTypeSpec,String deviceTypeSupplier,String deviceTypeProducer,Integer deviceTypeQuantity,String deviceTypeWarranty){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -94,7 +95,7 @@ public class DeviceTypeController {
             if (deviceTypeQuantity==null){
                 deviceTypeQuantity=0;
             }
-            deviceTypeService.updateDeviceType(new DeviceType(deviceTypeId,deviceTypeName,deviceTypeModel,deviceTypeSpec,deviceTypeSupplier,deviceTypeProducer,deviceTypeQuantity,parse));
+            deviceTypeService.editDeviceType(new DeviceType(deviceTypeId,deviceTypeName,deviceTypeModel,deviceTypeSpec,deviceTypeSupplier,deviceTypeProducer,deviceTypeQuantity,parse));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -149,4 +150,13 @@ public class DeviceTypeController {
     public List<DeviceType> deviceTypeGetDate(){
         return Arrays.asList(deviceTypeService.queryAllDeviceType());
     }
+
+    //rest风格
+    @RequestMapping("/get/{id}")
+    @ResponseBody
+    public DeviceType restType(@PathVariable String id){
+        return deviceTypeService.selectOneDeviceTypeById(id);
+    }
+
+
 }

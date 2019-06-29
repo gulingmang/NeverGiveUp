@@ -17,6 +17,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * deviceCheck设备例检
+ * 包括显示页面及页面数据内容、新增、编辑、删除、查询、分页操作
+ */
 @Controller
 @RequestMapping("/deviceCheck")
 public class DeviceCheckController {
@@ -30,14 +34,14 @@ public class DeviceCheckController {
         return "{}";
     }
 
-    /*所有故障列表数据*/
+    /*所有列表数据*/
     @RequestMapping("/get_data")
     @ResponseBody
     public List<DeviceCheck> allDeviceCheckListData() {
         return deviceCheckService.queryAllDeviceChecks();
     }
 
-    /*故障列表数据*/
+    /*列表数据*/
     @RequestMapping("/list")
     @ResponseBody
     public QueryJsonBean pageDeviceCheckListData(Integer page, Integer rows) {
@@ -50,19 +54,19 @@ public class DeviceCheckController {
         return departmentQueryJsonBean;
     }
 
-    /*故障添加页面*/
+    /*添加页面*/
     @RequestMapping("/add")
     public String showAddDeviceCheckPage() {
         return "/WEB-INF/jsp/deviceCheck_add.jsp";
     }
 
-    /*故障编辑页面*/
+    /*编辑页面*/
     @RequestMapping("/edit")
     public String showEditDeviceCheckPage() {
         return "/WEB-INF/jsp/deviceCheck_edit.jsp";
     }
 
-    /*插入故障条目*/
+    /*插入例检条目*/
     @RequestMapping("/insert")
     @ResponseBody
     public Result addDeviceCheck(String deviceCheckId, String deviceId, String deviceCheckEmpId, Date deviceCheckDate, String deviceCheckResult, String deviceCheckFaultId, String deviceName, String deviceCheckEmp) {
@@ -71,7 +75,7 @@ public class DeviceCheckController {
         return new Result(200, "OK", null);
     }
 
-    /*修改故障条目*/
+    /*修改例检条目*/
     @RequestMapping("/update")
     @ResponseBody
     public Result updateDeviceCheck(String deviceCheckId, String deviceId, String deviceCheckEmpId, Date deviceCheckDate, String deviceCheckResult, String deviceCheckFaultId, String deviceName, String deviceCheckEmp) {
@@ -80,7 +84,7 @@ public class DeviceCheckController {
         return new Result(200, "OK", null);
     }
 
-    /*批量删除故障*/
+    /*批量删除*/
     @RequestMapping("/delete_batch")
     @ResponseBody
     public Result deleteDeviceCheck(String[] ids) {

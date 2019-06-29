@@ -24,6 +24,8 @@ public interface DeviceListService {
     /*通过name模糊查询设备台账*/
     List<DeviceList> selectByDeviceListName(String searchValue);
 
-    /*通过设备种类名称查询设备台账*//*
-    List<DeviceList> selectByDeviceListSpecName(String searchValue);*/
+    //通过设备种类名称查询设备台账
+    List<DeviceList> selectByDeviceListSpecName(String searchValue);
+
+    DeviceList selectOneDeviceListById(String id);
 }
