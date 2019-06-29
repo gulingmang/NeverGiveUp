@@ -17,4 +17,6 @@ public interface ProcessService {
     int updateByPrimaryKey(Process record);////通过id修改工序
 
     Process[] selectByName(String searchValue);//通过工艺计划id进行模糊查询
+/* 由id得到一个对象*/
+    Process selectById(String id);
 }
