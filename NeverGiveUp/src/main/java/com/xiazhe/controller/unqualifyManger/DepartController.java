@@ -10,7 +10,7 @@ import java.util.List;
 
 @Controller
 public class DepartController {
-    @Autowired
+   /* @Autowired
     DepartmentServiceImpl myservice;
 
     @RequestMapping("department/get_data")
@@ -18,6 +18,6 @@ public class DepartController {
     public List<Department> getdata(){
         List<Department> list = myservice.getList();
         return list;
-    }
+    }*/
 
 }

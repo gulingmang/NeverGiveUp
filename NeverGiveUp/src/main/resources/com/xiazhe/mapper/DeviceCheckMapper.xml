@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiazhe.mapper.DeviceCheckMapper">
+    <!--新增例检-->
+    <insert id="addDeviceCheck">
+        insert into device_check
+        (device_Check_id,device_id,device_check_emp_id,device_Check_date,device_check_result,device_check_fault_id)
+        values (#{Check.deviceCheckId},#{Check.deviceId},#{Check.deviceCheckEmpId},#{Check.deviceCheckDate},#{Check.deviceCheckResult},#{Check.deviceCheckFaultId})
+    </insert>
+
+    <!--批量删除例检-->
+    <delete id="deleteDeviceChecks">
+        delete from device_check where device_check_id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--更新例检-->
+    <update id="updateDeviceCheck">
+        update device_Check set
+        device_id=#{Check.deviceId},
+        device_check_emp_id=#{Check.deviceCheckEmpId},
+        device_Check_date=#{Check.deviceCheckDate},
+        device_check_result=#{Check.deviceCheckResult},
+        device_check_fault_id=#{Check.deviceCheckFaultId}
+        where device_check_id=#{Check.deviceCheckId}
+    </update>
+
+    <!--查询结果-->
+    <sql id="queryCheckResult">
+        device_check.device_Check_id as deviceCheckId,
+        device_Check.device_id as deviceId,
+        device_check.device_check_emp_id as deviceCheckEmpId,
+        device_check.device_Check_date as deviceCheckDate,
+        device_check.device_check_result as deviceCheckResult,
+        device_check.device_check_fault_id as deviceCheckFaultId,
+    </sql>
+
+    <!--根据id模糊查询例检-->
+    <select id="queryDeviceChecksByCheckId" resultType="com.xiazhe.bean.DeviceCheck">
+        select
+        <include refid="queryCheckResult"/>
+        e.emp_name as deviceCheckEmp,
+        d.device_name as deviceName
+        from device_check
+        left join employee e on e.emp_id = device_check.device_check_emp_id
+        left join device d on d.device_id = device_check.device_id
+        where device_check.device_Check_id like '%${id}%'
+    </select>
+
+    <!--根据设备名称模糊查询例检-->
+    <select id="queryDeviceChecksByDeviceName" resultType="com.xiazhe.bean.DeviceCheck">
+        select
+        <include refid="queryCheckResult"/>
+        e.emp_name as deviceCheckEmp,
+        d.device_name as deviceName
+        from device_check
+        left join employee e on e.emp_id = device_check.device_check_emp_id
+        left join device d on d.device_id = device_check.device_id
+        where d.device_name like '%${name}%'
+    </select>
+
+    <!--查询所有例检-->
+    <select id="queryAllDeviceChecks" resultType="com.xiazhe.bean.DeviceCheck">
+        select
+        <include refid="queryCheckResult"/>
+        e.emp_name as deviceCheckEmp,
+        d.device_name as deviceName
+        from device_check
+        left join employee e on e.emp_id = device_check.device_check_emp_id
+        left join device d on d.device_id = device_check.device_id
+    </select>
+
+</mapper>
