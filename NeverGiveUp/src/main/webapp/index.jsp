@@ -17,7 +17,7 @@
 <div class="jumbotron">
     <div class="container">
         <h1 align="center">欢迎光临！</h1><br>
-        <p align="center"><a class="btn btn-primary btn-lg" role="button" >
+        <p align="center"><a class="btn btn-primary btn-lg" role="button" onclick="javascript:window.location.href='erp'">
             探索发现</a>
         </p>
     </div>
