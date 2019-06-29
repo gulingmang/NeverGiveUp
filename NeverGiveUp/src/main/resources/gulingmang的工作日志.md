@@ -12,8 +12,58 @@
       - /deviceType/delete_batch
       - /deviceType/search_deviceType_by_deviceTypeId
       - /deviceType/search_deviceType_by_deviceTypeName
-
-
+ - DeviceList
+      - /device/deviceList
+      - /deviceList/list
+      - /deviceList/add_judge
+      - /deviceList/add
+      - /deviceList/insert
+      - /deviceList/edit_judge
+      - /deviceList/edit
+      - /deviceList/update
+      - /deviceList/delete_judge
+      - /deviceList/delete_batch
+      - /deviceList/search_deviceList_by_deviceListId
+      - /deviceList/search_deviceList_by_deviceListName 
+ - DeviceCheck
+      - /device/deviceCheck
+      - /deviceCheck/list
+      - /deviceCheck/add_judge
+      - /deviceCheck/add
+      - /deviceCheck/insert
+      - /deviceCheck/edit_judge
+      - /deviceCheck/edit
+      - /deviceCheck/update
+      - /deviceCheck/delete_judge
+      - /deviceCheck/delete_batch
+      - /deviceCheck/search_deviceCheck_by_deviceCheckId
+      - /deviceCheck/search_deviceCheck_by_deviceCheckName 
+  - DeviceMaintain
+       - /device/deviceMaintain
+       - /deviceMaintain/list
+       - /deviceMaintain/add_judge
+       - /deviceMaintain/add
+       - /deviceMaintain/insert
+       - /deviceMaintain/edit_judge
+       - /deviceMaintain/edit
+       - /deviceMaintain/update
+       - /deviceMaintain/delete_judge
+       - /deviceMaintain/delete_batch
+       - /deviceMaintain/search_deviceMaintain_by_deviceMaintainId
+       - /deviceMaintain/search_deviceMaintain_by_deviceMaintainName 
+  - DeviceFault
+       - /device/deviceFault
+       - /deviceFault/list
+       - /deviceFault/add_judge
+       - /deviceFault/add
+       - /deviceFault/insert
+       - /deviceFault/edit_judge
+       - /deviceFault/edit
+       - /deviceFault/update
+       - /deviceFault/delete_judge
+       - /deviceFault/delete_batch
+       - /deviceFault/search_deviceFault_by_deviceFaultId
+       - /deviceFault/search_deviceFault_by_deviceFaultName 
 
 # 工作日志
 ## 190627
@@ -42,3 +92,7 @@
       - 增加了设备例检删除方法；
       - 增加了设备例检两种查找方法；
       - 增加了设备例检结果分页；
+
+   - DeviceMaintain
+      - 增加了设备例检修改方法；
+      - 增加了设备例检删除方法；
