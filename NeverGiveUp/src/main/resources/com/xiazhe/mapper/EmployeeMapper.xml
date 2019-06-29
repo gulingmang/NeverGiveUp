@@ -26,6 +26,7 @@
     from employee
     where emp_id = #{empId,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from employee
     where emp_id = #{empId,jdbcType=VARCHAR}
@@ -244,6 +245,14 @@
     where emp_id like '%${empId}%'
   </select>
 
+  <!--查询单个员工-->
+  <select id="selectOneById" parameterType="java.lang.String" resultMap="employeeAndDepartment">
+    select emp_id,emp_name,sex,id_code,birthday,join_date,status,education,degree,major,graduate_school,education_form,department.department_id,department_name,note
+    from employee
+    left join department
+    on employee.department_id=department.department_id
+    where emp_id = #{empId,jdbcType=VARCHAR}
+  </select>
   <!--根据员工姓名进行模糊查询-->
   <select id="queryEmployeesAndDepartmentByEmpName" resultMap="employeeAndDepartment">
     select emp_id,emp_name,sex,id_code,birthday,join_date,status,education,degree,major,graduate_school,education_form,department.department_id,department_name,note
