@@ -30,11 +30,11 @@ public class TechnologyPlanController {
     //显示计划列表
     @RequestMapping("find")
     public String toPlanList(HttpSession httpSession){
-        ArrayList<Object> objects = new ArrayList<>();
+        /*ArrayList<Object> objects = new ArrayList<>();
         objects.add("technologyPlan:add");
         objects.add("technologyPlan:edit");
         objects.add("technologyPlan:delete");
-        httpSession.setAttribute("sysPermissionList",objects);
+        httpSession.setAttribute("sysPermissionList",objects);*/
         return "/WEB-INF/jsp/technologyPlan_list.jsp";
     }
     @RequestMapping("list")
