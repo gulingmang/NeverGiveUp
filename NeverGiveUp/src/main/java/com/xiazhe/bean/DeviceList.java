@@ -21,6 +21,32 @@ public class DeviceList {
     public DeviceList() {
     }
 
+    public DeviceList(String deviceId, String deviceName, String deviceTypeId, String deviceStatusId, String deviceStatus, Date devicePurchaseDate, BigDecimal devicePurchasePrice, Date deviceManufactureDate, Date deviceServiceLife, String deviceKeeperId, String note) {
+        this.deviceId = deviceId;
+        this.deviceName = deviceName;
+        this.deviceTypeId = deviceTypeId;
+        this.deviceStatusId = deviceStatusId;
+        this.deviceStatus = deviceStatus;
+        this.devicePurchaseDate = devicePurchaseDate;
+        this.devicePurchasePrice = devicePurchasePrice;
+        this.deviceManufactureDate = deviceManufactureDate;
+        this.deviceServiceLife = deviceServiceLife;
+        this.deviceKeeperId = deviceKeeperId;
+        this.note = note;
+    }
+
+    public DeviceList(String deviceId, String deviceName, String deviceTypeId, String deviceStatusId, Date devicePurchaseDate, BigDecimal devicePurchasePrice, Date deviceManufactureDate, Date deviceServiceLife, String deviceKeeperId, String note) {
+        this.deviceId = deviceId;
+        this.deviceName = deviceName;
+        this.deviceTypeId = deviceTypeId;
+        this.deviceStatusId = deviceStatusId;
+        this.devicePurchaseDate = devicePurchaseDate;
+        this.devicePurchasePrice = devicePurchasePrice;
+        this.deviceManufactureDate = deviceManufactureDate;
+        this.deviceServiceLife = deviceServiceLife;
+        this.deviceKeeperId = deviceKeeperId;
+        this.note = note;
+    }
 
     public DeviceList(String deviceId, String deviceName, String deviceTypeId, String deviceStatusId, String deviceStatus, Date devicePurchaseDate, BigDecimal devicePurchasePrice, Date deviceManufactureDate, Date deviceServiceLife, String deviceKeeperId, String note, String deviceTypeName, String deviceKeeper) {
         this.deviceId = deviceId;
@@ -36,19 +62,6 @@ public class DeviceList {
         this.note = note;
         this.deviceTypeName = deviceTypeName;
         this.deviceKeeper = deviceKeeper;
-    }
-
-    public DeviceList(String deviceId, String deviceName, String deviceTypeId, String deviceStatusId, Date devicePurchaseDate, BigDecimal devicePurchasePrice, Date deviceManufactureDate, Date deviceServiceLife, String deviceKeeperId, String note) {
-        this.deviceId = deviceId;
-        this.deviceName = deviceName;
-        this.deviceTypeId = deviceTypeId;
-        this.deviceStatusId = deviceStatusId;
-        this.devicePurchaseDate = devicePurchaseDate;
-        this.devicePurchasePrice = devicePurchasePrice;
-        this.deviceManufactureDate = deviceManufactureDate;
-        this.deviceServiceLife = deviceServiceLife;
-        this.deviceKeeperId = deviceKeeperId;
-        this.note = note;
     }
 
     public String getDeviceId() {
