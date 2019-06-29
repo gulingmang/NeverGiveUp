@@ -23,4 +23,8 @@ public interface WorkMapper {
     List<PlanWorkBean> queryWorkList();
 
     List<Work> serachWorks(@Param("value") String value, @Param("op")String op);
+
+    List<Work> getWorkData();
+
+    PlanWorkBean getPlanWorkBeanById(String id);
 }

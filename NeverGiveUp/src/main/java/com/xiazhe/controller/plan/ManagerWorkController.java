@@ -9,6 +9,7 @@ import com.xiazhe.service.plan.WorkServices;
 import org.mybatis.generator.codegen.mybatis3.javamapper.elements.sqlprovider.ProviderApplyWhereMethodGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,37 +23,37 @@ public class ManagerWorkController {
     WorkServices workServices;
 
     @RequestMapping("find")
-    public String findWork(){
+    public String findWork() {
         return "/WEB-INF/jsp/work_list.jsp";
     }
 
     @RequestMapping("list")
     @ResponseBody
-    public QueryJsonBean<PlanWorkBean>  getWorkList(int page, int rows){
-        QueryJsonBean<PlanWorkBean> queryJsonBean = workServices.queryWorkPages(page,rows);
-        return  queryJsonBean;
+    public QueryJsonBean<PlanWorkBean> getWorkList(int page, int rows) {
+        QueryJsonBean<PlanWorkBean> queryJsonBean = workServices.queryWorkPages(page, rows);
+        return queryJsonBean;
     }
 
     @RequestMapping("/*_judge")
     @ResponseBody
-    public String workJudge(){
+    public String workJudge() {
         return null;
     }
 
     @RequestMapping("add")
-    public String work(){
+    public String work() {
         return "/WEB-INF/jsp/work_add.jsp";
     }
 
     @RequestMapping("insert")
     @ResponseBody
-    public Result addNewWork(Work work){
+    public Result addNewWork(Work work) {
         int i = workServices.insertNewWork(work);
         Result result = new Result();
-        if(i>0){
+        if (i > 0) {
             result.setStatus(200);
             result.setMsg("ok");
-        }else{
+        } else {
             result.setStatus(500);
             result.setMsg("error");
         }
@@ -60,19 +61,19 @@ public class ManagerWorkController {
     }
 
     @RequestMapping("edit")
-    public String edit(){
+    public String edit() {
         return "/WEB-INF/jsp/work_edit.jsp";
     }
 
     @RequestMapping("update_all")
     @ResponseBody
-    public Result updateWork(Work work){
+    public Result updateWork(Work work) {
         int i = workServices.updateWork(work);
         Result result = new Result();
-        if(i>0){
+        if (i > 0) {
             result.setStatus(200);
             result.setMsg("ok");
-        }else{
+        } else {
             result.setStatus(500);
             result.setMsg("error");
         }
@@ -81,13 +82,13 @@ public class ManagerWorkController {
 
     @RequestMapping("delete_batch")
     @ResponseBody
-    public Result deleteWorks(String[] ids){
+    public Result deleteWorks(String[] ids) {
         int i = workServices.deleteWorks(ids);
         Result result = new Result();
-        if(i>0){
+        if (i > 0) {
             result.setStatus(200);
             result.setMsg("ok");
-        }else{
+        } else {
             result.setStatus(500);
             result.setMsg("error");
         }
@@ -96,27 +97,42 @@ public class ManagerWorkController {
 
     @RequestMapping("search_work_by_workId")
     @ResponseBody
-    public QueryJsonBean<Work> searchWorksByWorkId(String searchValue, int page, int rows){
-        return workServices.searchWorks(searchValue,"workId",page,rows);
+    public QueryJsonBean<Work> searchWorksByWorkId(String searchValue, int page, int rows) {
+        return workServices.searchWorks(searchValue, "workId", page, rows);
     }
 
 
     @RequestMapping("search_work_by_workProduct")
     @ResponseBody
-    public QueryJsonBean<Work> searchWorksByProductId(String searchValue, int page, int rows){
-        return workServices.searchWorks(searchValue,"productId",page,rows);
+    public QueryJsonBean<Work> searchWorksByProductId(String searchValue, int page, int rows) {
+        return workServices.searchWorks(searchValue, "productId", page, rows);
     }
 
     @RequestMapping("search_work_by_workDevice")
     @ResponseBody
-    public QueryJsonBean<Work> searchWorksByDeviceId(String searchValue, int page, int rows){
-        return workServices.searchWorks(searchValue,"deviceId",page,rows);
+    public QueryJsonBean<Work> searchWorksByDeviceId(String searchValue, int page, int rows) {
+        return workServices.searchWorks(searchValue, "deviceId", page, rows);
     }
 
     @RequestMapping("search_work_by_workProcess")
     @ResponseBody
-    public QueryJsonBean<Work> searchWorksByProcessId(String searchValue, int page, int rows){
-        return workServices.searchWorks(searchValue,"processId",page,rows);
+    public QueryJsonBean<Work> searchWorksByProcessId(String searchValue, int page, int rows) {
+        return workServices.searchWorks(searchValue, "processId", page, rows);
     }
+
+    @RequestMapping("get_data")
+    @ResponseBody
+    public List<Work> getWorkData() {
+        return workServices.getWorkData();
+    }
+
+    @RequestMapping("get/{id}")
+    @ResponseBody
+    public PlanWorkBean getWork(@PathVariable("id")String id){
+        PlanWorkBean planWorkBean = workServices.getWorkById(id);
+        return planWorkBean;
+    }
+
+
 
 }

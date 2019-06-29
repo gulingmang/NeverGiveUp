@@ -74,4 +74,16 @@ public class WorkServicesImpl implements WorkServices {
         queryJsonBean.setRows(list);
         return queryJsonBean;
     }
+
+    @Override
+    public List<Work> getWorkData() {
+        List<Work> workData = workMapper.getWorkData();
+        return workData;
+    }
+
+    @Override
+    public PlanWorkBean getWorkById(String id) {
+        PlanWorkBean planWorkBeanById = workMapper.getPlanWorkBeanById(id);
+        return planWorkBeanById;
+    }
 }

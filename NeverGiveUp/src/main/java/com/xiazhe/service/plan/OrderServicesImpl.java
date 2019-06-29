@@ -71,4 +71,10 @@ public class OrderServicesImpl implements OrderServices {
     public List<Order> getlist() {
         return orderMapper.queryOrders();
     }
+
+    @Override
+    public Order getOrder(String id) {
+        Order order = orderMapper.getOrder(id);
+        return order;
+    }
 }
