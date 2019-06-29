@@ -1,0 +1,91 @@
+添加了  custome product  c_order bean by Draven
+新增了一个 json查询数据的jsonbean    QueryJsonBean
+Order的bean 是修改过的bean可以直接使用
+work、manufacture有表对应的bean 也有专门用来传输数据的而用的bean在bena的plan包下面
+
+
+所用到的url
+ /order/*_judge
+ /order/find
+ /order/list
+ /order/list
+ /order/add
+ /order/insert
+ /order/delete_batch
+ /order/edit
+ /order/update_all
+ /order/search_order_by_orderId
+ /order/search_order_by_orderCustom
+ /order/search_order_by_orderProduct
+ /order/get
+
+
+  /custom/*_judge
+  /custom/find
+  /custom/list
+  /custom/list
+  /custom/add
+  /custom/insert
+  /custom/delete_batch
+  /custom/edit
+  /custom/update_all
+  /custom/search_order_by_orderId
+  /custom/search_order_by_orderCustom
+  /custom/search_order_by_orderProduct
+  /custom/get
+
+   /product/*_judge
+   /product/find
+   /product/list
+   /product/list
+   /product/add
+   /product/insert
+   /product/delete_batch
+   /product/edit
+   /product/update_all
+   /product/search_order_by_orderId
+   /product/search_order_by_orderCustom
+   /product/search_order_by_orderProduct
+   /product/get
+
+   /manufacture/*_judge
+   /manufacture/find
+   /manufacture/list
+   /manufacture/list
+   /manufacture/add
+   /manufacture/insert
+   /manufacture/delete_batch
+   /manufacture/edit
+   /manufacture/update_all
+   /manufacture/search_order_by_orderId
+   /manufacture/search_order_by_orderCustom
+   /manufacture/search_order_by_orderProduct
+   /manufacture/get
+
+    /task/*_judge
+    /task/find
+    /task/list
+    /task/list
+    /task/add
+    /task/insert
+    /task/delete_batch
+    /task/edit
+    /task/update_all
+    /task/search_order_by_orderId
+    /task/search_order_by_orderCustom
+    /task/search_order_by_orderProduct
+    /task/get
+
+    /work/*_judge
+    /work/find
+    /work/list
+    /work/list
+    /work/add
+    /work/insert
+    /work/delete_batch
+    /work/edit
+    /work/update_all
+    /work/search_order_by_orderId
+    /work/search_order_by_orderCustom
+    /work/search_order_by_orderProduct
+    /work/get
