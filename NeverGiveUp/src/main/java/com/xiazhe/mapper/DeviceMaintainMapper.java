@@ -10,16 +10,12 @@ public interface DeviceMaintainMapper {
 
     int insert(DeviceMaintain record);//插入设备维修
 
-    int insertSelective(DeviceMaintain record);
-
     List<DeviceMaintain> selectByPrimaryKey(@Param("searchValue")String deviceMaintainId);//通过id模糊查询
 
     List<DeviceMaintain> selectBydeviceFaultId(@Param("searchValue")String deviceMaintainId);//通过故障编号模糊查询
 
-    int updateByPrimaryKeySelective(DeviceMaintain record);//通过id修改设备维修
-
-
-    int updateByPrimaryKey(DeviceMaintain record);//通过id修改设备维修
 
     List<DeviceMaintain> queryAll();//查询所有维修记录
+
+    int editDeviceMaintain(DeviceMaintain deviceMaintain); //编辑
 }

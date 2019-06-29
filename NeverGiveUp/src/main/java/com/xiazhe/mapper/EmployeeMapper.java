@@ -26,4 +26,6 @@ public interface EmployeeMapper {
     List<EmployeeDepartmentUnion> queryEmployeesAndDepartmentByDepName(@Param("depName") String depName);
     /*根据员工id批量删除员工*/
     int deleteEmployeesByIds(@Param("ids")String[] ids);
+    /*根据员工id查询单个员工*/
+    EmployeeDepartmentUnion selectOneById(String empId);
 }

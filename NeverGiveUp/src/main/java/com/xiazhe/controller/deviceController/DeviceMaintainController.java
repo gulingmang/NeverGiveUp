@@ -67,4 +67,37 @@ public class DeviceMaintainController {
         return result;
     }
 
+    //编辑设备维修
+    @RequestMapping("/edit_judge")
+    @ResponseBody
+    public String editDeviceType1(){
+        return "{}";
+    }
+    @RequestMapping("/edit")
+    public String editDeviceType2(){
+        return "/WEB-INF/jsp/deviceMaintain_edit.jsp";
+    }
+    @RequestMapping("/update")
+    @ResponseBody
+    public Result editDeviceMaintain(DeviceMaintain deviceMaintain){
+        deviceMaintainService.editDeviceMaintain(deviceMaintain);
+        return new Result(200,"OK",null);
+    }
+
+    //删除
+    @RequestMapping("/delete_judge")
+    @ResponseBody
+    public String deleteDeviceList1(){
+        return "{}";
+    }
+
+    //5.2删除操作
+    @RequestMapping("/delete_batch")
+    @ResponseBody
+    public Result deleteDeviceListByIds(String[] ids){
+        deviceMaintainService.deleteByPrimaryKey(ids);
+        return new Result(200,"OK",null);
+    }
+
+
 }

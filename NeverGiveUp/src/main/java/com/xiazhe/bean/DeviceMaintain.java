@@ -12,6 +12,13 @@ public class DeviceMaintain {
 
     private String deviceMaintainEmp;
 
+    private Date deviceMaintainDate;
+
+    private String deviceMaintainResult;
+
+    private BigDecimal deviceMaintainCost;
+
+    private String note;
     public String getDeviceMaintainEmp() {
         return deviceMaintainEmp;
     }
@@ -20,13 +27,6 @@ public class DeviceMaintain {
         this.deviceMaintainEmp = deviceMaintainEmp;
     }
 
-    private Date deviceMaintainDate;
-
-    private String deviceMaintainResult;
-
-    private BigDecimal deviceMaintainCost;
-
-    private String note;
 
     public DeviceMaintain() {
     }

@@ -53,4 +53,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public int deleteEmployeesByIds(String[] ids) {
         return mymapper.deleteEmployeesByIds(ids);
     }
+
+    @Override
+    public EmployeeDepartmentUnion selectOneById(String empId) {
+        return mymapper.selectOneById(empId);
+    }
 }

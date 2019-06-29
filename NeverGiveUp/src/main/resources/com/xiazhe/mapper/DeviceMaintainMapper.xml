@@ -36,11 +36,16 @@
     where device_fault_id like '%${searchValue}%'
   </select>
 
-
+  <!--删除-->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from device_maintain
-    where device_maintain_id = #{deviceMaintainId,jdbcType=VARCHAR}
+    where device_maintain_id in
+    <foreach collection="ids" item="deviceMatainId" separator="," open="(" close=")">
+      #{deviceMatainId}
+    </foreach>
   </delete>
+
+  <!--增加-->
   <insert id="insert" parameterType="com.xiazhe.bean.DeviceMaintain">
     insert into device_maintain (device_maintain_id, device_fault_id, 
       device_maintain_emp_id, device_maintain_date, 
@@ -100,31 +105,9 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xiazhe.bean.DeviceMaintain">
-    update device_maintain
-    <set>
-      <if test="deviceFaultId != null">
-        device_fault_id = #{deviceFaultId,jdbcType=VARCHAR},
-      </if>
-      <if test="deviceMaintainEmpId != null">
-        device_maintain_emp_id = #{deviceMaintainEmpId,jdbcType=VARCHAR},
-      </if>
-      <if test="deviceMaintainDate != null">
-        device_maintain_date = #{deviceMaintainDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deviceMaintainResult != null">
-        device_maintain_result = #{deviceMaintainResult,jdbcType=VARCHAR},
-      </if>
-      <if test="deviceMaintainCost != null">
-        device_maintain_cost = #{deviceMaintainCost,jdbcType=DECIMAL},
-      </if>
-      <if test="note != null">
-        note = #{note,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where device_maintain_id = #{deviceMaintainId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xiazhe.bean.DeviceMaintain">
+
+  <!--编辑-->
+  <update id="editDeviceMaintain">
     update device_maintain
     set device_fault_id = #{deviceFaultId,jdbcType=VARCHAR},
       device_maintain_emp_id = #{deviceMaintainEmpId,jdbcType=VARCHAR},
