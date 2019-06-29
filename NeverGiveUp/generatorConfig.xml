@@ -82,7 +82,11 @@
         <!-- 指定数据库表，要生成哪些表，就写哪些表，要和数据库中对应，不能写错！ -->
 
 
+<<<<<<< HEAD
         <table tableName="material_receive"
+=======
+
+>>>>>>> a12b148e04d266684700a98f82b5a4e946f50e1e
         <table tableName="task"
                enableCountByExample="false"
                enableUpdateByExample="false"
@@ -92,7 +96,13 @@
                domainObjectName="Task"/>
 
         <table tableName="manufacture"
+<<<<<<< HEAD
                domainObjectName="Custom"/>
+=======
+
+               domainObjectName="Manufacture"/>
+
+>>>>>>> a12b148e04d266684700a98f82b5a4e946f50e1e
 
     </context>
 </generatorConfiguration>

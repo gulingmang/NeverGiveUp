@@ -17,4 +17,6 @@ public interface ProcessMapper {
     int updateByPrimaryKey(Process record);////通过id修改工序
 
     Process[] selectByName(String searchValue);//通过工艺计划id进行模糊查询
+
+    Process selectById(@Param("id") String id);
 }

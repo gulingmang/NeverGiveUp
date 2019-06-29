@@ -39,4 +39,9 @@ public class ProcessServiceImpl implements ProcessService {
     public Process[] selectByName(String searchValue) {
         return processMapper.selectByName(searchValue);
     }
+
+    @Override
+    public Process selectById(String id) {
+        return  processMapper.selectById( id);
+    }
 }
