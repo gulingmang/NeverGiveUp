@@ -2,16 +2,15 @@ package com.xiazhe.controller.employeeController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.xiazhe.bean.Department;
-import com.xiazhe.bean.Employee;
-import com.xiazhe.bean.EmployeeDepartmentUnion;
-import com.xiazhe.bean.Result;
+import com.xiazhe.bean.*;
 import com.xiazhe.bean.json.QueryJsonBean;
 import com.xiazhe.service.DepartmentService.DepartmentService;
 import com.xiazhe.service.EmployeeService.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -128,5 +127,13 @@ public class EmployeeController {
         departmentQueryJsonBean.setTotal((int)resultPage.getTotal());
         departmentQueryJsonBean.setRows(departments);
         return departmentQueryJsonBean;
+    }
+
+    //rest风格查询员工信息
+    @RequestMapping(value = "/get/{employeeId}",method = RequestMethod.GET)
+    @ResponseBody
+    public EmployeeDepartmentUnion queryTechnologyById(@PathVariable String employeeId){
+        EmployeeDepartmentUnion employeeDepartmentUnion = employeeService.selectOneById(employeeId);
+        return employeeDepartmentUnion;
     }
 }
