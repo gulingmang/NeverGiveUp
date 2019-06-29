@@ -135,5 +135,9 @@ public class unqualifyController {
     public String myjudge() {
         return "";
     }
-
+    @RequestMapping("fCountCheck/*_judge")
+    @ResponseBody
+    public String myjudge2() {
+        return "";
+    }
 }
