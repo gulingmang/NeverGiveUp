@@ -17,4 +17,8 @@ public interface WorkServices {
     int deleteWorks(String[] ids);
 
     QueryJsonBean<Work> searchWorks(String value, String op, int page, int rows);
+
+    List<Work> getWorkData();
+
+    PlanWorkBean getWorkById(String id);
 }

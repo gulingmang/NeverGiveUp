@@ -25,4 +25,6 @@ public interface OrderMapper {
 
 
     List<Order> getlist();
+
+    Order getOrder(String id);
 }

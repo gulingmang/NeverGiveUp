@@ -139,4 +139,12 @@
       </when>
     </choose>
   </select>
+
+  <select id="getWorkData" resultMap="BaseResultMap">
+    select work_id, process_number, product_id, process_id, device_id, rating from work
+  </select>
+
+  <select id="getPlanWorkBeanById" resultMap="planWorkBeanMap">
+    select work_id ,process_number,rating,process_id,product_id,device_id from work where work_id = #{id}
+  </select>
 </mapper>

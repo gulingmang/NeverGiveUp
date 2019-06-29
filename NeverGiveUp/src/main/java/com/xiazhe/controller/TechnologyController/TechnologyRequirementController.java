@@ -29,11 +29,11 @@ public class TechnologyRequirementController {
     //显示工艺要求管理列表
     @RequestMapping("/find")
     public String toTechnologyRList(HttpSession httpSession){
-        ArrayList<Object> objects = new ArrayList<>();
+        /*ArrayList<Object> objects = new ArrayList<>();
         objects.add("technologyRequirement:add");
         objects.add("technologyRequirement:edit");
         objects.add("technologyRequirement:delete");
-        httpSession.setAttribute("sysPermissionList",objects);
+        httpSession.setAttribute("sysPermissionList",objects);*/
         return "/WEB-INF/jsp/technologyRequirement_list.jsp";
     }
     @RequestMapping("/list")

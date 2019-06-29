@@ -289,5 +289,46 @@
   <select id="getlist" resultType="com.xiazhe.bean.Order">
       select  * from   c_order
   </select>
+
+
+    <select id="queryOrderForManufacture" resultMap="BaseResultMap">
+        select    order_id, custom_id, product_id, order_date, request_date, note, quantity, unit_price,
+    unit, image, file, status from c_order where order_id = #{id}
+    </select>
+
+    <select id="getOrder" resultMap="queryOrdersMap">
+           select
+   c_order.order_id,
+   c_order.order_date,
+   c_order.request_date,
+   c_order.note  as onote,
+   c_order.quantity,
+   c_order.unit_price,
+   c_order.unit,
+   c_order.image as oimg,
+   c_order.file,
+   c_order.status as ostatus,
+   custom.custom_id,
+   custom.custom_name,
+   custom.full_name,
+   custom.address,
+   custom.fax,
+   custom.email,
+   custom.owner_name,
+   custom.owner_tel,
+   custom.status as cstatus,
+   custom.note as cnote,
+   product.product_id,
+   product.product_name,
+   product.product_type,
+   product.image as pimg,
+   product.note as pnote,
+   product.status  as pstatus
+    from c_order
+    left join custom on c_order.custom_id = custom.custom_id
+    left join product on c_order.product_id = product.product_id
+    where c_order.order_id = #{id}
+    </select>
+
   
 </mapper>

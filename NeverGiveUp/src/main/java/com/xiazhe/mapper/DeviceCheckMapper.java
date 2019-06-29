@@ -1,12 +1,11 @@
-package com.xiazhe.service.deviceService;
+package com.xiazhe.mapper;
 
 import com.xiazhe.bean.DeviceCheck;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface DeviceCheckService {
-
+public interface DeviceCheckMapper {
     public int addDeviceCheck(@Param("Check") DeviceCheck deviceCheck);
     public int deleteDeviceChecks(@Param("ids") String[] ids);
     public int updateDeviceCheck(@Param("Check") DeviceCheck deviceCheck);

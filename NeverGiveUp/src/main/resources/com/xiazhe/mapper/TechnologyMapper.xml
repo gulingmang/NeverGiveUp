@@ -135,4 +135,9 @@
       overfulfil_capacity = #{overfulfilCapacity,jdbcType=INTEGER}
     where technology_id = #{technologyId,jdbcType=VARCHAR}
   </update>
+
+  <select id="queryTechForManufacture" resultMap="BaseResultMap">
+       select    technology_id , technology_name , price, vital_process_period , standard_capacity , overtime_standard_capacity ,
+    overtime_overfulfil_capacity, double_capacity, overfulfil_capacity from technology   where technology_id  = #{id}
+  </select>
 </mapper>

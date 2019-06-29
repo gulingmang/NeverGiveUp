@@ -7,6 +7,7 @@ import com.xiazhe.service.plan.OrderServices;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -118,5 +119,11 @@ public class ManagerPlanController {
     public QueryJsonBean<Order> searchByProductId(String searchValue, int page, int rows){
         QueryJsonBean<Order> queryJsonBean = orderServices.searchOrders(searchValue, "productId", page, rows);
         return queryJsonBean;
+    }
+
+    @RequestMapping("get/{id}")
+    @ResponseBody
+    public Order getOrder(@PathVariable("id")String id){
+       return orderServices.getOrder(id);
     }
 }

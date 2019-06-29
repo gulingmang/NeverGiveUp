@@ -16,6 +16,8 @@ public interface OrderServices {
 
     QueryJsonBean<Order> searchOrders(String value, String op, int page, int rows);
 
-    public List<Order> getlist();
+     List<Order> getlist();
+
+     Order getOrder(String id);
 
 }
