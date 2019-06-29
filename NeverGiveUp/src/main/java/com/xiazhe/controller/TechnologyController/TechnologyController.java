@@ -23,11 +23,11 @@ public class TechnologyController {
     //显示工艺管理列表
     @RequestMapping("/find")
     public String toTechnologyList(HttpSession httpSession){
-        ArrayList<Object> objects = new ArrayList<>();
+        /*ArrayList<Object> objects = new ArrayList<>();
         objects.add("technology:add");
         objects.add("technology:edit");
         objects.add("technology:delete");
-        httpSession.setAttribute("sysPermissionList",objects);
+        httpSession.setAttribute("sysPermissionList",objects);*/
         return "/WEB-INF/jsp/technology_list.jsp";
     }
     @RequestMapping("/list")

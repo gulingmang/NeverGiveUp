@@ -31,11 +31,8 @@ public class ProcessController {
     //显示工序管理列表
     @RequestMapping("/find")
     public String toProcessList(HttpSession httpSession){
-        ArrayList<Object> objects = new ArrayList<>();
-        objects.add("process:add");
-        objects.add("process:edit");
-        objects.add("process:delete");
-        httpSession.setAttribute("sysPermissionList",objects);
+
+
         return "/WEB-INF/jsp/process_list.jsp";
     }
     //分页操作
