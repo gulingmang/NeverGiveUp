@@ -1,9 +1,7 @@
 package com.xiazhe.service.deviceService;
 
 import com.xiazhe.bean.DeviceCheck;
-import com.xiazhe.bean.DeviceList;
 import com.xiazhe.bean.DeviceType;
-import com.xiazhe.mapper.DeviceListMapper;
 import com.xiazhe.mapper.DeviceTypeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,19 +9,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DeviceServiceImpl implements DeviceService {
+public class DeviceTypeServiceImpl implements DeviceTypeService {
 
     @Autowired
     DeviceTypeMapper deviceTypeMapper;
-    @Autowired
-    DeviceListMapper deviceListMapper;
-
-    /*显示所有设备台账*/
-    @Override
-    public List<DeviceList> queryAllDeviceList() {
-        List<DeviceList> deviceList = deviceListMapper.queryAllDeviceList();
-        return deviceList;
-    }
 
     /*显示所有设备种类*/
     @Override
@@ -70,11 +59,7 @@ public class DeviceServiceImpl implements DeviceService {
         return null;
     }
 
-    @Override
-    public int addDeviceList(DeviceList deviceList) {
 
-        return 0;
-    }
 
     /*显示所有设备例检*/
     /*@Override
